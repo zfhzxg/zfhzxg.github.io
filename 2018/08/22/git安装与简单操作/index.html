@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.安装Node.js和配置好Node.js环境 命令行输入node -v ; nmp -v 检测是否安装成功   2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过">
+<meta name="description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo 创建文件夹通过命令行进入到该文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git安装与简单操作">
+<meta property="og:title" content="git安装与简单操作(hexo)">
 <meta property="og:url" content="http://yoursite.com/2018/08/22/git安装与简单操作/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="1.安装Node.js和配置好Node.js环境 命令行输入node -v ; nmp -v 检测是否安装成功   2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过">
+<meta property="og:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo 创建文件夹通过命令行进入到该文">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T09:30:57.561Z">
+<meta property="og:updated_time" content="2018-08-22T12:12:55.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git安装与简单操作">
-<meta name="twitter:description" content="1.安装Node.js和配置好Node.js环境 命令行输入node -v ; nmp -v 检测是否安装成功   2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过">
+<meta name="twitter:title" content="git安装与简单操作(hexo)">
+<meta name="twitter:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo 创建文件夹通过命令行进入到该文">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>git安装与简单操作 | zfhzxg的个人博客</title>
+  <title>git安装与简单操作(hexo) | zfhzxg的个人博客</title>
   
 
 
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git安装与简单操作</h1>
+          <h1 class="post-title" itemprop="name headline">git安装与简单操作(hexo)</h1>
         
 
         <div class="post-meta">
@@ -310,22 +310,30 @@
 
       
         <ul>
-<li>1.安装Node.js和配置好Node.js环境<blockquote>
-<p>命令行输入node -v ; nmp -v 检测是否安装成功</p>
-</blockquote>
-</li>
+<li>1.安装Node.js和配置好Node.js环境</li>
 <li>2.安装Git和配置好Git环境</li>
 <li>3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io<blockquote>
 <p>在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它</p>
 </blockquote>
 </li>
 <li>4.安装Hexo<blockquote>
-<p>在自己认为合适的地方创个文件夹<br>通过命令行进入到该文件夹<br>输入npm install hexo -g，开始安装Hexo<br>输入hexo -v，检查hexo是否安装成功</p>
+<p>创建文件夹<br>通过命令行进入到该文件夹<br>输入npm install hexo -g，开始安装Hexo</p>
 </blockquote>
 </li>
-<li>5.</li>
-<li>6.</li>
+<li>5.输入hexo init，初始化该文件夹</li>
+<li>6.输入npm install，安装所需要的组件</li>
+<li>7.联系hexo与github page<blockquote>
+<p>终端输入：$ git –global user.name “XXX”<br>终端输入：$ git –global user.email “<a href="mailto:XXX@XXX.XXX" target="_blank" rel="noopener">XXX@XXX.XXX</a>“<br>添加密匙到ssh-agent：$ eval “$(ssh-agent -s)”<br>添加生成的ssh key到ssh-agent：$ eval “$(ssh-agent -s)”<br>github–&gt;setting–&gt;ssh and gpg keys添加id_rsa.pub文件中的ssh key</p>
+</blockquote>
+</li>
+<li>8.配置Deployment(_config.yml)<blockquote>
+<p>deploy:<br>  type: git<br>  repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:zfhzxg/zfhzxg.github.io.git<br>  branch: master</p>
+</blockquote>
+</li>
 </ul>
+<blockquote>
+<p>检测node.js是否安装成功：node -v , nmp -v<br>检查hexo是否安装成功：hexo -v<br>检测ssh是否配置成功：$ ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a><br>hexo g：开启本地服务器<br>hexo server -p XXXX：改变端口号<br>生成ssh密匙：$ ssh-keygen -t rsa -C “<a href="mailto:XXX@XXX.XXX" target="_blank" rel="noopener">XXX@XXX.XXX</a>“<br>生成.get：$ get init<br>新建博客：hexo new post “博客名”<br>安装拓展：npm install hexo-deployer-git –save<br>生成部署：hexo d -g</p>
+</blockquote>
 
       
     </div>
