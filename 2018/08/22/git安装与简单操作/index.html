@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo 创建文件夹通过命令行进入到该文">
+<meta name="description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo  创建文件夹通过命令行进入到该">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git安装与简单操作(hexo)">
 <meta property="og:url" content="http://yoursite.com/2018/08/22/git安装与简单操作/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo 创建文件夹通过命令行进入到该文">
+<meta property="og:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo  创建文件夹通过命令行进入到该">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T12:16:15.977Z">
+<meta property="og:updated_time" content="2018-08-22T15:04:06.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git安装与简单操作(hexo)">
-<meta name="twitter:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo 创建文件夹通过命令行进入到该文">
+<meta name="twitter:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo  创建文件夹通过命令行进入到该">
 
 
 
@@ -316,25 +316,82 @@
 <p>在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它</p>
 </blockquote>
 </li>
-<li>4.安装Hexo<blockquote>
-<p>创建文件夹<br>通过命令行进入到该文件夹<br>输入npm install hexo -g，开始安装Hexo</p>
+<li><p>4.安装Hexo</p>
+<blockquote>
+<p>创建文件夹<br>通过命令行进入到该文件夹<br>安装Hexo</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li>5.输入hexo init，初始化该文件夹</li>
-<li>6.输入npm install，安装所需要的组件</li>
-<li>7.联系hexo与github page<blockquote>
-<p>终端输入：$ git –global user.name “XXX”<br>终端输入：$ git –global user.email “<a href="mailto:XXX@XXX.XXX" target="_blank" rel="noopener">XXX@XXX.XXX</a>“<br>添加密匙到ssh-agent：$ eval “$(ssh-agent -s)”<br>添加生成的ssh key到ssh-agent：$ eval “$(ssh-agent -s)”<br>github–&gt;setting–&gt;ssh and gpg keys添加id_rsa.pub文件中的ssh key</p>
+<li><p>5.初始化该文件夹</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.安装所需要的组件</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>7.联系hexo与github page</p>
+<blockquote>
+<p>终端输入：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.name <span class="string">"XXX"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>终端输入：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.email <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>添加密匙到ssh-agent<br>终端输入：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>添加生成的ssh key到ssh-agent<br>终端输入</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>github–&gt;setting–&gt;ssh and gpg keys添加id_rsa.pub文件中的ssh key</p>
 </blockquote>
 </li>
 <li><p>8.配置Deployment(_config.yml)</p>
-<blockquote>
-<p>deploy:<br>  type: git<br>  repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:zfhzxg/zfhzxg.github.io.git<br>  branch: master</p>
-</blockquote>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repository: git@github.com:zfhzxg/zfhzxg.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>基础命令</p>
 <blockquote>
-<p>终端：<br>检测ssh是否配置成功：$ ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a><br>生成ssh密匙：$ ssh-keygen -t rsa -C “<a href="mailto:XXX@XXX.XXX" target="_blank" rel="noopener">XXX@XXX.XXX</a>“<br>生成.get：$ get init<br>cmd：<br>检测node.js是否安装成功：node -v , nmp -v<br>检查hexo是否安装成功：hexo -v<br>hexo g：开启本地服务器<br>hexo server -p XXXX：改变端口号<br>新建博客：hexo new post “博客名”<br>安装拓展：npm install hexo-deployer-git –save<br>生成部署：hexo d -g</p>
+<p>终端：<br>检测ssh是否配置成功</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 </blockquote>
+<blockquote>
+<p>生成ssh密匙：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>生成.get：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ get init</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>cmd：<br>检测node.js是否安装成功：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">nmp -v</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>检查hexo是否安装成功：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>开启本地服务器：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>改变端口号：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p XXXX</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>新建博客：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"博客名"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>安装拓展：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>生成部署：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></blockquote>
 </li>
 </ul>
 
@@ -441,7 +498,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
