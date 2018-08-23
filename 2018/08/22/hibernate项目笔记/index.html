@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）1234567方式1：&amp;lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&amp;gt;	&amp;lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.jdbc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T14:51:39.554Z">
+<meta property="og:updated_time" content="2018-08-23T10:01:39.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hibernate项目笔记">
 <meta name="twitter:description" content="1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）1234567方式1：&amp;lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&amp;gt;	&amp;lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.jdbc">
@@ -311,6 +311,7 @@
       
         <h3 id="1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）"><a href="#1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）" class="headerlink" title="1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）"></a>1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方式1：</span><br><span class="line">&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span><br><span class="line">	&lt;property name=<span class="string">"driverClass"</span> value=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"jdbcUrl"</span> value=<span class="string">"jdbc:mysql////bos"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"user"</span> value=<span class="string">"root"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"password"</span> value=<span class="string">"tiger"</span>/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">方式2：</span><br><span class="line">&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"driverClassName"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.driverClass&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"url"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.jdbcUrl&#125;</span>?characterEncoding=UTF-8&amp;amp;useSSL=<span class="literal">false</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"username"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.user&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"password"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.password&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  	</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-getHibernateTemplate-的使用方法"><a href="#2-getHibernateTemplate-的使用方法" class="headerlink" title="2.getHibernateTemplate()的使用方法"></a>2.getHibernateTemplate()的使用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)导入org.springframework.orm.hibernate5.support.HibernateDaoSupport包</span><br><span class="line">(2)继承HibernateDaoSupport类</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -343,6 +344,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/23/项目笔记/" rel="prev" title="项目笔记">
+                项目笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -423,7 +428,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -460,7 +465,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）"><span class="nav-number">1.</span> <span class="nav-text">1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）"><span class="nav-number">1.</span> <span class="nav-text">1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-getHibernateTemplate-的使用方法"><span class="nav-number">2.</span> <span class="nav-text">2.getHibernateTemplate()的使用方法</span></a></li></ol></div>
             
 
           </div>

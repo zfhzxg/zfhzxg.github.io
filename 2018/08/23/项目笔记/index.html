@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo  创建文件夹通过命令行进入到该">
+<meta name="description" content="1.Dao层抽取1234(1)BaseDaoImpl--&amp;gt;BaseDao   UserDaoImpl--&amp;gt;UserDao(2)UserDao extends BaseDao   UserDaoImpl extends UserDaoImpl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git安装与简单操作(hexo)">
-<meta property="og:url" content="http://yoursite.com/2018/08/22/git安装与简单操作/index.html">
+<meta property="og:title" content="项目笔记">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/项目笔记/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo  创建文件夹通过命令行进入到该">
+<meta property="og:description" content="1.Dao层抽取1234(1)BaseDaoImpl--&amp;gt;BaseDao   UserDaoImpl--&amp;gt;UserDao(2)UserDao extends BaseDao   UserDaoImpl extends UserDaoImpl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T15:04:06.334Z">
+<meta property="og:updated_time" content="2018-08-23T11:06:00.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git安装与简单操作(hexo)">
-<meta name="twitter:description" content="1.安装Node.js和配置好Node.js环境 2.安装Git和配置好Git环境 3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io 在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它   4.安装Hexo  创建文件夹通过命令行进入到该">
+<meta name="twitter:title" content="项目笔记">
+<meta name="twitter:description" content="1.Dao层抽取1234(1)BaseDaoImpl--&amp;gt;BaseDao   UserDaoImpl--&amp;gt;UserDao(2)UserDao extends BaseDao   UserDaoImpl extends UserDaoImpl">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/22/git安装与简单操作/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/23/项目笔记/"/>
 
 
 
 
 
-  <title>git安装与简单操作(hexo) | zfhzxg的个人博客</title>
+  <title>项目笔记 | zfhzxg的个人博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/git安装与简单操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/项目笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git安装与简单操作(hexo)</h1>
+          <h1 class="post-title" itemprop="name headline">项目笔记</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T00:51:09+08:00">
-                2018-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T19:01:27+08:00">
+                2018-08-23
               </time>
             
 
@@ -309,92 +309,7 @@
       
 
       
-        <ul>
-<li>1.安装Node.js和配置好Node.js环境</li>
-<li>2.安装Git和配置好Git环境</li>
-<li>3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io<blockquote>
-<p>在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它</p>
-</blockquote>
-</li>
-<li><p>4.安装Hexo</p>
-<blockquote>
-<p>创建文件夹<br>通过命令行进入到该文件夹<br>安装Hexo</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>5.初始化该文件夹</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.安装所需要的组件</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>7.联系hexo与github page</p>
-<blockquote>
-<p>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.name <span class="string">"XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.email <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>添加密匙到ssh-agent<br>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>添加生成的ssh key到ssh-agent<br>终端输入</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>github–&gt;setting–&gt;ssh and gpg keys添加id_rsa.pub文件中的ssh key</p>
-</blockquote>
-</li>
-<li><p>8.配置Deployment(_config.yml)</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repository: git@github.com:zfhzxg/zfhzxg.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>基础命令</p>
-<blockquote>
-<p>终端：<br>检测ssh是否配置成功</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成ssh密匙：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成.get：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ get init</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>cmd：<br>检测node.js是否安装成功：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">nmp -v</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>检查hexo是否安装成功：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>开启本地服务器：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>改变端口号：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p XXXX</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>新建博客：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"博客名"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>安装拓展：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成部署：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></blockquote>
-</li>
-</ul>
-
+        <h3 id="1-Dao层抽取"><a href="#1-Dao层抽取" class="headerlink" title="1.Dao层抽取"></a>1.Dao层抽取</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)BaseDaoImpl--&gt;BaseDao</span><br><span class="line">   UserDaoImpl--&gt;UserDao</span><br><span class="line">(2)UserDao extends BaseDao</span><br><span class="line">   UserDaoImpl extends UserDaoImpl</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -418,8 +333,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/22/git报错/" rel="next" title="git报错">
-                <i class="fa fa-chevron-left"></i> git报错
+              <a href="/2018/08/22/hibernate项目笔记/" rel="next" title="hibernate项目笔记">
+                <i class="fa fa-chevron-left"></i> hibernate项目笔记
               </a>
             
           </div>
@@ -427,10 +342,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/22/maven整合框架笔记/" rel="prev" title="maven整合框架笔记">
-                maven整合框架笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -482,8 +393,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -529,6 +449,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Dao层抽取"><span class="nav-number">1.</span> <span class="nav-text">1.Dao层抽取</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
