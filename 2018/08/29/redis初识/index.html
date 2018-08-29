@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T15:12:57.240Z">
+<meta property="og:updated_time" content="2018-08-29T15:51:57.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis初识">
 <meta name="twitter:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
@@ -342,26 +342,59 @@
 <hr>
 <h3 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a><strong>Redis特性</strong></h3><hr>
 <blockquote>
-<p><strong>速度快</strong></p>
-</blockquote>
+<p><strong>速度快</strong>（10W OPS(读写)）</p>
 <blockquote>
-<p><strong>持久化</strong></p>
+<p><em>将数据存在内存</em><br>用c语言编写</p>
 </blockquote>
+</blockquote>
+<pre><code>&gt;&gt; 线性模型使用单线程
+</code></pre><hr>
+<blockquote>
+<p><strong>持久化</strong>（断电不丢数据）</p>
+</blockquote>
+<pre><code>&gt;&gt; Redis所有数据保持在内存中，对数据的更新将异步地保存到硬盘上
+</code></pre><hr>
 <blockquote>
 <p><strong>多种数据结构</strong></p>
+<blockquote>
+<ul>
+<li>常规<br>字符串（Strings/Blobs/Bitmaps）<br>哈希（Hash Tables(objects!)）<br>列表（Linked Lists）<br>集合（Sets）<br>有序集合（Sorted Sets）</li>
+<li>衍生<br>位图（BitMaps）<br>超小内存唯一值技术（HyperLogLog——有一定误差）</li>
+</ul>
 </blockquote>
+</blockquote>
+<pre><code>&gt;&gt; 地理信息定位（GEO）
+</code></pre><hr>
 <blockquote>
 <p><strong>支持多种编辑语言</strong></p>
+<blockquote>
+<p>Java<br>php<br>Python<br>Ruby<br>Lua</p>
 </blockquote>
+</blockquote>
+<pre><code>&gt;&gt; NodeJs
+</code></pre><hr>
 <blockquote>
 <p><strong>功能丰富</strong></p>
+<blockquote>
+<p>发布订阅<br>Lua脚本<br>事务</p>
 </blockquote>
+</blockquote>
+<pre><code>&gt;&gt; pipeline
+</code></pre><hr>
 <blockquote>
 <p><strong>简单</strong></p>
+<blockquote>
+<ul>
+<li>典型使用场景<br>缓存系统：用户访问App server，App Server从cache（Redis）请求数据，如果有，直接返回给App Server，如果没有，cache将从Storage（持久化存储空间）中查找，查找后将从Storage中查找到的数据存入cache中以方便下次查找，而后直接由Storage返回给App Server。<br>计数器：微博、视频网站的转发、评论数。<br>消息队列系统<br>排行榜<br>社交网络</li>
+</ul>
 </blockquote>
+</blockquote>
+<pre><code>&gt;&gt; 实时系统
+</code></pre><hr>
 <blockquote>
 <p><strong>主从复制</strong></p>
 </blockquote>
+<hr>
 <blockquote>
 <p><strong>高可用、分布式</strong></p>
 </blockquote>
