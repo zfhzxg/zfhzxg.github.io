@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T15:51:57.455Z">
+<meta property="og:updated_time" content="2018-08-29T15:58:59.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis初识">
 <meta name="twitter:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
@@ -344,10 +344,13 @@
 <blockquote>
 <p><strong>速度快</strong>（10W OPS(读写)）</p>
 <blockquote>
-<p><em>将数据存在内存</em><br>用c语言编写</p>
+<ol>
+<li><em>将数据存在内存</em></li>
+<li>用c语言编写</li>
+</ol>
 </blockquote>
 </blockquote>
-<pre><code>&gt;&gt; 线性模型使用单线程
+<pre><code>&gt;&gt; 3. 线性模型使用单线程
 </code></pre><hr>
 <blockquote>
 <p><strong>持久化</strong>（断电不丢数据）</p>
@@ -358,38 +361,68 @@
 <p><strong>多种数据结构</strong></p>
 <blockquote>
 <ul>
-<li>常规<br>字符串（Strings/Blobs/Bitmaps）<br>哈希（Hash Tables(objects!)）<br>列表（Linked Lists）<br>集合（Sets）<br>有序集合（Sorted Sets）</li>
-<li>衍生<br>位图（BitMaps）<br>超小内存唯一值技术（HyperLogLog——有一定误差）</li>
+<li>常规</li>
 </ul>
+<ol>
+<li>字符串（Strings/Blobs/Bitmaps）</li>
+<li>哈希（Hash Tables(objects!)）</li>
+<li>列表（Linked Lists）</li>
+<li>集合（Sets）</li>
+<li>有序集合（Sorted Sets）</li>
+</ol>
+<ul>
+<li>衍生</li>
+</ul>
+<ol>
+<li>位图（BitMaps）</li>
+<li>超小内存唯一值技术（HyperLogLog——有一定误差）</li>
+</ol>
 </blockquote>
 </blockquote>
-<pre><code>&gt;&gt; 地理信息定位（GEO）
+<pre><code>&gt;&gt; 3. 地理信息定位（GEO）
 </code></pre><hr>
 <blockquote>
 <p><strong>支持多种编辑语言</strong></p>
 <blockquote>
-<p>Java<br>php<br>Python<br>Ruby<br>Lua</p>
+<ol>
+<li>Java</li>
+<li>php</li>
+<li>Python</li>
+<li>Ruby</li>
+<li>Lua</li>
+</ol>
 </blockquote>
 </blockquote>
-<pre><code>&gt;&gt; NodeJs
+<pre><code>&gt;&gt; 6. NodeJs
 </code></pre><hr>
 <blockquote>
 <p><strong>功能丰富</strong></p>
 <blockquote>
-<p>发布订阅<br>Lua脚本<br>事务</p>
+<ol>
+<li>发布订阅</li>
+<li>Lua脚本</li>
+<li>事务</li>
+</ol>
 </blockquote>
 </blockquote>
-<pre><code>&gt;&gt; pipeline
+<pre><code>&gt;&gt; 4. pipeline
 </code></pre><hr>
 <blockquote>
 <p><strong>简单</strong></p>
 <blockquote>
 <ul>
-<li>典型使用场景<br>缓存系统：用户访问App server，App Server从cache（Redis）请求数据，如果有，直接返回给App Server，如果没有，cache将从Storage（持久化存储空间）中查找，查找后将从Storage中查找到的数据存入cache中以方便下次查找，而后直接由Storage返回给App Server。<br>计数器：微博、视频网站的转发、评论数。<br>消息队列系统<br>排行榜<br>社交网络</li>
+<li>典型使用场景</li>
 </ul>
+<ol>
+<li>缓存系统：用户访问App server，App Server从cache（Redis）请求数据，如果有，直接返回给App Server，如果没有，cache将从Storage（持久化存储空间）中查找，查找后将从Storage中查找到的数据存入cache中以方便下次查找，而后直接由Storage返回给App Server。</li>
+<li>计数器：微博、视频网站的转发、评论数。</li>
+<li>消息队列系统</li>
+<li>排行榜</li>
+<li>社交网络</li>
+</ol>
 </blockquote>
 </blockquote>
-<pre><code>&gt;&gt; 实时系统
+<pre><code>&gt;&gt; 6. 实时系统
 </code></pre><hr>
 <blockquote>
 <p><strong>主从复制</strong></p>
