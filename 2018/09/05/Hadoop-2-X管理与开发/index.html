@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="###hadoop的起源与背景知识  一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报核心的问题:数据的存储,数据的计算(不是算法)数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)    二、数据">
+<meta name="description" content="###hadoop的起源与背景知识 一、什么是大数据  举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop 2.X管理与开发">
 <meta property="og:url" content="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="###hadoop的起源与背景知识  一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报核心的问题:数据的存储,数据的计算(不是算法)数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)    二、数据">
+<meta property="og:description" content="###hadoop的起源与背景知识 一、什么是大数据  举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-06T15:48:17.954Z">
+<meta property="og:updated_time" content="2018-09-06T15:58:06.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.X管理与开发">
-<meta name="twitter:description" content="###hadoop的起源与背景知识  一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报核心的问题:数据的存储,数据的计算(不是算法)数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)    二、数据">
+<meta name="twitter:description" content="###hadoop的起源与背景知识 一、什么是大数据  举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据">
 
 
 
@@ -309,37 +309,79 @@
       
 
       
-        <p>###<strong>hadoop的起源与背景知识</strong></p>
-<ul>
-<li>一、什么是大数据<blockquote>
+        <h2 id="hadoop的起源与背景知识"><a href="#hadoop的起源与背景知识" class="headerlink" title="###hadoop的起源与背景知识"></a>###<strong>hadoop的起源与背景知识</strong></h2><ul>
+<li><p>一、什么是大数据</p>
+<blockquote>
 <p>举例:</p>
 <blockquote>
-<p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报<br>核心的问题:数据的存储,数据的计算(不是算法)<br>数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)<br>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</p>
+<p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报</p>
 </blockquote>
+</blockquote>
+<blockquote>
+<p>核心的问题:数据的存储,数据的计算(不是算法)</p>
+</blockquote>
+<blockquote>
+<p>数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)</p>
+</blockquote>
+<blockquote>
+<p>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</p>
 </blockquote>
 </li>
-<li>二、数据仓库和大数据<blockquote>
+</ul>
+<hr>
+<ul>
+<li><p>二、数据仓库和大数据</p>
+<blockquote>
 <p>传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</p>
 <blockquote>
 <p>数据仓库就是一个数据库(Orcale,MySQL,MS)<br>数据仓库和大数据一般只做查询(分析)<br>搭建数据仓库的过程</p>
 <blockquote>
-<p>数据源RDBMS:关系型数据库(结构化数据)/文本数据/其他数据<br>利用ETL抽取/转化/加载数据后搭建数据仓库(保存为原始数据)<br>分析处理数据(SQL,PL/SQL,JDBC)<br>经过分析后搭建数据集市(hr,sales)<br>提供给hr系统或销售系统<br>Hadoop和Spark都可以看成是数据仓库的一种实现<br>从ETL到搭建数据集都可以用Hadoop和Spark所提供的方式解决,也可以用传统方式解决<br>hadoop中使用sqoop和Flume组件完成ETL<br>hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)<br>hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据<br>*大数据的终极目标是使用SQL处理数据<br>处理数据后使用HDFS或NoSQL:Redis存储到数据集市</p>
+<p>数据源RDBMS:关系型数据库(结构化数据)/文本数据/其他数据<br>利用ETL抽取/转化/加载数据后搭建数据仓库(保存为原始数据)<br>分析处理数据(SQL,PL/SQL,JDBC)<br>经过分析后搭建数据集市(hr,sales)<br>提供给hr系统或销售系统</p>
 </blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Hadoop和Spark都可以看成是数据仓库的一种实现</p>
+<blockquote>
+<p>从ETL到搭建数据集都可以用Hadoop和Spark所提供的方式解决,也可以用传统方式解决<br>hadoop中使用sqoop和Flume组件完成ETL<br>hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)<br>hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据<br>*大数据的终极目标是使用SQL处理数据<br>处理数据后使用HDFS或NoSQL:Redis存储到数据集市</p>
 </blockquote>
 </blockquote>
 </li>
-<li>三、OLTP和OLAP<blockquote>
-<p>OLTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务<br>OLAP:Online Analytic Processing 联机分析处理，一般制作查询 —&gt; 数据仓库就是一种OLAP的应用系统<br>Hadoop、Spark看成是一种数据仓库的解决方案<br>数据仓库（查询）不支持事务</p>
+</ul>
+<hr>
+<ul>
+<li><p>三、OLTP和OLAP</p>
+<blockquote>
+<p>OLTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务</p>
+</blockquote>
+<blockquote>
+<p>OLAP:Online Analytic Processing 联机分析处理，一般制作查询 —&gt; 数据仓库就是一种OLAP的应用系统</p>
+</blockquote>
+<blockquote>
+<p>Hadoop、Spark看成是一种数据仓库的解决方案</p>
+</blockquote>
+<blockquote>
+<p>数据仓库（查询）不支持事务</p>
 </blockquote>
 </li>
-<li>四、<strong>Google的基本思想:三篇论文</strong><blockquote>
+</ul>
+<hr>
+<ul>
+<li><p>四、<strong>Google的基本思想:三篇论文</strong></p>
+<blockquote>
 <p>(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</p>
 <blockquote>
 <p>1.分布式文件系统<br>2.大数据的存储问题<br>3.HDFS中，记录数据的位置信息（元信息） —- 采用倒排索引（Reverted Index）</p>
 <blockquote>
-<p>(1)什么是索引？Index<br>*CREATE INDEX创建索引<br>*索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>*通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>*最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS<br>*<br>(二)MapReduce：分布计算模型，问题来源PageRank<br>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
+<p>(1)什么是索引？Index<br>*CREATE INDEX创建索引<br>*索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>*通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>*最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS<br>*</p>
 </blockquote>
 </blockquote>
+</blockquote>
+<blockquote>
+<p>(二)MapReduce：分布计算模型，问题来源PageRank</p>
+</blockquote>
+<blockquote>
+<p>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
 </blockquote>
 </li>
 </ul>
@@ -427,8 +469,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -474,6 +525,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hadoop的起源与背景知识"><span class="nav-number">1.</span> <span class="nav-text">###hadoop的起源与背景知识</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
