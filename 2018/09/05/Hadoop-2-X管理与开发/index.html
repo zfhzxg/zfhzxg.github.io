@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.配置阿里远程仓库（parent/pom）1234567891011121314&amp;lt;repositories&amp;gt;    &amp;lt;repository&amp;gt;        &amp;lt;id&amp;gt;maven - ali&amp;lt;/id&amp;gt;        &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/u">
+<meta name="description" content="###hadoop的起源与背景知识  一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报核心的问题:数据的存储,数据的计算(不是算法)数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)    二、数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="maven整合框架笔记(ssh)">
-<meta property="og:url" content="http://yoursite.com/2018/08/22/maven整合框架笔记(ssh)/index.html">
+<meta property="og:title" content="Hadoop 2.X管理与开发">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="1.配置阿里远程仓库（parent/pom）1234567891011121314&amp;lt;repositories&amp;gt;    &amp;lt;repository&amp;gt;        &amp;lt;id&amp;gt;maven - ali&amp;lt;/id&amp;gt;        &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/u">
+<meta property="og:description" content="###hadoop的起源与背景知识  一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报核心的问题:数据的存储,数据的计算(不是算法)数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)    二、数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-23T14:51:47.184Z">
+<meta property="og:updated_time" content="2018-09-06T15:48:17.954Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maven整合框架笔记(ssh)">
-<meta name="twitter:description" content="1.配置阿里远程仓库（parent/pom）1234567891011121314&amp;lt;repositories&amp;gt;    &amp;lt;repository&amp;gt;        &amp;lt;id&amp;gt;maven - ali&amp;lt;/id&amp;gt;        &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/u">
+<meta name="twitter:title" content="Hadoop 2.X管理与开发">
+<meta name="twitter:description" content="###hadoop的起源与背景知识  一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报核心的问题:数据的存储,数据的计算(不是算法)数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)    二、数据">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/22/maven整合框架笔记(ssh)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发/"/>
 
 
 
 
 
-  <title>maven整合框架笔记(ssh) | zfhzxg的个人博客</title>
+  <title>Hadoop 2.X管理与开发 | zfhzxg的个人博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/maven整合框架笔记(ssh)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">maven整合框架笔记(ssh)</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop 2.X管理与开发</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T22:32:39+08:00">
-                2018-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-05T21:47:53+08:00">
+                2018-09-05
               </time>
             
 
@@ -309,8 +309,41 @@
       
 
       
-        <h3 id="1-配置阿里远程仓库（parent-pom）"><a href="#1-配置阿里远程仓库（parent-pom）" class="headerlink" title="1.配置阿里远程仓库（parent/pom）"></a>1.配置阿里远程仓库（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;</span><br><span class="line">    &lt;repository&gt;</span><br><span class="line">        &lt;id&gt;maven - ali&lt;/id&gt;</span><br><span class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">        &lt;releases&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">        &lt;/releases&gt;</span><br><span class="line">        &lt;snapshots&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">            &lt;updatePolicy&gt;always&lt;/updatePolicy&gt;</span><br><span class="line">            &lt;checksumPolicy&gt;fail&lt;/checksumPolicy&gt;</span><br><span class="line">        &lt;/snapshots&gt;</span><br><span class="line">    &lt;/repository&gt;</span><br><span class="line">&lt;/repositories&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-maven中spring与jdk-1-8的兼容问题（parent-pom）"><a href="#2-maven中spring与jdk-1-8的兼容问题（parent-pom）" class="headerlink" title="2.maven中spring与jdk 1.8的兼容问题（parent/pom）"></a>2.maven中spring与jdk 1.8的兼容问题（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 属性定义指定jar版本 --&gt;</span><br><span class="line">&lt;properties&gt;</span><br><span class="line">	&lt;spring.version&gt;5.0.5.RELEASE&lt;/spring.version&gt;</span><br><span class="line">	&lt;hibernate.version&gt;5.2.17.Final&lt;/hibernate.version&gt;</span><br><span class="line">	&lt;struts2.version&gt;2.3.24&lt;/struts2.version&gt;</span><br><span class="line">	&lt;slf4j.version&gt;1.6.6&lt;/slf4j.version&gt;</span><br><span class="line">	&lt;log4j.version&gt;1.2.12&lt;/log4j.version&gt;</span><br><span class="line">	&lt;shiro.version&gt;1.2.3&lt;/shiro.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+        <p>###<strong>hadoop的起源与背景知识</strong></p>
+<ul>
+<li>一、什么是大数据<blockquote>
+<p>举例:</p>
+<blockquote>
+<p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报<br>核心的问题:数据的存储,数据的计算(不是算法)<br>数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)<br>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</p>
+</blockquote>
+</blockquote>
+</li>
+<li>二、数据仓库和大数据<blockquote>
+<p>传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</p>
+<blockquote>
+<p>数据仓库就是一个数据库(Orcale,MySQL,MS)<br>数据仓库和大数据一般只做查询(分析)<br>搭建数据仓库的过程</p>
+<blockquote>
+<p>数据源RDBMS:关系型数据库(结构化数据)/文本数据/其他数据<br>利用ETL抽取/转化/加载数据后搭建数据仓库(保存为原始数据)<br>分析处理数据(SQL,PL/SQL,JDBC)<br>经过分析后搭建数据集市(hr,sales)<br>提供给hr系统或销售系统<br>Hadoop和Spark都可以看成是数据仓库的一种实现<br>从ETL到搭建数据集都可以用Hadoop和Spark所提供的方式解决,也可以用传统方式解决<br>hadoop中使用sqoop和Flume组件完成ETL<br>hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)<br>hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据<br>*大数据的终极目标是使用SQL处理数据<br>处理数据后使用HDFS或NoSQL:Redis存储到数据集市</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li>三、OLTP和OLAP<blockquote>
+<p>OLTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务<br>OLAP:Online Analytic Processing 联机分析处理，一般制作查询 —&gt; 数据仓库就是一种OLAP的应用系统<br>Hadoop、Spark看成是一种数据仓库的解决方案<br>数据仓库（查询）不支持事务</p>
+</blockquote>
+</li>
+<li>四、<strong>Google的基本思想:三篇论文</strong><blockquote>
+<p>(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</p>
+<blockquote>
+<p>1.分布式文件系统<br>2.大数据的存储问题<br>3.HDFS中，记录数据的位置信息（元信息） —- 采用倒排索引（Reverted Index）</p>
+<blockquote>
+<p>(1)什么是索引？Index<br>*CREATE INDEX创建索引<br>*索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>*通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>*最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS<br>*<br>(二)MapReduce：分布计算模型，问题来源PageRank<br>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+
       
     </div>
     
@@ -334,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/22/git安装与简单操作/" rel="next" title="git安装与简单操作(hexo)">
-                <i class="fa fa-chevron-left"></i> git安装与简单操作(hexo)
+              <a href="/2018/09/05/基础命令/" rel="next" title="基础命令">
+                <i class="fa fa-chevron-left"></i> 基础命令
               </a>
             
           </div>
@@ -343,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/22/hibernate项目笔记(ssh)/" rel="prev" title="hibernate项目笔记(ssh)">
-                hibernate项目笔记(ssh) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -398,17 +427,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -454,22 +474,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-配置阿里远程仓库（parent-pom）"><span class="nav-number">1.</span> <span class="nav-text">1.配置阿里远程仓库（parent/pom）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-maven中spring与jdk-1-8的兼容问题（parent-pom）"><span class="nav-number">2.</span> <span class="nav-text">2.maven中spring与jdk 1.8的兼容问题（parent/pom）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T15:58:59.347Z">
+<meta property="og:updated_time" content="2018-09-04T14:21:07.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis初识">
 <meta name="twitter:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
@@ -324,20 +324,26 @@
 </blockquote>
 <hr>
 <h3 id="Redis初识"><a href="#Redis初识" class="headerlink" title="Redis初识"></a><strong>Redis初识</strong></h3><ul>
-<li>由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术，如今Redis已经成为必备技能。</li>
+<li>由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术，如今Redis已经成为必备技能。<blockquote>
+<ul>
+<li>典型使用场景<blockquote>
+<ol>
+<li>缓存系统：用户访问App server，App Server从cache（Redis）请求数据，如果有，直接返回给App Server，如果没有，cache将从Storage（持久化存储空间）中查找，查找后将从Storage中查找到的数据存入cache中以方便下次查找，而后直接由Storage返回给App Server。</li>
+<li>计数器：微博、视频网站的转发、评论数。</li>
+<li>消息队列系统</li>
+<li>排行榜</li>
+<li>社交网络</li>
+<li>实时系统</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
 </ul>
 <hr>
 <blockquote>
-<p><strong>开源</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>基于键值的存储服务系统</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>支持多种数据结构</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>性能高，功能丰富</strong></p>
+<p><strong>开源</strong><br><strong>基于键值的存储服务系统</strong><br><strong>支持多种数据结构</strong><br><strong>性能高，功能丰富</strong></p>
 </blockquote>
 <hr>
 <h3 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a><strong>Redis特性</strong></h3><hr>
@@ -347,17 +353,15 @@
 <ol>
 <li><em>将数据存在内存</em></li>
 <li>用c语言编写</li>
+<li>线性模型使用单线程</li>
 </ol>
 </blockquote>
-</blockquote>
-<pre><code>&gt;&gt; 3. 线性模型使用单线程
-</code></pre><hr>
-<blockquote>
+<hr>
 <p><strong>持久化</strong>（断电不丢数据）</p>
-</blockquote>
-<pre><code>&gt;&gt; Redis所有数据保持在内存中，对数据的更新将异步地保存到硬盘上
-</code></pre><hr>
 <blockquote>
+<p>Redis所有数据保持在内存中，对数据的更新将异步地保存到硬盘上</p>
+</blockquote>
+<hr>
 <p><strong>多种数据结构</strong></p>
 <blockquote>
 <ul>
@@ -376,12 +380,10 @@
 <ol>
 <li>位图（BitMaps）</li>
 <li>超小内存唯一值技术（HyperLogLog——有一定误差）</li>
+<li>地理信息定位（GEO）</li>
 </ol>
 </blockquote>
-</blockquote>
-<pre><code>&gt;&gt; 3. 地理信息定位（GEO）
-</code></pre><hr>
-<blockquote>
+<hr>
 <p><strong>支持多种编辑语言</strong></p>
 <blockquote>
 <ol>
@@ -390,48 +392,41 @@
 <li>Python</li>
 <li>Ruby</li>
 <li>Lua</li>
+<li>NodeJs</li>
 </ol>
 </blockquote>
-</blockquote>
-<pre><code>&gt;&gt; 6. NodeJs
-</code></pre><hr>
-<blockquote>
+<hr>
 <p><strong>功能丰富</strong></p>
 <blockquote>
 <ol>
 <li>发布订阅</li>
 <li>Lua脚本</li>
 <li>事务</li>
+<li>pipeline</li>
 </ol>
 </blockquote>
-</blockquote>
-<pre><code>&gt;&gt; 4. pipeline
-</code></pre><hr>
-<blockquote>
+<hr>
 <p><strong>简单</strong></p>
 <blockquote>
-<ul>
-<li>典型使用场景</li>
-</ul>
 <ol>
-<li>缓存系统：用户访问App server，App Server从cache（Redis）请求数据，如果有，直接返回给App Server，如果没有，cache将从Storage（持久化存储空间）中查找，查找后将从Storage中查找到的数据存入cache中以方便下次查找，而后直接由Storage返回给App Server。</li>
-<li>计数器：微博、视频网站的转发、评论数。</li>
-<li>消息队列系统</li>
-<li>排行榜</li>
-<li>社交网络</li>
+<li>23000行代码</li>
+<li>不依赖外部库（like libevent）</li>
+<li>单线程模型（开发相对容易）</li>
 </ol>
 </blockquote>
-</blockquote>
-<pre><code>&gt;&gt; 6. 实时系统
-</code></pre><hr>
-<blockquote>
+<hr>
 <p><strong>主从复制</strong></p>
-</blockquote>
-<hr>
 <blockquote>
-<p><strong>高可用、分布式</strong></p>
+<p>在Redis中主服务器的数据可以同步到从服务器上，为高可用以及分布式提供一个很好的基础</p>
 </blockquote>
 <hr>
+<p><strong>高可用、分布式</strong></p>
+<blockquote>
+<p>高可用 ——&gt; Redis-Sentinel(v2.8)支持高可用</p>
+</blockquote>
+</blockquote>
+<pre><code>&gt;&gt; 分布式 ——&gt; Redis-Cluster(V3.0)支持分布式
+</code></pre><hr>
 
       
     </div>
@@ -465,6 +460,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/04/大数据模块/" rel="prev" title="大数据模块">
+                大数据模块 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -545,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

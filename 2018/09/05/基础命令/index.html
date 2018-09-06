@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.配置阿里远程仓库（parent/pom）1234567891011121314&amp;lt;repositories&amp;gt;    &amp;lt;repository&amp;gt;        &amp;lt;id&amp;gt;maven - ali&amp;lt;/id&amp;gt;        &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/u">
+<meta name="description" content="文件目录操作命令 ls 显示文件和目录列表  -l 列出文件的详细信息-a 列出当前目录所有文件，包含隐藏文件*设置环境变量：/root/.bash_profilepwd 显示当前目录位置mkdir 创建目录-p 父目录不存在的情况下先生成父目录约定：  mkdir /root/tools —-&amp;gt;安装包mkdir /root/training —-&amp;gt;安装目录cd 切换目录touch 生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="maven整合框架笔记(ssh)">
-<meta property="og:url" content="http://yoursite.com/2018/08/22/maven整合框架笔记(ssh)/index.html">
+<meta property="og:title" content="基础命令">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/基础命令/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="1.配置阿里远程仓库（parent/pom）1234567891011121314&amp;lt;repositories&amp;gt;    &amp;lt;repository&amp;gt;        &amp;lt;id&amp;gt;maven - ali&amp;lt;/id&amp;gt;        &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/u">
+<meta property="og:description" content="文件目录操作命令 ls 显示文件和目录列表  -l 列出文件的详细信息-a 列出当前目录所有文件，包含隐藏文件*设置环境变量：/root/.bash_profilepwd 显示当前目录位置mkdir 创建目录-p 父目录不存在的情况下先生成父目录约定：  mkdir /root/tools —-&amp;gt;安装包mkdir /root/training —-&amp;gt;安装目录cd 切换目录touch 生">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-23T14:51:47.184Z">
+<meta property="og:updated_time" content="2018-09-05T13:46:01.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maven整合框架笔记(ssh)">
-<meta name="twitter:description" content="1.配置阿里远程仓库（parent/pom）1234567891011121314&amp;lt;repositories&amp;gt;    &amp;lt;repository&amp;gt;        &amp;lt;id&amp;gt;maven - ali&amp;lt;/id&amp;gt;        &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/u">
+<meta name="twitter:title" content="基础命令">
+<meta name="twitter:description" content="文件目录操作命令 ls 显示文件和目录列表  -l 列出文件的详细信息-a 列出当前目录所有文件，包含隐藏文件*设置环境变量：/root/.bash_profilepwd 显示当前目录位置mkdir 创建目录-p 父目录不存在的情况下先生成父目录约定：  mkdir /root/tools —-&amp;gt;安装包mkdir /root/training —-&amp;gt;安装目录cd 切换目录touch 生">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/22/maven整合框架笔记(ssh)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/基础命令/"/>
 
 
 
 
 
-  <title>maven整合框架笔记(ssh) | zfhzxg的个人博客</title>
+  <title>基础命令 | zfhzxg的个人博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/maven整合框架笔记(ssh)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/基础命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">maven整合框架笔记(ssh)</h1>
+          <h1 class="post-title" itemprop="name headline">基础命令</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T22:32:39+08:00">
-                2018-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-05T20:15:15+08:00">
+                2018-09-05
               </time>
             
 
@@ -309,8 +309,46 @@
       
 
       
-        <h3 id="1-配置阿里远程仓库（parent-pom）"><a href="#1-配置阿里远程仓库（parent-pom）" class="headerlink" title="1.配置阿里远程仓库（parent/pom）"></a>1.配置阿里远程仓库（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;</span><br><span class="line">    &lt;repository&gt;</span><br><span class="line">        &lt;id&gt;maven - ali&lt;/id&gt;</span><br><span class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">        &lt;releases&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">        &lt;/releases&gt;</span><br><span class="line">        &lt;snapshots&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">            &lt;updatePolicy&gt;always&lt;/updatePolicy&gt;</span><br><span class="line">            &lt;checksumPolicy&gt;fail&lt;/checksumPolicy&gt;</span><br><span class="line">        &lt;/snapshots&gt;</span><br><span class="line">    &lt;/repository&gt;</span><br><span class="line">&lt;/repositories&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-maven中spring与jdk-1-8的兼容问题（parent-pom）"><a href="#2-maven中spring与jdk-1-8的兼容问题（parent-pom）" class="headerlink" title="2.maven中spring与jdk 1.8的兼容问题（parent/pom）"></a>2.maven中spring与jdk 1.8的兼容问题（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 属性定义指定jar版本 --&gt;</span><br><span class="line">&lt;properties&gt;</span><br><span class="line">	&lt;spring.version&gt;5.0.5.RELEASE&lt;/spring.version&gt;</span><br><span class="line">	&lt;hibernate.version&gt;5.2.17.Final&lt;/hibernate.version&gt;</span><br><span class="line">	&lt;struts2.version&gt;2.3.24&lt;/struts2.version&gt;</span><br><span class="line">	&lt;slf4j.version&gt;1.6.6&lt;/slf4j.version&gt;</span><br><span class="line">	&lt;log4j.version&gt;1.2.12&lt;/log4j.version&gt;</span><br><span class="line">	&lt;shiro.version&gt;1.2.3&lt;/shiro.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+        <h3 id="文件目录操作命令"><a href="#文件目录操作命令" class="headerlink" title="文件目录操作命令"></a><strong>文件目录操作命令</strong></h3><blockquote>
+<p><strong>ls 显示文件和目录列表</strong></p>
+<blockquote>
+<p>-l 列出文件的详细信息<br>-a 列出当前目录所有文件，包含隐藏文件<br>*设置环境变量：/root/.bash_profile<br><strong>pwd 显示当前目录位置</strong><br><strong>mkdir 创建目录</strong><br>-p 父目录不存在的情况下先生成父目录<br>约定：</p>
+<blockquote>
+<p>mkdir /root/tools —-&gt;安装包<br>mkdir /root/training —-&gt;安装目录<br><strong>cd 切换目录</strong><br><strong>touch 生成一个空文件</strong><br><strong>echo 生成一个带内容文件</strong><br>使用echo查看环境变量值：echo $JAVA_HOME<br><strong>cat、tac 显示文本文件内容</strong><br>cat是从第一行开始写，tac是从最后一行开始写<br><strong>cp 复制文件或目录</strong><br><strong>rm 删除文件</strong><br>-r 同时删除该目录下的所有文件<br>-f 强制删除文件或目录<br>*HDFS有回收站，默认情况下关闭</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="系统操作命令"><a href="#系统操作命令" class="headerlink" title="系统操作命令"></a><strong>系统操作命令</strong></h3><blockquote>
+<p><strong>ps 显示瞬间的进程状态</strong></p>
+<blockquote>
+<p>ps -ef：使用标准格式显示每个进程信息<br><strong>hostname 显示主机名</strong><br><strong>kill 杀死一个进程</strong><br>-9 强制杀死一个进程<br>-3 如果针对java进程，打印java进程的线程信息Thread Dump</p>
+</blockquote>
+</blockquote>
+<h3 id="打包命令"><a href="#打包命令" class="headerlink" title="打包命令"></a><strong>打包命令</strong></h3><blockquote>
+<p><strong>gzip 压缩（解压）文件或目录，压缩文件后缀为gz</strong><br><strong>bzip2 压缩（解压）文件或目录，压缩文件后缀为bz2</strong><br><strong>tar 文件、目录打（解）包</strong></p>
+<blockquote>
+<p>-zxvf 解压缩<br>-C 解压到指定目录下</p>
+</blockquote>
+</blockquote>
+<h3 id="权限管理（非常类似HDFS权限管理）"><a href="#权限管理（非常类似HDFS权限管理）" class="headerlink" title="权限管理（非常类似HDFS权限管理）"></a><strong>权限管理（非常类似HDFS权限管理）</strong></h3><blockquote>
+<p><strong>权限的类型</strong></p>
+<blockquote>
+<p>r 读<br>w 写<br>x 执行<br><strong>ls -l、ll 查看权限</strong><br>十位字符，第一位如果为d，则代表该文件为目录<br>后九位分为三组，每一组都按读写执行的顺序排列</p>
+<blockquote>
+<p>第一组：当前用户<br>第二组：同组用户<br>第三组：其他用户<br>权限用二进制表示，有为1，没有为0（rwx -&gt; 111，rw- -&gt; 110）<br>chmod：改变权限（chmod 777 文件名，每一位十进制数代表一组权限，此处为所有用户可读可写可执行）</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>案例分析:java的死锁或者性能瓶颈分析</strong></p>
+<blockquote>
+<p>JDK heap dump:分析OOM的问题<br>JDK Thread dumo:分析性能瓶颈(线程信息)<br>得到Thread dump:</p>
+<blockquote>
+<p>在linux:kill -3 PID<br>在windows下:Fn + B 或Ctrl + Break</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
       
     </div>
     
@@ -334,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/22/git安装与简单操作/" rel="next" title="git安装与简单操作(hexo)">
-                <i class="fa fa-chevron-left"></i> git安装与简单操作(hexo)
+              <a href="/2018/09/04/大数据模块/" rel="next" title="大数据模块">
+                <i class="fa fa-chevron-left"></i> 大数据模块
               </a>
             
           </div>
@@ -344,8 +382,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/22/hibernate项目笔记(ssh)/" rel="prev" title="hibernate项目笔记(ssh)">
-                hibernate项目笔记(ssh) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/05/Hadoop-2-X管理与开发/" rel="prev" title="Hadoop 2.X管理与开发">
+                Hadoop 2.X管理与开发 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -464,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-配置阿里远程仓库（parent-pom）"><span class="nav-number">1.</span> <span class="nav-text">1.配置阿里远程仓库（parent/pom）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-maven中spring与jdk-1-8的兼容问题（parent-pom）"><span class="nav-number">2.</span> <span class="nav-text">2.maven中spring与jdk 1.8的兼容问题（parent/pom）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件目录操作命令"><span class="nav-number">1.</span> <span class="nav-text">文件目录操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统操作命令"><span class="nav-number">2.</span> <span class="nav-text">系统操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包命令"><span class="nav-number">3.</span> <span class="nav-text">打包命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限管理（非常类似HDFS权限管理）"><span class="nav-number">4.</span> <span class="nav-text">权限管理（非常类似HDFS权限管理）</span></a></li></ol></div>
             
 
           </div>
