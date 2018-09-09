@@ -356,7 +356,7 @@
 <p>OLTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务</p>
 </blockquote>
 <blockquote>
-<p>OLAP:Online Analytic Processing 联机分析处理，一般制作查询 —&gt; 数据仓库就是一种OLAP的应用系统</p>
+<p>OLAP:Online Analytic Processing 联机分析处理，一般只做查询 —&gt; 数据仓库就是一种OLAP的应用系统</p>
 </blockquote>
 <blockquote>
 <p>Hadoop、Spark看成是一种数据仓库的解决方案</p>
@@ -392,6 +392,15 @@
 </blockquote>
 <blockquote>
 <p>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
+<blockquote>
+<p>1.关系型数据库：以二维表的形式保存数据<br>2.常见的NoSQL数据库（一般为行式数据库，适合）</p>
+<blockquote>
+<p>*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）</p>
+<blockquote>
+<p>HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）<br>*MongoDB：面向文档（BSON文档：是JSON的二进制）<br>3.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）</p>
+</blockquote>
+</blockquote>
+</blockquote>
 </blockquote>
 </li>
 </ul>
