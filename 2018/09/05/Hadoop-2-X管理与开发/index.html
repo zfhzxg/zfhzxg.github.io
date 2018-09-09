@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="###hadoop的起源与背景知识 一、什么是大数据  举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-09T12:14:08.890Z">
+<meta property="og:updated_time" content="2018-09-09T12:20:48.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.X管理与开发">
 <meta name="twitter:description" content="###hadoop的起源与背景知识 一、什么是大数据  举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据">
@@ -382,9 +382,9 @@
 <blockquote>
 <p>1.PageRank（网页排名）<br>2.MapReduce的标程模型：</p>
 <blockquote>
-<p>*核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）<br>*MR任务：job=map+reduce<br>*Map的输出同时也是Reduce的输入<br>*一个MR任务一共存在四对输入和输出（<key value="">），Map的输入和输出，Reduce的输入和输出<br>*k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2<br>*所有的<key value="">数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）<br>*Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）</key></key></p>
+<p>*核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）<br>*MR任务：job=map+reduce<br>*Map的输出同时也是Reduce的输入<br>*一个MR任务一共存在四对输入和输出（<key value="">），Map的输入和输出，Reduce的输入和输出<br>*k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2<br>*所有的<key value="">数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）<br>*MR任务处理的是HDFS上的数据<br>*Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）</key></key></p>
 <blockquote>
-<p>Example:/root/training/Hadoop-2.7.3/Share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar<br>Yarn的web console:<a href="http://locahost/8088" target="_blank" rel="noopener">http://locahost/8088</a><br>命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl<br>*MR任务处理的是HDFS上的数据</p>
+<p>Example:/root/training/Hadoop-2.7.3/Share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar<br>Yarn的web console:<a href="http://locahost/8088" target="_blank" rel="noopener">http://locahost/8088</a><br>命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</p>
 </blockquote>
 </blockquote>
 </blockquote>

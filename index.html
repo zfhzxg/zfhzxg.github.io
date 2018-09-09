@@ -383,9 +383,9 @@
 <blockquote>
 <p>1.PageRank（网页排名）<br>2.MapReduce的标程模型：</p>
 <blockquote>
-<p>*核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）<br>*MR任务：job=map+reduce<br>*Map的输出同时也是Reduce的输入<br>*一个MR任务一共存在四对输入和输出（<key value="">），Map的输入和输出，Reduce的输入和输出<br>*k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2<br>*所有的<key value="">数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）<br>*Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）</key></key></p>
+<p>*核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）<br>*MR任务：job=map+reduce<br>*Map的输出同时也是Reduce的输入<br>*一个MR任务一共存在四对输入和输出（<key value="">），Map的输入和输出，Reduce的输入和输出<br>*k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2<br>*所有的<key value="">数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）<br>*MR任务处理的是HDFS上的数据<br>*Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）</key></key></p>
 <blockquote>
-<p>Example:/root/training/Hadoop-2.7.3/Share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar<br>Yarn的web console:<a href="http://locahost/8088" target="_blank" rel="noopener">http://locahost/8088</a><br>命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl<br>*MR任务处理的是HDFS上的数据</p>
+<p>Example:/root/training/Hadoop-2.7.3/Share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar<br>Yarn的web console:<a href="http://locahost/8088" target="_blank" rel="noopener">http://locahost/8088</a><br>命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</p>
 </blockquote>
 </blockquote>
 </blockquote>
