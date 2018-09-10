@@ -239,6 +239,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/MapReduce笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zfhzxg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zfhzxg的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/10/MapReduce笔记/" itemprop="url">MapReduce笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-10T21:15:19+08:00">
+                2018-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="MapReduce高级特性"><a href="#MapReduce高级特性" class="headerlink" title="###MapReduce高级特性"></a>###<strong>MapReduce高级特性</strong></h2><ul>
+<li>一、序列化<blockquote>
+<p>核心接口：Writable<br>如果一个类实现了Writable该类的对象可以作为Key和Value</p>
+</blockquote>
+</li>
+<li>二、排序<blockquote>
+<p>规则：按照Key2排序（可以是基本数据类型，也可以是对象）</p>
+<blockquote>
+<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）<br>对象</p>
+</blockquote>
+</blockquote>
+</li>
+<li>三、分区</li>
+<li>四、合并</li>
+</ul>
+<hr>
+<h2 id="MapReduce核心：Shuffle（洗牌）"><a href="#MapReduce核心：Shuffle（洗牌）" class="headerlink" title="###MapReduce核心：Shuffle（洗牌）"></a>###<strong>MapReduce核心：Shuffle（洗牌）</strong></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -400,6 +535,23 @@
 <p>HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）<br>*MongoDB：面向文档（BSON文档：是JSON的二进制）<br>3.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）</p>
 </blockquote>
 </blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="hadoop的环境"><a href="#hadoop的环境" class="headerlink" title="###hadoop的环境"></a>###<strong>hadoop的环境</strong></h2><ul>
+<li>一、Hadoop的目录结构<blockquote>
+<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>二、Hadoop的三种安装模式<blockquote>
+<p>(一)本地模式</p>
+<blockquote>
+<p>*没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）<br>*将配置文件etc/Hadoop/hadoop-env.sh中的export JAVA_HOME={JAVA_HOME}改为自己的JAVA_HOME路径即安装为本地模式<br>*本地模式中用到的路径都是本地路径，因为没有HDFS<br>(二)伪分布模式<br>(三)全分布模式</p>
 </blockquote>
 </blockquote>
 </li>
@@ -1723,7 +1875,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
