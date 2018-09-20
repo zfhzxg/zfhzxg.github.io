@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="安装主题报错 报错内容：  1curl 18 transfer closed with outstanding read data remaining     解决方法：1git config --global http.postBuffer 524288000   curl 18 transfer closed with outstanding read data remaining 解决方法">
+<meta name="description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方   1ssh-copy-id -i .ssh/id_rsa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git报错">
-<meta property="og:url" content="http://yoursite.com/2018/08/22/git报错/index.html">
+<meta property="og:title" content="Hadoop免密码登陆原理">
+<meta property="og:url" content="http://yoursite.com/2018/09/14/Hadoop免密码登陆原理/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="安装主题报错 报错内容：  1curl 18 transfer closed with outstanding read data remaining     解决方法：1git config --global http.postBuffer 524288000   curl 18 transfer closed with outstanding read data remaining 解决方法">
+<meta property="og:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方   1ssh-copy-id -i .ssh/id_rsa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T14:56:03.628Z">
+<meta property="og:updated_time" content="2018-09-14T16:04:27.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git报错">
-<meta name="twitter:description" content="安装主题报错 报错内容：  1curl 18 transfer closed with outstanding read data remaining     解决方法：1git config --global http.postBuffer 524288000   curl 18 transfer closed with outstanding read data remaining 解决方法">
+<meta name="twitter:title" content="Hadoop免密码登陆原理">
+<meta name="twitter:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方   1ssh-copy-id -i .ssh/id_rsa">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/22/git报错/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/14/Hadoop免密码登陆原理/"/>
 
 
 
 
 
-  <title>git报错 | zfhzxg的个人博客</title>
+  <title>Hadoop免密码登陆原理 | zfhzxg的个人博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/git报错/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Hadoop免密码登陆原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git报错</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop免密码登陆原理</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T00:33:52+08:00">
-                2018-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T23:40:09+08:00">
+                2018-09-14
               </time>
             
 
@@ -309,21 +309,24 @@
       
 
       
-        <ul>
-<li>安装主题报错<blockquote>
-<p>报错内容： </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 18 transfer closed with outstanding <span class="built_in">read</span> data remaining</span><br></pre></td></tr></table></figure>
+        <p>###<strong>hadoop免密码登陆原理</strong></p>
+<ul>
+<li>*不对称密码<blockquote>
+<p>密匙对（两个文件）：</p>
+<blockquote>
+<p>公钥–锁（.ssh/id_rsa）：给别人加密<br>私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密</p>
+</blockquote>
 </blockquote>
 </li>
-</ul>
-<blockquote>
-<p>解决方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<ul>
-<li>curl 18 transfer closed with outstanding read data remaining<blockquote>
-<p>解决方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
-</blockquote>
+<li><p>*对称加密（加密和解密使用同一文件）</p>
+</li>
+<li><p>一、生成密钥对（请求登陆方）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二、把请求登陆方生成的公钥拷贝给被请求方</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub root@RedHat111</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三、收到请求方发来的公钥，并自动保存在.ssh/authorized_keys文件</p>
 </li>
 </ul>
 
@@ -350,15 +353,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/10/MapReduce笔记/" rel="next" title="MapReduce笔记">
+                <i class="fa fa-chevron-left"></i> MapReduce笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/22/git安装与简单操作/" rel="prev" title="git安装与简单操作(hexo)">
-                git安装与简单操作(hexo) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

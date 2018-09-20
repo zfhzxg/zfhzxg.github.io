@@ -239,6 +239,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Hadoop免密码登陆原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zfhzxg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zfhzxg的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/14/Hadoop免密码登陆原理/" itemprop="url">Hadoop免密码登陆原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T23:40:09+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###<strong>hadoop免密码登陆原理</strong></p>
+<ul>
+<li>*不对称密码<blockquote>
+<p>密匙对（两个文件）：</p>
+<blockquote>
+<p>公钥–锁（.ssh/id_rsa）：给别人加密<br>私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>*对称加密（加密和解密使用同一文件）</p>
+</li>
+<li><p>一、生成密钥对（请求登陆方）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二、把请求登陆方生成的公钥拷贝给被请求方</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub root@RedHat111</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三、收到请求方发来的公钥，并自动保存在.ssh/authorized_keys文件</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/MapReduce笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -310,7 +449,9 @@
       
         
           
-            <h2 id="MapReduce高级特性"><a href="#MapReduce高级特性" class="headerlink" title="###MapReduce高级特性"></a>###<strong>MapReduce高级特性</strong></h2><ul>
+            <hr>
+<p>###<strong>MapReduce高级特性</strong></p>
+<ul>
 <li>一、序列化<blockquote>
 <p>核心接口：Writable<br>如果一个类实现了Writable该类的对象可以作为Key和Value</p>
 </blockquote>
@@ -318,15 +459,54 @@
 <li>二、排序<blockquote>
 <p>规则：按照Key2排序（可以是基本数据类型，也可以是对象）</p>
 <blockquote>
-<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）<br>对象</p>
+<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）<br>对象<br>SQL排序：order by 列名、表达式、别名、序号 desc/asc（desc/asc只作用于最近的一列）<br>MapReduce排序：1.该对象必须是Key2；2.必须实现序列化接口Writable；3.对象必须是可排序的（自定义排序使用java.long 接口 Comparable）</p>
 </blockquote>
 </blockquote>
 </li>
-<li>三、分区</li>
-<li>四、合并</li>
+<li>三、分区<blockquote>
+<p>什么是分区：partition<br>查询：</p>
+<blockquote>
+<p>1.没有分区：执行全表扫描<br>2.有分区，只扫描分区<br>分区的类型：<br>Orcale：</p>
+<blockquote>
+<p>1.范围分区；<br>2.列表分区；<br>3.Hash分区；<br>4.Hash范围分区；<br>5.Hash列表分区<br>MR的分区：<br>默认情况下，MR的输出只有一个分区（一个分区就是一个文件）<br>自定义分区：按照字段进行分区（根据Map的输出&lt;Key2,Value2&gt;分区）<br>*通过SQL的执行计划，判断效率是否提高</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li>四、合并<blockquote>
+<p>合并是一种特殊的Reduce<br>合并是在Map端执行一次合并，用于减少Mapper输出到Reduce的数据量，可以提高效率<br>平均值不能使用combiner<br>无论有没有combiner，都没不能改变Map和Reduce对应的数据类型</p>
+</blockquote>
+</li>
 </ul>
 <hr>
-<h2 id="MapReduce核心：Shuffle（洗牌）"><a href="#MapReduce核心：Shuffle（洗牌）" class="headerlink" title="###MapReduce核心：Shuffle（洗牌）"></a>###<strong>MapReduce核心：Shuffle（洗牌）</strong></h2>
+<hr>
+<p>###<strong>MapReduce核心：Shuffle（洗牌）</strong></p>
+<ul>
+<li>Hadoop3.X之前会有数据落地（产生I/O操作）</li>
+</ul>
+<hr>
+<p>###<strong>MapReduce常用案例</strong></p>
+<ul>
+<li>一、数据去重<blockquote>
+<p>相同Key名交给同一地址进行处理，处理后输出给Reduce，Key值唯一，Value形成数组</p>
+</blockquote>
+</li>
+<li>二、多表查询（笛卡尔集：列数相加，行数相乘）<blockquote>
+<p>等值链接的处理过程（以表作为Value1）</p>
+<blockquote>
+<p>Mapper阶段，通过分词后的列数或其他方法区分表<br>Mapper阶段，在字段前添加标识输出给Reduce<br>Reduce进行处理</p>
+</blockquote>
+</blockquote>
+</li>
+<li>三、自连接<blockquote>
+<p>同一个表经Mapper输出两次<br>非法数据要先经过处理（数据清理）<br>Reduce进行处理</p>
+</blockquote>
+</li>
+<li>四、倒排索引</li>
+<li>五、单元测试（MRUnit）</li>
+</ul>
+<hr>
+
           
         
       
@@ -526,21 +706,19 @@
 <blockquote>
 <p>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
 <blockquote>
-<p>1.关系型数据库：以二维表的形式保存数据<br>2.常见的NoSQL数据库（一般为行式数据库，适合）</p>
+<p>1.关系型数据库：以二维表的形式保存数据<br>2.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）<br>*常见的NoSQL数据库（一般为行式数据库，适合）</p>
 <blockquote>
-<p>*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）</p>
+<p>*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>*MongoDB：面向文档（BSON文档：是JSON的二进制）<br>*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure>
 </code></pre></blockquote>
 </blockquote>
 </blockquote>
-<pre><code>    &gt;&gt;&gt;\*MongoDB：面向文档（BSON文档：是JSON的二进制）
-&gt;&gt;3.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）
-</code></pre></li>
+</li>
 </ul>
 <hr>
 <h2 id="hadoop的环境"><a href="#hadoop的环境" class="headerlink" title="###hadoop的环境"></a>###<strong>hadoop的环境</strong></h2><ul>
 <li>一、Hadoop的目录结构<blockquote>
-<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等</p>
+<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等<br>share  —&gt;  所有共享文件<br>share/hadoop  –&gt;  所有依赖jar包</p>
 </blockquote>
 </li>
 </ul>
@@ -548,13 +726,16 @@
 <ul>
 <li><p>二、Hadoop的三种安装模式</p>
 <blockquote>
-<p>(一)本地模式</p>
+<p>(一))全分布模式</p>
+</blockquote>
+<blockquote>
+<p>(二)本地模式</p>
 <blockquote>
 <p>*没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）<br>*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>*本地模式中用到的路径都是本地路径，因为没有HDFS</p>
 </blockquote>
 </blockquote>
 <blockquote>
-<p>(二)伪分布模式</p>
+<p>(三)伪分布模式</p>
 <blockquote>
 <p>*特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能<br>*具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）<br>*具备Yarn：ResourceManager + NodeManager（端口8088）<br>*对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）<br>*启动HDFS：start-dfs.sh<br>*启动Yarn：start-yarn.sh<br>*统一启动：start-all.sh<br>*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>*配置文件： </p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //core-site.xml:</span><br><span class="line">    //配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">    //9000是RPC的通信端口</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    //HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">    //默认值是Linux的tmp目录</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //mapred-site.xml:（默认没有这个文件）</span><br><span class="line">    //MR程序运行的程序或框架</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //yarn-site.xml:</span><br><span class="line">    //配置yarn主节点的位置</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br></pre></td></tr></table></figure>
@@ -562,8 +743,7 @@
 </blockquote>
 </li>
 </ul>
-<pre><code>&gt;(三)全分布模式
-</code></pre>
+
           
         
       
@@ -1695,145 +1875,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/git报错/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zfhzxg">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zfhzxg的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/22/git报错/" itemprop="url">git报错</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T00:33:52+08:00">
-                2018-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>安装主题报错<blockquote>
-<p>报错内容： </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 18 transfer closed with outstanding <span class="built_in">read</span> data remaining</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>解决方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<ul>
-<li>curl 18 transfer closed with outstanding read data remaining<blockquote>
-<p>解决方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1881,7 +1929,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

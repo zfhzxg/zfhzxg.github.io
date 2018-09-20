@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="###MapReduce高级特性 一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Co">
+<meta name="description" content="###MapReduce高级特性  一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MapReduce笔记">
 <meta property="og:url" content="http://yoursite.com/2018/09/10/MapReduce笔记/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="###MapReduce高级特性 一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Co">
+<meta property="og:description" content="###MapReduce高级特性  一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-10T14:29:11.000Z">
+<meta property="og:updated_time" content="2018-09-19T14:16:17.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MapReduce笔记">
-<meta name="twitter:description" content="###MapReduce高级特性 一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Co">
+<meta name="twitter:description" content="###MapReduce高级特性  一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.">
 
 
 
@@ -309,7 +309,9 @@
       
 
       
-        <h2 id="MapReduce高级特性"><a href="#MapReduce高级特性" class="headerlink" title="###MapReduce高级特性"></a>###<strong>MapReduce高级特性</strong></h2><ul>
+        <hr>
+<p>###<strong>MapReduce高级特性</strong></p>
+<ul>
 <li>一、序列化<blockquote>
 <p>核心接口：Writable<br>如果一个类实现了Writable该类的对象可以作为Key和Value</p>
 </blockquote>
@@ -317,15 +319,54 @@
 <li>二、排序<blockquote>
 <p>规则：按照Key2排序（可以是基本数据类型，也可以是对象）</p>
 <blockquote>
-<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）<br>对象</p>
+<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）<br>对象<br>SQL排序：order by 列名、表达式、别名、序号 desc/asc（desc/asc只作用于最近的一列）<br>MapReduce排序：1.该对象必须是Key2；2.必须实现序列化接口Writable；3.对象必须是可排序的（自定义排序使用java.long 接口 Comparable）</p>
 </blockquote>
 </blockquote>
 </li>
-<li>三、分区</li>
-<li>四、合并</li>
+<li>三、分区<blockquote>
+<p>什么是分区：partition<br>查询：</p>
+<blockquote>
+<p>1.没有分区：执行全表扫描<br>2.有分区，只扫描分区<br>分区的类型：<br>Orcale：</p>
+<blockquote>
+<p>1.范围分区；<br>2.列表分区；<br>3.Hash分区；<br>4.Hash范围分区；<br>5.Hash列表分区<br>MR的分区：<br>默认情况下，MR的输出只有一个分区（一个分区就是一个文件）<br>自定义分区：按照字段进行分区（根据Map的输出&lt;Key2,Value2&gt;分区）<br>*通过SQL的执行计划，判断效率是否提高</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li>四、合并<blockquote>
+<p>合并是一种特殊的Reduce<br>合并是在Map端执行一次合并，用于减少Mapper输出到Reduce的数据量，可以提高效率<br>平均值不能使用combiner<br>无论有没有combiner，都没不能改变Map和Reduce对应的数据类型</p>
+</blockquote>
+</li>
 </ul>
 <hr>
-<h2 id="MapReduce核心：Shuffle（洗牌）"><a href="#MapReduce核心：Shuffle（洗牌）" class="headerlink" title="###MapReduce核心：Shuffle（洗牌）"></a>###<strong>MapReduce核心：Shuffle（洗牌）</strong></h2>
+<hr>
+<p>###<strong>MapReduce核心：Shuffle（洗牌）</strong></p>
+<ul>
+<li>Hadoop3.X之前会有数据落地（产生I/O操作）</li>
+</ul>
+<hr>
+<p>###<strong>MapReduce常用案例</strong></p>
+<ul>
+<li>一、数据去重<blockquote>
+<p>相同Key名交给同一地址进行处理，处理后输出给Reduce，Key值唯一，Value形成数组</p>
+</blockquote>
+</li>
+<li>二、多表查询（笛卡尔集：列数相加，行数相乘）<blockquote>
+<p>等值链接的处理过程（以表作为Value1）</p>
+<blockquote>
+<p>Mapper阶段，通过分词后的列数或其他方法区分表<br>Mapper阶段，在字段前添加标识输出给Reduce<br>Reduce进行处理</p>
+</blockquote>
+</blockquote>
+</li>
+<li>三、自连接<blockquote>
+<p>同一个表经Mapper输出两次<br>非法数据要先经过处理（数据清理）<br>Reduce进行处理</p>
+</blockquote>
+</li>
+<li>四、倒排索引</li>
+<li>五、单元测试（MRUnit）</li>
+</ul>
+<hr>
+
       
     </div>
     
@@ -358,6 +399,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/14/Hadoop免密码登陆原理/" rel="prev" title="Hadoop免密码登陆原理">
+                Hadoop免密码登陆原理 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -409,17 +454,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -438,7 +474,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -465,22 +501,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce高级特性"><span class="nav-number">1.</span> <span class="nav-text">###MapReduce高级特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce核心：Shuffle（洗牌）"><span class="nav-number">2.</span> <span class="nav-text">###MapReduce核心：Shuffle（洗牌）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="###hadoop的起源与背景知识 一、什么是大数据  举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-10T16:06:27.214Z">
+<meta property="og:updated_time" content="2018-09-14T15:39:17.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.X管理与开发">
 <meta name="twitter:description" content="###hadoop的起源与背景知识 一、什么是大数据  举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据">
@@ -390,21 +390,19 @@
 <blockquote>
 <p>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
 <blockquote>
-<p>1.关系型数据库：以二维表的形式保存数据<br>2.常见的NoSQL数据库（一般为行式数据库，适合）</p>
+<p>1.关系型数据库：以二维表的形式保存数据<br>2.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）<br>*常见的NoSQL数据库（一般为行式数据库，适合）</p>
 <blockquote>
-<p>*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）</p>
+<p>*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>*MongoDB：面向文档（BSON文档：是JSON的二进制）<br>*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure>
 </code></pre></blockquote>
 </blockquote>
 </blockquote>
-<pre><code>    &gt;&gt;&gt;\*MongoDB：面向文档（BSON文档：是JSON的二进制）
-&gt;&gt;3.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）
-</code></pre></li>
+</li>
 </ul>
 <hr>
 <h2 id="hadoop的环境"><a href="#hadoop的环境" class="headerlink" title="###hadoop的环境"></a>###<strong>hadoop的环境</strong></h2><ul>
 <li>一、Hadoop的目录结构<blockquote>
-<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等</p>
+<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等<br>share  —&gt;  所有共享文件<br>share/hadoop  –&gt;  所有依赖jar包</p>
 </blockquote>
 </li>
 </ul>
@@ -412,13 +410,16 @@
 <ul>
 <li><p>二、Hadoop的三种安装模式</p>
 <blockquote>
-<p>(一)本地模式</p>
+<p>(一))全分布模式</p>
+</blockquote>
+<blockquote>
+<p>(二)本地模式</p>
 <blockquote>
 <p>*没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）<br>*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>*本地模式中用到的路径都是本地路径，因为没有HDFS</p>
 </blockquote>
 </blockquote>
 <blockquote>
-<p>(二)伪分布模式</p>
+<p>(三)伪分布模式</p>
 <blockquote>
 <p>*特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能<br>*具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）<br>*具备Yarn：ResourceManager + NodeManager（端口8088）<br>*对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）<br>*启动HDFS：start-dfs.sh<br>*启动Yarn：start-yarn.sh<br>*统一启动：start-all.sh<br>*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>*配置文件： </p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //core-site.xml:</span><br><span class="line">    //配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">    //9000是RPC的通信端口</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    //HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">    //默认值是Linux的tmp目录</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //mapred-site.xml:（默认没有这个文件）</span><br><span class="line">    //MR程序运行的程序或框架</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //yarn-site.xml:</span><br><span class="line">    //配置yarn主节点的位置</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br></pre></td></tr></table></figure>
@@ -426,8 +427,7 @@
 </blockquote>
 </li>
 </ul>
-<pre><code>&gt;(三)全分布模式
-</code></pre>
+
       
     </div>
     
@@ -544,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
