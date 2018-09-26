@@ -941,31 +941,44 @@
         
           
             <p>#<strong>hadoop的起源与背景知识</strong></p>
-<h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><h3 id="举例"><a href="#举例" class="headerlink" title="举例:"></a>举例:</h3><blockquote>
+<h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><p>举例:</p>
+<blockquote>
 <p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报</p>
 </blockquote>
-<h3 id="核心的问题-数据的存储-数据的计算-不是算法"><a href="#核心的问题-数据的存储-数据的计算-不是算法" class="headerlink" title="核心的问题:数据的存储,数据的计算(不是算法)"></a>核心的问题:数据的存储,数据的计算(不是算法)</h3><h3 id="数据的存储-采用分布式的文件系统HDFS-hadoop-Distributed-file-system"><a href="#数据的存储-采用分布式的文件系统HDFS-hadoop-Distributed-file-system" class="headerlink" title="数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)"></a>数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)</h3><h3 id="数据的计算-采用分布式的计算MapReduce-Spark-RDD-弹性分布式数据集"><a href="#数据的计算-采用分布式的计算MapReduce-Spark-RDD-弹性分布式数据集" class="headerlink" title="数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)"></a>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</h3><h2 id="二、数据仓库和大数据"><a href="#二、数据仓库和大数据" class="headerlink" title="二、数据仓库和大数据"></a>二、数据仓库和大数据</h2><h3 id="传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题"><a href="#传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题" class="headerlink" title="传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题"></a>传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</h3><blockquote>
+<p>核心的问题:数据的存储,数据的计算(不是算法)</p>
+<p>数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)</p>
+<p>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</p>
+<h2 id="二、数据仓库和大数据"><a href="#二、数据仓库和大数据" class="headerlink" title="二、数据仓库和大数据"></a>二、数据仓库和大数据</h2><p>传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</p>
+<blockquote>
 <p>1.数据仓库就是一个数据库(Orcale,MySQL,MS)<br>2.数据仓库和大数据一般只做查询(分析)<br>3.搭建数据仓库的过程</p>
 <blockquote>
 <p>(1)数据源RDBMS:关系型数据库(结构化数据)/文本数据/其他数据<br>(2)利用ETL抽取/转化/加载数据后搭建数据仓库(保存为原始数据)<br>(3)分析处理数据(SQL,PL/SQL,JDBC)<br>(4)经过分析后搭建数据集市(hr,sales)<br>(5)提供给hr系统或销售系统</p>
 </blockquote>
 </blockquote>
-<h3 id="Hadoop和Spark都可以看成是数据仓库的一种实现"><a href="#Hadoop和Spark都可以看成是数据仓库的一种实现" class="headerlink" title="Hadoop和Spark都可以看成是数据仓库的一种实现"></a>Hadoop和Spark都可以看成是数据仓库的一种实现</h3><blockquote>
+<p>Hadoop和Spark都可以看成是数据仓库的一种实现</p>
+<blockquote>
 <p>1.从ETL到搭建数据集都可以用Hadoop和Spark所提供的方式解决,也可以用传统方式解决<br>2.hadoop中使用sqoop和Flume组件完成ETL<br>3.hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)<br>4.hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据<br>5.处理数据后使用HDFS或NoSQL:Redis存储到数据集市<br>*.大数据的终极目标是使用SQL处理数据</p>
 </blockquote>
-<h2 id="三、OLTP和OLAP"><a href="#三、OLTP和OLAP" class="headerlink" title="三、OLTP和OLAP"></a>三、OLTP和OLAP</h2><h3 id="OLTP-Online-Transaction-processing-联机事务处理，指：insert、update、delete-—-gt-事务"><a href="#OLTP-Online-Transaction-processing-联机事务处理，指：insert、update、delete-—-gt-事务" class="headerlink" title="OLTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务"></a>OLTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务</h3><h3 id="OLAP-Online-Analytic-Processing-联机分析处理，一般只做查询-—-gt-数据仓库就是一种OLAP的应用系统"><a href="#OLAP-Online-Analytic-Processing-联机分析处理，一般只做查询-—-gt-数据仓库就是一种OLAP的应用系统" class="headerlink" title="OLAP:Online Analytic Processing 联机分析处理，一般只做查询 —&gt; 数据仓库就是一种OLAP的应用系统"></a>OLAP:Online Analytic Processing 联机分析处理，一般只做查询 —&gt; 数据仓库就是一种OLAP的应用系统</h3><h3 id="Hadoop、Spark看成是一种数据仓库的解决方案"><a href="#Hadoop、Spark看成是一种数据仓库的解决方案" class="headerlink" title="Hadoop、Spark看成是一种数据仓库的解决方案"></a>Hadoop、Spark看成是一种数据仓库的解决方案</h3><h3 id="数据仓库（查询）不支持事务"><a href="#数据仓库（查询）不支持事务" class="headerlink" title="数据仓库（查询）不支持事务"></a>数据仓库（查询）不支持事务</h3><h2 id="四、Google的基本思想-三篇论文"><a href="#四、Google的基本思想-三篇论文" class="headerlink" title="四、Google的基本思想:三篇论文"></a>四、<strong>Google的基本思想:三篇论文</strong></h2><h3 id="一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统"><a href="#一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统" class="headerlink" title="(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统"></a>(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</h3><blockquote>
+<h2 id="三、OLTP和OLAP"><a href="#三、OLTP和OLAP" class="headerlink" title="三、OLTP和OLAP"></a>三、OLTP和OLAP</h2><p>LTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务</p>
+<p>OLAP:Online Analytic Processing 联机分析处理，一般只做查询 —&gt; 数据仓库就是一种OLAP的应用系统</p>
+<p>Hadoop、Spark看成是一种数据仓库的解决方案</p>
+<p>数据仓库（查询）不支持事务</p>
+<h2 id="四、Google的基本思想-三篇论文"><a href="#四、Google的基本思想-三篇论文" class="headerlink" title="四、Google的基本思想:三篇论文"></a>四、<strong>Google的基本思想:三篇论文</strong></h2><p>(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</p>
+<blockquote>
 <p>1.分布式文件系统<br>2.大数据的存储问题<br>3.HDFS中，记录数据的位置信息（元信息） —- 采用倒排索引（Reverted Index）</p>
 <blockquote>
 <p>(1)什么是索引？Index<br>    *. CREATE INDEX创建索引<br>    *. 索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>    *. 通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>    *. 最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境<br>*. HDFS = NameNode + SecondaryNameNode + DataNode</p>
 </blockquote>
 </blockquote>
-<h3 id="二-MapReduce：分布计算模型，问题来源PageRank（网页排名）"><a href="#二-MapReduce：分布计算模型，问题来源PageRank（网页排名）" class="headerlink" title="(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）"></a>(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</h3><blockquote>
+<p>(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</p>
+<blockquote>
 <p>1.PageRank（网页排名）<br>2.MapReduce的标程模型：</p>
 <blockquote>
 <p>*. 核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）<br>*. MR任务：job=map+reduce<br>*. Map的输出同时也是Reduce的输入<br>*. 一个MR任务一共存在四对输入和输出（<key value="">），Map的输入和输出，Reduce的输入和输出<br>*. k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2<br>*. 所有的<key value="">数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）<br>*. MR任务处理的是HDFS上的数据<br>*. Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example:/root/training/Hadoop-2.7.3/Share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar</span><br><span class="line">Yarn的web console:http://192.168.226.11:8088</span><br><span class="line">命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</span><br></pre></td></tr></table></figure></key></key></p>
 </blockquote>
 </blockquote>
-<h3 id="三-BigTable：大表-—-NoSQL数据库：HBase"><a href="#三-BigTable：大表-—-NoSQL数据库：HBase" class="headerlink" title="(三)BigTable：大表 —- NoSQL数据库：HBase"></a>(三)BigTable：大表 —- NoSQL数据库：HBase</h3><blockquote>
+<p>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
+<blockquote>
 <p>1.关系型数据库：以二维表的形式保存数据<br>2.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）<br>3.常见的NoSQL数据库（一般为行式数据库，适合）</p>
 <blockquote>
 <p>* Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>* MongoDB：面向文档（BSON文档：是JSON的二进制）<br>* HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的ey是一条记录）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure></p>
@@ -977,14 +990,17 @@
 <p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录</p>
 <h3 id="bin-—-gt-Hadoop的操作命令"><a href="#bin-—-gt-Hadoop的操作命令" class="headerlink" title="bin/  —&gt;  Hadoop的操作命令"></a>bin/  —&gt;  Hadoop的操作命令</h3><p>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等<br>share/  —&gt;  所有共享文件<br>share/hadoop  –&gt;  所有依赖jar包</p>
 </blockquote>
-<h2 id="二、Hadoop的三种安装模式"><a href="#二、Hadoop的三种安装模式" class="headerlink" title="二、Hadoop的三种安装模式"></a>二、Hadoop的三种安装模式</h2><h3 id="一-本地模式"><a href="#一-本地模式" class="headerlink" title="(一)本地模式"></a>(一)本地模式</h3><blockquote>
+<h2 id="二、Hadoop的三种安装模式"><a href="#二、Hadoop的三种安装模式" class="headerlink" title="二、Hadoop的三种安装模式"></a>二、Hadoop的三种安装模式</h2><p>(一)本地模式</p>
+<blockquote>
 <p>* 没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）<br>* 配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>* 本地模式中用到的路径都是本地路径，因为没有HDFS</p>
 </blockquote>
-<h3 id="二-伪分布模式"><a href="#二-伪分布模式" class="headerlink" title="(二)伪分布模式"></a>(二)伪分布模式</h3><blockquote>
+<p>(二)伪分布模式</p>
+<blockquote>
 <p>* 特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能<br>* 具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）<br>* 具备Yarn：ResourceManager + NodeManager（端口8088）<br>* 对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）<br>* 启动HDFS：start-dfs.sh<br>* 启动Yarn：start-yarn.sh<br>* 统一启动：start-all.sh<br>* 配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>* 配置文件： </p>
 </blockquote>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line"></span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//core-site.xml:</span><br><span class="line"></span><br><span class="line">//配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">//9000是RPC的通信端口</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">//默认值是Linux的tmp目录</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//mapred-site.xml:（默认没有这个文件）</span><br><span class="line">//MR程序运行的程序或框架</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//yarn-site.xml:</span><br><span class="line">//配置yarn主节点的位置</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="三-全分布模式"><a href="#三-全分布模式" class="headerlink" title="(三)全分布模式"></a>(三)全分布模式</h3><h2 id="三、主从结构的单点故障"><a href="#三、主从结构的单点故障" class="headerlink" title="三、主从结构的单点故障"></a>三、主从结构的单点故障</h2>
+<p>(三)全分布模式</p>
+<h2 id="三、主从结构的单点故障"><a href="#三、主从结构的单点故障" class="headerlink" title="三、主从结构的单点故障"></a>三、主从结构的单点故障</h2>
           
         
       
