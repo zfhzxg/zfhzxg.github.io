@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="###hadoop的起源与背景知识  一、什么是大数据  举例: 1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归...) 2.天气预报   核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T15:15:36.256Z">
+<meta property="og:updated_time" content="2018-09-26T15:24:25.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.X管理与开发">
 <meta name="twitter:description" content="###hadoop的起源与背景知识  一、什么是大数据  举例: 1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归...) 2.天气预报   核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式">
@@ -345,7 +345,7 @@
 hadoop中使用sqoop和Flume组件完成ETL
 hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)
 hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据
-\*大数据的终极目标是使用SQL处理数据
+\* 大数据的终极目标是使用SQL处理数据
 处理数据后使用HDFS或NoSQL:Redis存储到数据集市
 </code></pre></blockquote>
 </li>
@@ -370,40 +370,37 @@ hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没�
 2.大数据的存储问题
 3.HDFS中，记录数据的位置信息（元信息） ---- 采用倒排索引（Reverted Index）
     (1)什么是索引？Index
-    \*.CREATE INDEX创建索引
-    \*.索引就是一个记录（Oracle中索引表保存的是有规律的行地址）
-    \*.通过索引可以找到对应的数据
+        \*. CREATE INDEX创建索引
+        \*. 索引就是一个记录（Oracle中索引表保存的是有规律的行地址）
+        \*. 通过索引可以找到对应的数据
     (2)什么是倒排索引？
-    \*.最简单的倒排索引：单词表（wordID，word，index）
-</code></pre><blockquote>
-<blockquote>
-<p>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境<br>*HDFS = NameNode + SecondaryNameNode + DataNode</p>
-</blockquote>
-</blockquote>
-</blockquote>
+        \*. 最简单的倒排索引：单词表（wordID，word，index）
+    (3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境
+\*. HDFS = NameNode + SecondaryNameNode + DataNode
+</code></pre></blockquote>
 <blockquote>
 <p>(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</p>
 <pre><code>1.PageRank（网页排名）
 2.MapReduce的标程模型：
-    \*.核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）
-    \*.MR任务：job=map+reduce
-    \*.Map的输出同时也是Reduce的输入
-    \*.一个MR任务一共存在四对输入和输出（&lt;Key Value&gt;），Map的输入和输出，Reduce的输入和输出
-    \*.k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2
-    \*.所有的&lt;Key Value&gt;数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）
-    \*.MR任务处理的是HDFS上的数据
-    \*.Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Yarn的web console:http://192.168.226.11:8088</span><br><span class="line">命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</span><br></pre></td></tr></table></figure>
+    \*. 核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）
+    \*. MR任务：job=map+reduce
+    \*. Map的输出同时也是Reduce的输入
+    \*. 一个MR任务一共存在四对输入和输出（&lt;Key Value&gt;），Map的输入和输出，Reduce的输入和输出
+    \*. k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2
+    \*. 所有的&lt;Key Value&gt;数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）
+    \*. MR任务处理的是HDFS上的数据
+    \*. Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example:/root/training/Hadoop-2.7.3/Share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar</span><br><span class="line">Yarn的web console:http://192.168.226.11:8088</span><br><span class="line">命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</span><br></pre></td></tr></table></figure>
 </code></pre></blockquote>
 <blockquote>
 <p>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
 <pre><code>1.关系型数据库：以二维表的形式保存数据
 2.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）
-\*.常见的NoSQL数据库（一般为行式数据库，适合）
-    \*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）
-    \*MongoDB：面向文档（BSON文档：是JSON的二进制）
-    \*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure>
+\*. 常见的NoSQL数据库（一般为行式数据库，适合）
+    \* Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）
+    \* MongoDB：面向文档（BSON文档：是JSON的二进制）
+    \* HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure>
 </code></pre></blockquote>
 </li>
 </ul>
@@ -418,21 +415,21 @@ hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没�
 <li><p>二、Hadoop的三种安装模式</p>
 <blockquote>
 <p>(一)本地模式</p>
-<pre><code>\*没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）
-\*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径
-\*本地模式中用到的路径都是本地路径，因为没有HDFS
+<pre><code>\* 没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）
+\* 配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径
+\* 本地模式中用到的路径都是本地路径，因为没有HDFS
 </code></pre></blockquote>
 <blockquote>
 <p>(二)伪分布模式</p>
-<pre><code>\*特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能
-\*具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）
-\*具备Yarn：ResourceManager + NodeManager（端口8088）
-\*对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）
-\*启动HDFS：start-dfs.sh
-\*启动Yarn：start-yarn.sh
-\*统一启动：start-all.sh
-\*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径
-\*配置文件： 
+<pre><code>\* 特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能
+\* 具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）
+\* 具备Yarn：ResourceManager + NodeManager（端口8088）
+\* 对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）
+\* 启动HDFS：start-dfs.sh
+\* 启动Yarn：start-yarn.sh
+\* 统一启动：start-all.sh
+\* 配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径
+\* 配置文件： 
 </code></pre></blockquote>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">//core-site.xml:</span><br><span class="line">//配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">//9000是RPC的通信端口</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">//HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">//默认值是Linux的tmp目录</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//mapred-site.xml:（默认没有这个文件）</span><br><span class="line">//MR程序运行的程序或框架</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//yarn-site.xml:</span><br><span class="line">//配置yarn主节点的位置</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
