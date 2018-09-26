@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报   核心的问题:数据的存储,数据的计算(不是算法) 数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system) 数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集) 二、数据仓">
+<meta name="description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop 2.X管理与开发">
 <meta property="og:url" content="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报   核心的问题:数据的存储,数据的计算(不是算法) 数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system) 数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集) 二、数据仓">
+<meta property="og:description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T16:24:56.072Z">
+<meta property="og:updated_time" content="2018-09-26T16:26:30.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.X管理与开发">
-<meta name="twitter:description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报   核心的问题:数据的存储,数据的计算(不是算法) 数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system) 数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集) 二、数据仓">
+<meta name="twitter:description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)">
 
 
 
@@ -316,9 +316,15 @@
 <p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报</p>
 </blockquote>
 </blockquote>
+<blockquote>
 <p>核心的问题:数据的存储,数据的计算(不是算法)</p>
+</blockquote>
+<blockquote>
 <p>数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)</p>
+</blockquote>
+<blockquote>
 <p>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</p>
+</blockquote>
 <h2 id="二、数据仓库和大数据"><a href="#二、数据仓库和大数据" class="headerlink" title="二、数据仓库和大数据"></a>二、数据仓库和大数据</h2><h3 id="传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题"><a href="#传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题" class="headerlink" title="传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题"></a>传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</h3><blockquote>
 <p>1.数据仓库就是一个数据库(Orcale,MySQL,MS)<br>2.数据仓库和大数据一般只做查询(分析)<br>3.搭建数据仓库的过程</p>
 <blockquote>
