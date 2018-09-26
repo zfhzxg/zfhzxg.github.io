@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方   1ssh-copy-id -i .ssh/id_rsa">
+<meta name="description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方-A）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方（B）   1ssh-copy-id -i .ssh/i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop免密码登陆原理">
 <meta property="og:url" content="http://yoursite.com/2018/09/14/Hadoop免密码登陆原理/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方   1ssh-copy-id -i .ssh/id_rsa">
+<meta property="og:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方-A）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方（B）   1ssh-copy-id -i .ssh/i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-14T16:04:27.791Z">
+<meta property="og:updated_time" content="2018-09-20T16:20:29.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop免密码登陆原理">
-<meta name="twitter:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方   1ssh-copy-id -i .ssh/id_rsa">
+<meta name="twitter:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方-A）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方（B）   1ssh-copy-id -i .ssh/i">
 
 
 
@@ -320,13 +320,25 @@
 </li>
 <li><p>*对称加密（加密和解密使用同一文件）</p>
 </li>
-<li><p>一、生成密钥对（请求登陆方）</p>
+<li><p>一、生成密钥对（请求登陆方-A）</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>二、把请求登陆方生成的公钥拷贝给被请求方</p>
+<li><p>二、把请求登陆方生成的公钥拷贝给被请求方（B）</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub root@RedHat111</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>三、收到请求方发来的公钥，并自动保存在.ssh/authorized_keys文件</p>
+<li><p>三、B收到请求方发来的公钥，并自动保存在.ssh/authorized_keys文件</p>
+</li>
+<li><p>四、B随机产生一个字符串：hello（前三部是配置，第四步开始，是认证的过程）</p>
+</li>
+<li><p>五、B使用请求登陆方的公钥进行加密（<strong>*</strong>），并发回给A</p>
+</li>
+<li><p>六、A收到B发来的加密字符串，使用自己的私钥进行解密（hello）</p>
+</li>
+<li><p>七、A把解密后的字符串（hello）发回给B进行认证</p>
+</li>
+<li><p>八、B收到A解密的字符串（hello）</p>
+</li>
+<li><p>九、B对从A收到的字符串（hello）与自己生成的字符串（hello）进行对比</p>
 </li>
 </ul>
 
@@ -362,6 +374,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/21/HBase开发/" rel="prev" title="HBase开发">
+                HBase开发 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -433,7 +449,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

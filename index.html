@@ -239,6 +239,308 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/26/hive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zfhzxg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zfhzxg的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/26/hive/" itemprop="url">hive</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-26T20:02:43+08:00">
+                2018-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>###<strong>数据分析引擎</strong><br>    一、Hadoop中<br>        （1）Hive：支持SQL<br>        （2）Pig：支持PigLation<br>    二、Spark中__<br>        （*）Spark SQL：类似Hive，支持SQL、DSL</p>
+<pre><code>三、另一个：Impala
+</code></pre><hr>
+<p>###<strong>什么是Hive</strong><br>    一、Hive是基于HDFS之上的一个数据仓库<br>        Hive      HDFS<br>        表        目录<br>        数据      文件<br>        分区      目录<br>        桶        文件<br>    二、Hive是基于Hadoop之上的一个数据分析引擎<br>        Hive 2.X 以前：SQL —-&gt; Hive —-&gt; MapReduce</p>
+<pre><code>Hive 2.X 以后：推荐使用Spark作为SQL的执行引擎（只针对Hadoop 3.X以前）（《Hive on Spark文档》）
+</code></pre><hr>
+<p>###<strong>Hive的体系架构</strong><br>    一、CLI（命令行）：直接由Hive Dirver翻译<br>    二、JDBC（标准接口）：1.X由Thrift Server，2.X由Hive Server翻译为SQL语句交由Hive Dirver，端口号都为10000<br>    三、HWI（Hive Web Interface）：只在Hive 2.2前提供HWI网页工具，推荐使用HUE，由Hive Dirver翻译</p>
+<pre><code>\*、在Hive的体系架构中还需要有关系型数据库用来存储Hive元信息（推荐使用MySQL）
+</code></pre><hr>
+<p>###<strong>安装和配置Hive</strong><br>    安装模式：<br>        嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息</p>
+<pre><code>本地模式、远程模式：都需要MySQL
+</code></pre><hr>
+<p>###<strong>*Hive的数据类型</strong><br>    一、内部表：类似MySQL、Oracle中的表<br>    二、外部表<br>    三、分区表：提高性能<br>        （<em>）\</em>补充：如何提高性能？（SQL执行计划）<br>    四、桶表：类似Hash分区</p>
+<pre><code>五、视图：View
+</code></pre><hr>
+<p>###<strong>执行Hive的查询：执行SQL（HQL）</strong></p>
+<pre><code>\*、HQL是SQL的一个子集
+</code></pre><hr>
+<h2 id="使用JDBC查询Hive"><a href="#使用JDBC查询Hive" class="headerlink" title="###使用JDBC查询Hive"></a>###<strong>使用JDBC查询Hive</strong></h2><h2 id="Hive的自定义函数"><a href="#Hive的自定义函数" class="headerlink" title="###Hive的自定义函数"></a>###<strong>Hive的自定义函数</strong></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/HBase开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zfhzxg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zfhzxg的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/21/HBase开发/" itemprop="url">HBase开发</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T20:10:46+08:00">
+                2018-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>###<strong>NoSQL简介</strong></p>
+<ul>
+<li>一、什么是NoSQL数据库？（not only sql）</li>
+<li>二、常见NoSQL数据库<blockquote>
+<p>HBase<br>Redis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）<br>MongoDB：基于文档型（BSON）的NoSQL数据库<br>Cassandra：跟HBase类似</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<hr>
+<p>###<strong>HBsae的体系架构（主从结构）和表结构</strong></p>
+<ul>
+<li>一、Hadoop的生态体系圈</li>
+<li><p>二、HBase</p>
+<blockquote>
+<p>基于HDFS之上的NoSQL数据库</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HBase      HDFS</span><br><span class="line">表    ---&gt; 目录</span><br><span class="line">数据  ---&gt; 文件（HFile，默认大小：128MB）</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>三、HBase的体系架构（主节点：HMaster + 从节点：RegionServer）</p>
+<blockquote>
+<p>单点故障</p>
+<blockquote>
+<p>通过Zookeeper</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<hr>
+<hr>
+<p>###<strong>HBase的搭建模式</strong></p>
+<ul>
+<li>一、本地模式</li>
+<li>二、伪分布模式</li>
+<li>三、全分布模式</li>
+<li>四、实现HBsae的HA</li>
+</ul>
+<hr>
+<hr>
+<p>###<strong>操作HBsae</strong></p>
+<ul>
+<li>一、</li>
+</ul>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Hadoop免密码登陆原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -321,13 +623,25 @@
 </li>
 <li><p>*对称加密（加密和解密使用同一文件）</p>
 </li>
-<li><p>一、生成密钥对（请求登陆方）</p>
+<li><p>一、生成密钥对（请求登陆方-A）</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>二、把请求登陆方生成的公钥拷贝给被请求方</p>
+<li><p>二、把请求登陆方生成的公钥拷贝给被请求方（B）</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub root@RedHat111</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>三、收到请求方发来的公钥，并自动保存在.ssh/authorized_keys文件</p>
+<li><p>三、B收到请求方发来的公钥，并自动保存在.ssh/authorized_keys文件</p>
+</li>
+<li><p>四、B随机产生一个字符串：hello（前三部是配置，第四步开始，是认证的过程）</p>
+</li>
+<li><p>五、B使用请求登陆方的公钥进行加密（<strong>*</strong>），并发回给A</p>
+</li>
+<li><p>六、A收到B发来的加密字符串，使用自己的私钥进行解密（hello）</p>
+</li>
+<li><p>七、A把解密后的字符串（hello）发回给B进行认证</p>
+</li>
+<li><p>八、B收到A解密的字符串（hello）</p>
+</li>
+<li><p>九、B对从A收到的字符串（hello）与自己生成的字符串（hello）进行对比</p>
 </li>
 </ul>
 
@@ -485,6 +799,7 @@
 <li>Hadoop3.X之前会有数据落地（产生I/O操作）</li>
 </ul>
 <hr>
+<hr>
 <p>###<strong>MapReduce常用案例</strong></p>
 <ul>
 <li>一、数据去重<blockquote>
@@ -625,14 +940,14 @@
       
         
           
-            <h2 id="hadoop的起源与背景知识"><a href="#hadoop的起源与背景知识" class="headerlink" title="###hadoop的起源与背景知识"></a>###<strong>hadoop的起源与背景知识</strong></h2><ul>
+            <p>###<strong>hadoop的起源与背景知识</strong></p>
+<ul>
 <li><p>一、什么是大数据</p>
 <blockquote>
 <p>举例:</p>
-<blockquote>
-<p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报</p>
-</blockquote>
-</blockquote>
+<pre><code>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归...)
+2.天气预报
+</code></pre></blockquote>
 <blockquote>
 <p>核心的问题:数据的存储,数据的计算(不是算法)</p>
 </blockquote>
@@ -643,29 +958,28 @@
 <p>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</p>
 </blockquote>
 </li>
-</ul>
-<hr>
-<ul>
 <li><p>二、数据仓库和大数据</p>
 <blockquote>
 <p>传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</p>
-<blockquote>
-<p>数据仓库就是一个数据库(Orcale,MySQL,MS)<br>数据仓库和大数据一般只做查询(分析)<br>搭建数据仓库的过程</p>
-<blockquote>
-<p>数据源RDBMS:关系型数据库(结构化数据)/文本数据/其他数据<br>利用ETL抽取/转化/加载数据后搭建数据仓库(保存为原始数据)<br>分析处理数据(SQL,PL/SQL,JDBC)<br>经过分析后搭建数据集市(hr,sales)<br>提供给hr系统或销售系统</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<pre><code>1.数据仓库就是一个数据库(Orcale,MySQL,MS)
+2.数据仓库和大数据一般只做查询(分析)
+3.搭建数据仓库的过程
+    (1)数据源RDBMS:关系型数据库(结构化数据)/文本数据/其他数据
+    (2)利用ETL抽取/转化/加载数据后搭建数据仓库(保存为原始数据)
+    (3)分析处理数据(SQL,PL/SQL,JDBC)
+    (4)经过分析后搭建数据集市(hr,sales)
+    (5)提供给hr系统或销售系统
+</code></pre></blockquote>
 <blockquote>
 <p>Hadoop和Spark都可以看成是数据仓库的一种实现</p>
-<blockquote>
-<p>从ETL到搭建数据集都可以用Hadoop和Spark所提供的方式解决,也可以用传统方式解决<br>hadoop中使用sqoop和Flume组件完成ETL<br>hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)<br>hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据<br>*大数据的终极目标是使用SQL处理数据<br>处理数据后使用HDFS或NoSQL:Redis存储到数据集市</p>
-</blockquote>
-</blockquote>
+<pre><code>从ETL到搭建数据集都可以用Hadoop和Spark所提供的方式解决,也可以用传统方式解决
+hadoop中使用sqoop和Flume组件完成ETL
+hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)
+hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据
+\*大数据的终极目标是使用SQL处理数据
+处理数据后使用HDFS或NoSQL:Redis存储到数据集市
+</code></pre></blockquote>
 </li>
-</ul>
-<hr>
-<ul>
 <li><p>三、OLTP和OLAP</p>
 <blockquote>
 <p>OLTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务</p>
@@ -680,67 +994,83 @@
 <p>数据仓库（查询）不支持事务</p>
 </blockquote>
 </li>
-</ul>
-<hr>
-<ul>
 <li><p>四、<strong>Google的基本思想:三篇论文</strong></p>
 <blockquote>
 <p>(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</p>
+<pre><code>1.分布式文件系统
+2.大数据的存储问题
+3.HDFS中，记录数据的位置信息（元信息） ---- 采用倒排索引（Reverted Index）
+    (1)什么是索引？Index
+    \*.CREATE INDEX创建索引
+    \*.索引就是一个记录（Oracle中索引表保存的是有规律的行地址）
+    \*.通过索引可以找到对应的数据
+    (2)什么是倒排索引？
+    \*.最简单的倒排索引：单词表（wordID，word，index）
+</code></pre><blockquote>
 <blockquote>
-<p>1.分布式文件系统<br>2.大数据的存储问题<br>3.HDFS中，记录数据的位置信息（元信息） —- 采用倒排索引（Reverted Index）</p>
-<blockquote>
-<p>(1)什么是索引？Index<br>*CREATE INDEX创建索引<br>*索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>*通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>*最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境<br>*HDFS = NameNode + SecondaryNameNode + DataNode</p>
+<p>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境<br>*HDFS = NameNode + SecondaryNameNode + DataNode</p>
 </blockquote>
 </blockquote>
 </blockquote>
 <blockquote>
 <p>(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</p>
-<blockquote>
-<p>1.PageRank（网页排名）<br>2.MapReduce的标程模型：</p>
-<blockquote>
-<p>*核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）<br>*MR任务：job=map+reduce<br>*Map的输出同时也是Reduce的输入<br>*一个MR任务一共存在四对输入和输出（<key value="">），Map的输入和输出，Reduce的输入和输出<br>*k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2<br>*所有的<key value="">数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）<br>*MR任务处理的是HDFS上的数据<br>*Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）</key></key></p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Yarn的web console:http://192.168.226.111/8088</span><br><span class="line">命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</span><br></pre></td></tr></table></figure>
+<pre><code>1.PageRank（网页排名）
+2.MapReduce的标程模型：
+    \*.核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）
+    \*.MR任务：job=map+reduce
+    \*.Map的输出同时也是Reduce的输入
+    \*.一个MR任务一共存在四对输入和输出（&lt;Key Value&gt;），Map的输入和输出，Reduce的输入和输出
+    \*.k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2
+    \*.所有的&lt;Key Value&gt;数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）
+    \*.MR任务处理的是HDFS上的数据
+    \*.Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Yarn的web console:http://192.168.226.11:8088</span><br><span class="line">命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</span><br></pre></td></tr></table></figure>
 </code></pre></blockquote>
-</blockquote>
-</blockquote>
 <blockquote>
 <p>(三)BigTable：大表 —- NoSQL数据库：HBase</p>
-<blockquote>
-<p>1.关系型数据库：以二维表的形式保存数据<br>2.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）<br>*常见的NoSQL数据库（一般为行式数据库，适合）</p>
-<blockquote>
-<p>*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>*MongoDB：面向文档（BSON文档：是JSON的二进制）<br>*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure>
+<pre><code>1.关系型数据库：以二维表的形式保存数据
+2.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）
+\*.常见的NoSQL数据库（一般为行式数据库，适合）
+    \*Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）
+    \*MongoDB：面向文档（BSON文档：是JSON的二进制）
+    \*HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的rowKey是一条记录）
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure>
 </code></pre></blockquote>
-</blockquote>
-</blockquote>
 </li>
 </ul>
 <hr>
-<h2 id="hadoop的环境"><a href="#hadoop的环境" class="headerlink" title="###hadoop的环境"></a>###<strong>hadoop的环境</strong></h2><ul>
-<li>一、Hadoop的目录结构<blockquote>
-<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等<br>share  —&gt;  所有共享文件<br>share/hadoop  –&gt;  所有依赖jar包</p>
-</blockquote>
-</li>
-</ul>
-<hr>
+<p>###<strong>hadoop的环境</strong></p>
 <ul>
+<li><p>一、Hadoop的目录结构</p>
+<blockquote>
+<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等<br>share/  —&gt;  所有共享文件<br>share/hadoop  –&gt;  所有依赖jar包</p>
+</blockquote>
+</li>
 <li><p>二、Hadoop的三种安装模式</p>
 <blockquote>
-<p>(一))全分布模式</p>
-</blockquote>
-<blockquote>
-<p>(二)本地模式</p>
-<blockquote>
-<p>*没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）<br>*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>*本地模式中用到的路径都是本地路径，因为没有HDFS</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>(三)伪分布模式</p>
-<blockquote>
-<p>*特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能<br>*具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）<br>*具备Yarn：ResourceManager + NodeManager（端口8088）<br>*对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）<br>*启动HDFS：start-dfs.sh<br>*启动Yarn：start-yarn.sh<br>*统一启动：start-all.sh<br>*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>*配置文件： </p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //core-site.xml:</span><br><span class="line">    //配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">    //9000是RPC的通信端口</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    //HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">    //默认值是Linux的tmp目录</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //mapred-site.xml:（默认没有这个文件）</span><br><span class="line">    //MR程序运行的程序或框架</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //yarn-site.xml:</span><br><span class="line">    //配置yarn主节点的位置</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br></pre></td></tr></table></figure>
+<p>(一)本地模式</p>
+<pre><code>\*没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）
+\*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径
+\*本地模式中用到的路径都是本地路径，因为没有HDFS
 </code></pre></blockquote>
+<blockquote>
+<p>(二)伪分布模式</p>
+<pre><code>\*特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能
+\*具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）
+\*具备Yarn：ResourceManager + NodeManager（端口8088）
+\*对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）
+\*启动HDFS：start-dfs.sh
+\*启动Yarn：start-yarn.sh
+\*统一启动：start-all.sh
+\*配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径
+\*配置文件： 
+</code></pre></blockquote>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">//core-site.xml:</span><br><span class="line">//配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">//9000是RPC的通信端口</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">//HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">//默认值是Linux的tmp目录</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//mapred-site.xml:（默认没有这个文件）</span><br><span class="line">//MR程序运行的程序或框架</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//yarn-site.xml:</span><br><span class="line">//配置yarn主节点的位置</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>(三)全分布模式</p>
 </blockquote>
+</li>
+<li><p>三、主从结构的单点故障</p>
 </li>
 </ul>
 
@@ -1551,330 +1881,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/maven整合框架笔记(ssh)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zfhzxg">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zfhzxg的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/22/maven整合框架笔记(ssh)/" itemprop="url">maven整合框架笔记(ssh)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T22:32:39+08:00">
-                2018-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-配置阿里远程仓库（parent-pom）"><a href="#1-配置阿里远程仓库（parent-pom）" class="headerlink" title="1.配置阿里远程仓库（parent/pom）"></a>1.配置阿里远程仓库（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;</span><br><span class="line">    &lt;repository&gt;</span><br><span class="line">        &lt;id&gt;maven - ali&lt;/id&gt;</span><br><span class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">        &lt;releases&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">        &lt;/releases&gt;</span><br><span class="line">        &lt;snapshots&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">            &lt;updatePolicy&gt;always&lt;/updatePolicy&gt;</span><br><span class="line">            &lt;checksumPolicy&gt;fail&lt;/checksumPolicy&gt;</span><br><span class="line">        &lt;/snapshots&gt;</span><br><span class="line">    &lt;/repository&gt;</span><br><span class="line">&lt;/repositories&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-maven中spring与jdk-1-8的兼容问题（parent-pom）"><a href="#2-maven中spring与jdk-1-8的兼容问题（parent-pom）" class="headerlink" title="2.maven中spring与jdk 1.8的兼容问题（parent/pom）"></a>2.maven中spring与jdk 1.8的兼容问题（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 属性定义指定jar版本 --&gt;</span><br><span class="line">&lt;properties&gt;</span><br><span class="line">	&lt;spring.version&gt;5.0.5.RELEASE&lt;/spring.version&gt;</span><br><span class="line">	&lt;hibernate.version&gt;5.2.17.Final&lt;/hibernate.version&gt;</span><br><span class="line">	&lt;struts2.version&gt;2.3.24&lt;/struts2.version&gt;</span><br><span class="line">	&lt;slf4j.version&gt;1.6.6&lt;/slf4j.version&gt;</span><br><span class="line">	&lt;log4j.version&gt;1.2.12&lt;/log4j.version&gt;</span><br><span class="line">	&lt;shiro.version&gt;1.2.3&lt;/shiro.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/git安装与简单操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zfhzxg">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zfhzxg的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/22/git安装与简单操作/" itemprop="url">git安装与简单操作(hexo)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T00:51:09+08:00">
-                2018-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>1.安装Node.js和配置好Node.js环境</li>
-<li>2.安装Git和配置好Git环境</li>
-<li>3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io<blockquote>
-<p>在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它</p>
-</blockquote>
-</li>
-<li><p>4.安装Hexo</p>
-<blockquote>
-<p>创建文件夹<br>通过命令行进入到该文件夹<br>安装Hexo</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>5.初始化该文件夹</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.安装所需要的组件</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>7.联系hexo与github page</p>
-<blockquote>
-<p>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.name <span class="string">"XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.email <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>添加密匙到ssh-agent<br>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>添加生成的ssh key到ssh-agent<br>终端输入</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>github–&gt;setting–&gt;ssh and gpg keys添加id_rsa.pub文件中的ssh key</p>
-</blockquote>
-</li>
-<li><p>8.配置Deployment(_config.yml)</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repository: git@github.com:zfhzxg/zfhzxg.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>基础命令</p>
-<blockquote>
-<p>终端：<br>检测ssh是否配置成功</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成ssh密匙：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成.get：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ get init</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>cmd：<br>检测node.js是否安装成功：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">nmp -v</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>检查hexo是否安装成功：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>开启本地服务器：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>改变端口号：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p XXXX</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>新建博客：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"博客名"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>安装拓展：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成部署：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1929,7 +1935,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

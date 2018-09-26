@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="离线计算 Hadoop模块  1.数据存储：HDFS（Hadoop Distributed File System）2.数据计算：MapReduce（java程序、实现离线计算）：在Hadoop 2.X后，Yarn容器中3.Hive：基于HDFS之上的数据仓库，支持SQL语句4.HBase：基于HDFS之上的NoSQL数据库5.ZooKeeper：实现HA（High Availability高可用">
+<meta name="description" content="###NoSQL简介  一、什么是NoSQL数据库？（not only sql） 二、常见NoSQL数据库 HBaseRedis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）MongoDB：基于文档型（BSON）的NoSQL数据库Cassandra：跟HBase类似      ###HBsae的体系架构（主从结构）和表结构  一、Hadoop的生态体系圈 二、HBase">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大数据模块">
-<meta property="og:url" content="http://yoursite.com/2018/09/04/大数据模块/index.html">
+<meta property="og:title" content="HBase开发">
+<meta property="og:url" content="http://yoursite.com/2018/09/21/HBase开发/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="离线计算 Hadoop模块  1.数据存储：HDFS（Hadoop Distributed File System）2.数据计算：MapReduce（java程序、实现离线计算）：在Hadoop 2.X后，Yarn容器中3.Hive：基于HDFS之上的数据仓库，支持SQL语句4.HBase：基于HDFS之上的NoSQL数据库5.ZooKeeper：实现HA（High Availability高可用">
+<meta property="og:description" content="###NoSQL简介  一、什么是NoSQL数据库？（not only sql） 二、常见NoSQL数据库 HBaseRedis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）MongoDB：基于文档型（BSON）的NoSQL数据库Cassandra：跟HBase类似      ###HBsae的体系架构（主从结构）和表结构  一、Hadoop的生态体系圈 二、HBase">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-05T12:28:56.272Z">
+<meta property="og:updated_time" content="2018-09-21T13:17:16.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大数据模块">
-<meta name="twitter:description" content="离线计算 Hadoop模块  1.数据存储：HDFS（Hadoop Distributed File System）2.数据计算：MapReduce（java程序、实现离线计算）：在Hadoop 2.X后，Yarn容器中3.Hive：基于HDFS之上的数据仓库，支持SQL语句4.HBase：基于HDFS之上的NoSQL数据库5.ZooKeeper：实现HA（High Availability高可用">
+<meta name="twitter:title" content="HBase开发">
+<meta name="twitter:description" content="###NoSQL简介  一、什么是NoSQL数据库？（not only sql） 二、常见NoSQL数据库 HBaseRedis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）MongoDB：基于文档型（BSON）的NoSQL数据库Cassandra：跟HBase类似      ###HBsae的体系架构（主从结构）和表结构  一、Hadoop的生态体系圈 二、HBase">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/04/大数据模块/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/21/HBase开发/"/>
 
 
 
 
 
-  <title>大数据模块 | zfhzxg的个人博客</title>
+  <title>HBase开发 | zfhzxg的个人博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/大数据模块/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/HBase开发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">大数据模块</h1>
+          <h1 class="post-title" itemprop="name headline">HBase开发</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T22:13:56+08:00">
-                2018-09-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T20:10:46+08:00">
+                2018-09-21
               </time>
             
 
@@ -309,24 +309,51 @@
       
 
       
-        <h3 id="离线计算"><a href="#离线计算" class="headerlink" title="离线计算"></a><strong>离线计算</strong></h3><blockquote>
-<p><strong>Hadoop模块</strong></p>
+        <hr>
+<p>###<strong>NoSQL简介</strong></p>
+<ul>
+<li>一、什么是NoSQL数据库？（not only sql）</li>
+<li>二、常见NoSQL数据库<blockquote>
+<p>HBase<br>Redis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）<br>MongoDB：基于文档型（BSON）的NoSQL数据库<br>Cassandra：跟HBase类似</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<hr>
+<p>###<strong>HBsae的体系架构（主从结构）和表结构</strong></p>
+<ul>
+<li>一、Hadoop的生态体系圈</li>
+<li><p>二、HBase</p>
 <blockquote>
-<p>1.数据存储：HDFS（Hadoop Distributed File System）<br>2.数据计算：MapReduce（java程序、实现离线计算）：在Hadoop 2.X后，Yarn容器中<br>3.Hive：基于HDFS之上的数据仓库，支持SQL语句<br>4.HBase：基于HDFS之上的NoSQL数据库<br>5.ZooKeeper：实现HA（High Availability高可用性、秒杀系统）的功能<br>6.其他：Sqoop、Flume、Pig</p>
+<p>基于HDFS之上的NoSQL数据库</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HBase      HDFS</span><br><span class="line">表    ---&gt; 目录</span><br><span class="line">数据  ---&gt; 文件（HFile，默认大小：128MB）</span><br></pre></td></tr></table></figure>
 </blockquote>
-</blockquote>
+</li>
+<li><p>三、HBase的体系架构（主节点：HMaster + 从节点：RegionServer）</p>
 <blockquote>
-<p><strong>实时计算</strong></p>
+<p>单点故障</p>
 <blockquote>
-<p>1.Redis内存NoSQL数据库<br> Redis Cluster：分布式解决方案<br>2.Apache Storm：进行试试计算（流式计算）</p>
+<p>通过Zookeeper</p>
 </blockquote>
 </blockquote>
-<blockquote>
-<p><strong>Spark：只有数据计算，没有数据的存储（依赖HDFS）</strong></p>
-<blockquote>
-<p>1.Scala变成语言：多范式的编程语言（支持多方式编程：1、面向对象 2、函数式编程）<br>2.Spark Core：内核，相当于MapReduce；<br>        最重要的概念：RDD（弹性分布式数据集）<br>3.Spark SQL：类似Hive、支持SQL<br>4.Spark Streaming：处理流式计算的模块，类似Storm</p>
-</blockquote>
-</blockquote>
+</li>
+</ul>
+<hr>
+<hr>
+<p>###<strong>HBase的搭建模式</strong></p>
+<ul>
+<li>一、本地模式</li>
+<li>二、伪分布模式</li>
+<li>三、全分布模式</li>
+<li>四、实现HBsae的HA</li>
+</ul>
+<hr>
+<hr>
+<p>###<strong>操作HBsae</strong></p>
+<ul>
+<li>一、</li>
+</ul>
+<hr>
 
       
     </div>
@@ -351,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/29/redis初识/" rel="next" title="Redis初识">
-                <i class="fa fa-chevron-left"></i> Redis初识
+              <a href="/2018/09/14/Hadoop免密码登陆原理/" rel="next" title="Hadoop免密码登陆原理">
+                <i class="fa fa-chevron-left"></i> Hadoop免密码登陆原理
               </a>
             
           </div>
@@ -361,8 +388,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/05/基础命令/" rel="prev" title="基础命令">
-                基础命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/26/hive/" rel="prev" title="hive">
+                hive <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -415,17 +442,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -471,22 +489,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#离线计算"><span class="nav-number">1.</span> <span class="nav-text">离线计算</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
