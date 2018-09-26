@@ -978,12 +978,9 @@
 <p>数据仓库（查询）不支持事务</p>
 </blockquote>
 <h2 id="四、Google的基本思想-三篇论文"><a href="#四、Google的基本思想-三篇论文" class="headerlink" title="四、Google的基本思想:三篇论文"></a>四、<strong>Google的基本思想:三篇论文</strong></h2><h3 id="一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统"><a href="#一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统" class="headerlink" title="(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统"></a>(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</h3><blockquote>
-<p>1.分布式文件系统<br>2.大数据的存储问题<br>3.HDFS中，记录数据的位置信息（元信息） —- 采用倒排索引（Reverted Index）</p>
+<p>(*) HDFS = NameNode + SecondaryNameNode + DataNode<br>1.分布式文件系统<br>2.大数据的存储问题<br>3.HDFS中，记录数据的位置信息（元信息） —- 采用倒排索引（Reverted Index）</p>
 <blockquote>
-<p>(1)什么是索引？Index</p>
-<blockquote>
-<p>CREATE INDEX创建索引<br>索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境<br>(*) HDFS = NameNode + SecondaryNameNode + DataNode</p>
-</blockquote>
+<p>(1)什么是索引？Index<br>    * CREATE INDEX创建索引<br>    * 索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>    * 通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>    * 最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境</p>
 </blockquote>
 </blockquote>
 <h3 id="二-MapReduce：分布计算模型，问题来源PageRank（网页排名）"><a href="#二-MapReduce：分布计算模型，问题来源PageRank（网页排名）" class="headerlink" title="(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）"></a>(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</h3><blockquote>
