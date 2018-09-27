@@ -311,11 +311,15 @@
         
           
             <hr>
-<h1 id="数据分析引擎"><a href="#数据分析引擎" class="headerlink" title="数据分析引擎"></a><strong>数据分析引擎</strong></h1><h2 id="一、Hadoop中"><a href="#一、Hadoop中" class="headerlink" title="一、Hadoop中"></a>一、Hadoop中</h2><p>  （1）Hive：支持SQL<br>  （2）Pig：支持PigLation</p>
-<h2 id="二、Spark中"><a href="#二、Spark中" class="headerlink" title="二、Spark中__"></a>二、Spark中__</h2><p>  （*）Spark SQL：类似Hive，支持SQL、DSL</p>
+<h1 id="数据分析引擎"><a href="#数据分析引擎" class="headerlink" title="数据分析引擎"></a><strong>数据分析引擎</strong></h1><h2 id="一、Hadoop中"><a href="#一、Hadoop中" class="headerlink" title="一、Hadoop中"></a>一、Hadoop中</h2><blockquote>
+<p>（1）Hive：支持SQL<br>（2）Pig：支持PigLation</p>
+</blockquote>
+<h2 id="二、Spark中"><a href="#二、Spark中" class="headerlink" title="二、Spark中__"></a>二、Spark中__</h2><blockquote>
+<p>（*）Spark SQL：类似Hive，支持SQL、DSL</p>
+</blockquote>
 <h2 id="三、另一个：Impala"><a href="#三、另一个：Impala" class="headerlink" title="三、另一个：Impala"></a>三、另一个：Impala</h2><hr>
 <h1 id="什么是Hive"><a href="#什么是Hive" class="headerlink" title="什么是Hive"></a><strong>什么是Hive</strong></h1><h2 id="一、Hive是基于HDFS之上的一个数据仓库"><a href="#一、Hive是基于HDFS之上的一个数据仓库" class="headerlink" title="一、Hive是基于HDFS之上的一个数据仓库"></a>一、Hive是基于HDFS之上的一个数据仓库</h2><blockquote>
-<p>Hive      HDFS<br>表        目录<br>数据      文件<br>分区      目录<br>桶        文件</p>
+<p>Hive —-&gt; HDFS<br>表 ——&gt; 目录<br>数据 —-&gt; 文件<br>分区 —-&gt; 目录<br>桶 ——&gt; 文件</p>
 </blockquote>
 <h2 id="二、Hive是基于Hadoop之上的一个数据分析引擎"><a href="#二、Hive是基于Hadoop之上的一个数据分析引擎" class="headerlink" title="二、Hive是基于Hadoop之上的一个数据分析引擎"></a>二、Hive是基于Hadoop之上的一个数据分析引擎</h2><blockquote>
 <p>Hive 2.X 以前：SQL —-&gt; Hive —-&gt; MapReduce<br>Hive 2.X 以后：推荐使用Spark作为SQL的执行引擎（只针对Hadoop 3.X以前）（《Hive on Spark文档》）</p>
@@ -326,7 +330,10 @@
 </blockquote>
 <hr>
 <h1 id="安装和配置Hive"><a href="#安装和配置Hive" class="headerlink" title="安装和配置Hive"></a><strong>安装和配置Hive</strong></h1><blockquote>
-<p>安装模式：<br>  嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息</p>
+<p>安装模式：</p>
+<blockquote>
+<p>嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息</p>
+</blockquote>
 </blockquote>
 <p>  本地模式、远程模式：都需要MySQL</p>
 <hr>
