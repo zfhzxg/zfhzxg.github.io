@@ -331,14 +331,28 @@
 <hr>
 <h1 id="安装和配置Hive"><a href="#安装和配置Hive" class="headerlink" title="安装和配置Hive"></a><strong>安装和配置Hive</strong></h1><blockquote>
 <p>安装模式：</p>
+</blockquote>
 <blockquote>
-<p>嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息</p>
+<blockquote>
+<p>准备工作：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、解压  tar -zxvf apache-hive-2.3.0-bin.tar.gz -C ~/training/</span><br><span class="line">2、设置环境变量 vi  ~/.bash_profile</span><br><span class="line">  HIVE_HOME=/root/training/apache-hive-2.3.0-bin</span><br><span class="line">  export HIVE_HOME</span><br><span class="line"> </span><br><span class="line">  PATH=$HIVE_HOME/bin:$PATH</span><br><span class="line">  export PATH</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 </blockquote>
-<p>  本地模式、远程模式：都需要MySQL</p>
+<blockquote>
+<blockquote>
+<p>嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">特点：（1）使用自带的Derby</span><br><span class="line">  （2）只支持一个连接</span><br><span class="line">  （3）用于开发和测试</span><br><span class="line">  创建hive-site.xml</span><br><span class="line">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">  &lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">  &lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;jdbc:derby:;databaseName=metastore_db;create=true&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">              </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;org.apache.derby.jdbc.EmbeddedDriver&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">             </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.metastore.local&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line"> </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;file:///root/training/apache-hive-2.3.0-bin/warehouse&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;           </span><br><span class="line">  &lt;/configuration&gt;</span><br><span class="line"> </span><br><span class="line">  初始化MetaStore：</span><br><span class="line">    schematool -dbType derby -initSchema</span><br><span class="line">           </span><br><span class="line">  日志：</span><br><span class="line">    Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>本地模式、远程模式：都需要MySQL</p>
+</blockquote>
+</blockquote>
 <hr>
 <h1 id="Hive的数据类型"><a href="#Hive的数据类型" class="headerlink" title="*Hive的数据类型"></a><strong>*Hive的数据类型</strong></h1><blockquote>
-<p>一、内部表：类似MySQL、Oracle中的表<br>二、外部表<br>三、分区表：提高性能<br>  （<em>）\</em>补充：如何提高性能？（SQL执行计划）<br>四、桶表：类似Hash分区<br>五、视图：View</p>
+<p>一、内部表：类似MySQL、Oracle中的表<br>二、外部表<br>三、分区表：提高性能</p>
+<blockquote>
+<p>（<em>）\</em>补充：如何提高性能？（SQL执行计划）<br>四、桶表：类似Hash分区<br>五、视图：View</p>
+</blockquote>
 </blockquote>
 <hr>
 <h3 id="执行Hive的查询：执行SQL（HQL）"><a href="#执行Hive的查询：执行SQL（HQL）" class="headerlink" title="执行Hive的查询：执行SQL（HQL）"></a><strong>执行Hive的查询：执行SQL（HQL）</strong></h3><blockquote>
