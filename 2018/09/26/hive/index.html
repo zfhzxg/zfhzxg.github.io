@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="###数据分析引擎    一、Hadoop中        （1）Hive：支持SQL        （2）Pig：支持PigLation    二、Spark中__        （*）Spark SQL：类似Hive，支持SQL、DSL 三、另一个：Impala  ###什么是Hive    一、Hive是基于HDFS之上的一个数据仓库        Hive      HDFS">
+<meta name="description" content="#数据分析引擎 ##一、Hadoop中  （1）Hive：支持SQL  （2）Pig：支持PigLation ##二、Spark中__  （*）Spark SQL：类似Hive，支持SQL、DSL ##三、另一个：Impala#什么是Hive ##一、Hive是基于HDFS之上的一个数据仓库  Hive      HDFS表        目录数据      文件分区      目录桶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hive">
 <meta property="og:url" content="http://yoursite.com/2018/09/26/hive/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="###数据分析引擎    一、Hadoop中        （1）Hive：支持SQL        （2）Pig：支持PigLation    二、Spark中__        （*）Spark SQL：类似Hive，支持SQL、DSL 三、另一个：Impala  ###什么是Hive    一、Hive是基于HDFS之上的一个数据仓库        Hive      HDFS">
+<meta property="og:description" content="#数据分析引擎 ##一、Hadoop中  （1）Hive：支持SQL  （2）Pig：支持PigLation ##二、Spark中__  （*）Spark SQL：类似Hive，支持SQL、DSL ##三、另一个：Impala#什么是Hive ##一、Hive是基于HDFS之上的一个数据仓库  Hive      HDFS表        目录数据      文件分区      目录桶">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T13:12:21.526Z">
+<meta property="og:updated_time" content="2018-09-27T14:24:54.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hive">
-<meta name="twitter:description" content="###数据分析引擎    一、Hadoop中        （1）Hive：支持SQL        （2）Pig：支持PigLation    二、Spark中__        （*）Spark SQL：类似Hive，支持SQL、DSL 三、另一个：Impala  ###什么是Hive    一、Hive是基于HDFS之上的一个数据仓库        Hive      HDFS">
+<meta name="twitter:description" content="#数据分析引擎 ##一、Hadoop中  （1）Hive：支持SQL  （2）Pig：支持PigLation ##二、Spark中__  （*）Spark SQL：类似Hive，支持SQL、DSL ##三、另一个：Impala#什么是Hive ##一、Hive是基于HDFS之上的一个数据仓库  Hive      HDFS表        目录数据      文件分区      目录桶">
 
 
 
@@ -310,24 +310,36 @@
 
       
         <hr>
-<p>###<strong>数据分析引擎</strong><br>    一、Hadoop中<br>        （1）Hive：支持SQL<br>        （2）Pig：支持PigLation<br>    二、Spark中__<br>        （*）Spark SQL：类似Hive，支持SQL、DSL</p>
-<pre><code>三、另一个：Impala
-</code></pre><hr>
-<p>###<strong>什么是Hive</strong><br>    一、Hive是基于HDFS之上的一个数据仓库<br>        Hive      HDFS<br>        表        目录<br>        数据      文件<br>        分区      目录<br>        桶        文件<br>    二、Hive是基于Hadoop之上的一个数据分析引擎<br>        Hive 2.X 以前：SQL —-&gt; Hive —-&gt; MapReduce</p>
+<p>#<strong>数据分析引擎</strong></p>
+<p>##一、Hadoop中<br>  （1）Hive：支持SQL<br>  （2）Pig：支持PigLation</p>
+<p>##二、Spark中__<br>  （*）Spark SQL：类似Hive，支持SQL、DSL</p>
+<h2 id="三、另一个：Impala"><a href="#三、另一个：Impala" class="headerlink" title="##三、另一个：Impala"></a>##三、另一个：Impala</h2><p>#<strong>什么是Hive</strong></p>
+<p>##一、Hive是基于HDFS之上的一个数据仓库</p>
+<blockquote>
+<p>Hive      HDFS<br>表        目录<br>数据      文件<br>分区      目录<br>桶        文件</p>
+</blockquote>
+<p>##二、Hive是基于Hadoop之上的一个数据分析引擎<br>        Hive 2.X 以前：SQL —-&gt; Hive —-&gt; MapReduce</p>
 <pre><code>Hive 2.X 以后：推荐使用Spark作为SQL的执行引擎（只针对Hadoop 3.X以前）（《Hive on Spark文档》）
 </code></pre><hr>
-<p>###<strong>Hive的体系架构</strong><br>    一、CLI（命令行）：直接由Hive Dirver翻译<br>    二、JDBC（标准接口）：1.X由Thrift Server，2.X由Hive Server翻译为SQL语句交由Hive Dirver，端口号都为10000<br>    三、HWI（Hive Web Interface）：只在Hive 2.2前提供HWI网页工具，推荐使用HUE，由Hive Dirver翻译</p>
-<pre><code>\*、在Hive的体系架构中还需要有关系型数据库用来存储Hive元信息（推荐使用MySQL）
-</code></pre><hr>
-<p>###<strong>安装和配置Hive</strong><br>    安装模式：<br>        嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息</p>
-<pre><code>本地模式、远程模式：都需要MySQL
-</code></pre><hr>
-<p>###<strong>*Hive的数据类型</strong><br>    一、内部表：类似MySQL、Oracle中的表<br>    二、外部表<br>    三、分区表：提高性能<br>        （<em>）\</em>补充：如何提高性能？（SQL执行计划）<br>    四、桶表：类似Hash分区</p>
-<pre><code>五、视图：View
-</code></pre><hr>
+<p>#<strong>Hive的体系架构</strong></p>
+<blockquote>
+<p>一、CLI（命令行）：直接由Hive Dirver翻译<br>二、JDBC（标准接口）：1.X由Thrift Server，2.X由Hive Server翻译为SQL语句交由Hive Dirver，端口号都为10000<br>三、HWI（Hive Web Interface）：只在Hive 2.2前提供HWI网页工具，推荐使用HUE，由Hive Dirver翻译<br>*、在Hive的体系架构中还需要有关系型数据库用来存储Hive元信息（推荐使用MySQL）</p>
+</blockquote>
+<hr>
+<p>#<strong>安装和配置Hive</strong></p>
+<blockquote>
+<p>安装模式：<br>  嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息</p>
+</blockquote>
+<h2 id="本地模式、远程模式：都需要MySQL"><a href="#本地模式、远程模式：都需要MySQL" class="headerlink" title="  本地模式、远程模式：都需要MySQL"></a>  本地模式、远程模式：都需要MySQL</h2><p>#<strong>*Hive的数据类型</strong></p>
+<blockquote>
+<p>一、内部表：类似MySQL、Oracle中的表<br>二、外部表<br>三、分区表：提高性能<br>  （<em>）\</em>补充：如何提高性能？（SQL执行计划）<br>四、桶表：类似Hash分区<br>五、视图：View</p>
+</blockquote>
+<hr>
 <p>###<strong>执行Hive的查询：执行SQL（HQL）</strong></p>
-<pre><code>\*、HQL是SQL的一个子集
-</code></pre><hr>
+<blockquote>
+<p>*、HQL是SQL的一个子集</p>
+</blockquote>
+<hr>
 <h2 id="使用JDBC查询Hive"><a href="#使用JDBC查询Hive" class="headerlink" title="###使用JDBC查询Hive"></a>###<strong>使用JDBC查询Hive</strong></h2><h2 id="Hive的自定义函数"><a href="#Hive的自定义函数" class="headerlink" title="###Hive的自定义函数"></a>###<strong>Hive的自定义函数</strong></h2>
       
     </div>
@@ -478,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用JDBC查询Hive"><span class="nav-number">1.</span> <span class="nav-text">###使用JDBC查询Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive的自定义函数"><span class="nav-number">2.</span> <span class="nav-text">###Hive的自定义函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#三、另一个：Impala"><span class="nav-number">1.</span> <span class="nav-text">##三、另一个：Impala</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地模式、远程模式：都需要MySQL"><span class="nav-number">2.</span> <span class="nav-text">  本地模式、远程模式：都需要MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用JDBC查询Hive"><span class="nav-number">3.</span> <span class="nav-text">###使用JDBC查询Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive的自定义函数"><span class="nav-number">4.</span> <span class="nav-text">###Hive的自定义函数</span></a></li></ol></div>
             
 
           </div>
