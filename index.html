@@ -311,37 +311,36 @@
         
           
             <hr>
-<p>#<strong>数据分析引擎</strong></p>
-<p>##一、Hadoop中<br>  （1）Hive：支持SQL<br>  （2）Pig：支持PigLation</p>
-<p>##二、Spark中__<br>  （*）Spark SQL：类似Hive，支持SQL、DSL</p>
-<h2 id="三、另一个：Impala"><a href="#三、另一个：Impala" class="headerlink" title="##三、另一个：Impala"></a>##三、另一个：Impala</h2><p>#<strong>什么是Hive</strong></p>
-<p>##一、Hive是基于HDFS之上的一个数据仓库</p>
-<blockquote>
+<h1 id="数据分析引擎"><a href="#数据分析引擎" class="headerlink" title="数据分析引擎"></a><strong>数据分析引擎</strong></h1><h2 id="一、Hadoop中"><a href="#一、Hadoop中" class="headerlink" title="一、Hadoop中"></a>一、Hadoop中</h2><p>  （1）Hive：支持SQL<br>  （2）Pig：支持PigLation</p>
+<h2 id="二、Spark中"><a href="#二、Spark中" class="headerlink" title="二、Spark中__"></a>二、Spark中__</h2><p>  （*）Spark SQL：类似Hive，支持SQL、DSL</p>
+<h2 id="三、另一个：Impala"><a href="#三、另一个：Impala" class="headerlink" title="三、另一个：Impala"></a>三、另一个：Impala</h2><hr>
+<h1 id="什么是Hive"><a href="#什么是Hive" class="headerlink" title="什么是Hive"></a><strong>什么是Hive</strong></h1><h2 id="一、Hive是基于HDFS之上的一个数据仓库"><a href="#一、Hive是基于HDFS之上的一个数据仓库" class="headerlink" title="一、Hive是基于HDFS之上的一个数据仓库"></a>一、Hive是基于HDFS之上的一个数据仓库</h2><blockquote>
 <p>Hive      HDFS<br>表        目录<br>数据      文件<br>分区      目录<br>桶        文件</p>
 </blockquote>
-<p>##二、Hive是基于Hadoop之上的一个数据分析引擎<br>        Hive 2.X 以前：SQL —-&gt; Hive —-&gt; MapReduce</p>
-<pre><code>Hive 2.X 以后：推荐使用Spark作为SQL的执行引擎（只针对Hadoop 3.X以前）（《Hive on Spark文档》）
-</code></pre><hr>
-<p>#<strong>Hive的体系架构</strong></p>
-<blockquote>
+<h2 id="二、Hive是基于Hadoop之上的一个数据分析引擎"><a href="#二、Hive是基于Hadoop之上的一个数据分析引擎" class="headerlink" title="二、Hive是基于Hadoop之上的一个数据分析引擎"></a>二、Hive是基于Hadoop之上的一个数据分析引擎</h2><blockquote>
+<p>Hive 2.X 以前：SQL —-&gt; Hive —-&gt; MapReduce<br>Hive 2.X 以后：推荐使用Spark作为SQL的执行引擎（只针对Hadoop 3.X以前）（《Hive on Spark文档》）</p>
+</blockquote>
+<hr>
+<h1 id="Hive的体系架构"><a href="#Hive的体系架构" class="headerlink" title="Hive的体系架构"></a><strong>Hive的体系架构</strong></h1><blockquote>
 <p>一、CLI（命令行）：直接由Hive Dirver翻译<br>二、JDBC（标准接口）：1.X由Thrift Server，2.X由Hive Server翻译为SQL语句交由Hive Dirver，端口号都为10000<br>三、HWI（Hive Web Interface）：只在Hive 2.2前提供HWI网页工具，推荐使用HUE，由Hive Dirver翻译<br>*、在Hive的体系架构中还需要有关系型数据库用来存储Hive元信息（推荐使用MySQL）</p>
 </blockquote>
 <hr>
-<p>#<strong>安装和配置Hive</strong></p>
-<blockquote>
+<h1 id="安装和配置Hive"><a href="#安装和配置Hive" class="headerlink" title="安装和配置Hive"></a><strong>安装和配置Hive</strong></h1><blockquote>
 <p>安装模式：<br>  嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息</p>
 </blockquote>
-<h2 id="本地模式、远程模式：都需要MySQL"><a href="#本地模式、远程模式：都需要MySQL" class="headerlink" title="  本地模式、远程模式：都需要MySQL"></a>  本地模式、远程模式：都需要MySQL</h2><p>#<strong>*Hive的数据类型</strong></p>
-<blockquote>
+<p>  本地模式、远程模式：都需要MySQL</p>
+<hr>
+<h1 id="Hive的数据类型"><a href="#Hive的数据类型" class="headerlink" title="*Hive的数据类型"></a><strong>*Hive的数据类型</strong></h1><blockquote>
 <p>一、内部表：类似MySQL、Oracle中的表<br>二、外部表<br>三、分区表：提高性能<br>  （<em>）\</em>补充：如何提高性能？（SQL执行计划）<br>四、桶表：类似Hash分区<br>五、视图：View</p>
 </blockquote>
 <hr>
-<p>###<strong>执行Hive的查询：执行SQL（HQL）</strong></p>
-<blockquote>
+<h3 id="执行Hive的查询：执行SQL（HQL）"><a href="#执行Hive的查询：执行SQL（HQL）" class="headerlink" title="执行Hive的查询：执行SQL（HQL）"></a><strong>执行Hive的查询：执行SQL（HQL）</strong></h3><blockquote>
 <p>*、HQL是SQL的一个子集</p>
 </blockquote>
 <hr>
-<h2 id="使用JDBC查询Hive"><a href="#使用JDBC查询Hive" class="headerlink" title="###使用JDBC查询Hive"></a>###<strong>使用JDBC查询Hive</strong></h2><h2 id="Hive的自定义函数"><a href="#Hive的自定义函数" class="headerlink" title="###Hive的自定义函数"></a>###<strong>Hive的自定义函数</strong></h2>
+<h3 id="使用JDBC查询Hive"><a href="#使用JDBC查询Hive" class="headerlink" title="使用JDBC查询Hive"></a><strong>使用JDBC查询Hive</strong></h3><hr>
+<h3 id="Hive的自定义函数"><a href="#Hive的自定义函数" class="headerlink" title="Hive的自定义函数"></a><strong>Hive的自定义函数</strong></h3><hr>
+
           
         
       
