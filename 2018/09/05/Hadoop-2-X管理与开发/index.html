@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)">
+<meta name="description" content="hadoop的起源与背景知识一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)  二">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop 2.X管理与开发">
 <meta property="og:url" content="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)">
+<meta property="og:description" content="hadoop的起源与背景知识一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)  二">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T16:47:44.833Z">
+<meta property="og:updated_time" content="2018-09-27T14:32:37.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.X管理与开发">
-<meta name="twitter:description" content="#hadoop的起源与背景知识 一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)">
+<meta name="twitter:description" content="hadoop的起源与背景知识一、什么是大数据 举例:  1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)2.天气预报    核心的问题:数据的存储,数据的计算(不是算法)   数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)   数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)  二">
 
 
 
@@ -309,8 +309,7 @@
       
 
       
-        <p>#<strong>hadoop的起源与背景知识</strong></p>
-<h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><blockquote>
+        <h1 id="hadoop的起源与背景知识"><a href="#hadoop的起源与背景知识" class="headerlink" title="hadoop的起源与背景知识"></a><strong>hadoop的起源与背景知识</strong></h1><h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><blockquote>
 <p>举例:</p>
 <blockquote>
 <p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报</p>
@@ -365,8 +364,7 @@
 </blockquote>
 </blockquote>
 <hr>
-<p>#<strong>hadoop的环境</strong></p>
-<h2 id="一、Hadoop的目录结构"><a href="#一、Hadoop的目录结构" class="headerlink" title="一、Hadoop的目录结构"></a>一、Hadoop的目录结构</h2><blockquote>
+<h1 id="hadoop的环境"><a href="#hadoop的环境" class="headerlink" title="hadoop的环境"></a><strong>hadoop的环境</strong></h1><h2 id="一、Hadoop的目录结构"><a href="#一、Hadoop的目录结构" class="headerlink" title="一、Hadoop的目录结构"></a>一、Hadoop的目录结构</h2><blockquote>
 <p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等<br>share/  —&gt;  所有共享文件<br>share/hadoop  –&gt;  所有依赖jar包</p>
 </blockquote>
 <h2 id="二、Hadoop的三种安装模式"><a href="#二、Hadoop的三种安装模式" class="headerlink" title="二、Hadoop的三种安装模式"></a>二、Hadoop的三种安装模式</h2><h3 id="一-本地模式"><a href="#一-本地模式" class="headerlink" title="(一)本地模式"></a>(一)本地模式</h3><blockquote>
@@ -530,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是大数据"><span class="nav-number">1.</span> <span class="nav-text">一、什么是大数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、数据仓库和大数据"><span class="nav-number">2.</span> <span class="nav-text">二、数据仓库和大数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题"><span class="nav-number">2.1.</span> <span class="nav-text">传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop和Spark都可以看成是数据仓库的一种实现"><span class="nav-number">2.2.</span> <span class="nav-text">Hadoop和Spark都可以看成是数据仓库的一种实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、OLTP和OLAP"><span class="nav-number">3.</span> <span class="nav-text">三、OLTP和OLAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Google的基本思想-三篇论文"><span class="nav-number">4.</span> <span class="nav-text">四、Google的基本思想:三篇论文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统"><span class="nav-number">4.1.</span> <span class="nav-text">(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-MapReduce：分布计算模型，问题来源PageRank（网页排名）"><span class="nav-number">4.2.</span> <span class="nav-text">(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-BigTable：大表-—-NoSQL数据库：HBase"><span class="nav-number">4.3.</span> <span class="nav-text">(三)BigTable：大表 —- NoSQL数据库：HBase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Hadoop的目录结构"><span class="nav-number">5.</span> <span class="nav-text">一、Hadoop的目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Hadoop的三种安装模式"><span class="nav-number">6.</span> <span class="nav-text">二、Hadoop的三种安装模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-本地模式"><span class="nav-number">6.1.</span> <span class="nav-text">(一)本地模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-伪分布模式"><span class="nav-number">6.2.</span> <span class="nav-text">(二)伪分布模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-全分布模式"><span class="nav-number">6.3.</span> <span class="nav-text">(三)全分布模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、主从结构的单点故障"><span class="nav-number">7.</span> <span class="nav-text">三、主从结构的单点故障</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hadoop的起源与背景知识"><span class="nav-number">1.</span> <span class="nav-text">hadoop的起源与背景知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是大数据"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是大数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、数据仓库和大数据"><span class="nav-number">1.2.</span> <span class="nav-text">二、数据仓库和大数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题"><span class="nav-number">1.2.1.</span> <span class="nav-text">传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop和Spark都可以看成是数据仓库的一种实现"><span class="nav-number">1.2.2.</span> <span class="nav-text">Hadoop和Spark都可以看成是数据仓库的一种实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、OLTP和OLAP"><span class="nav-number">1.3.</span> <span class="nav-text">三、OLTP和OLAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Google的基本思想-三篇论文"><span class="nav-number">1.4.</span> <span class="nav-text">四、Google的基本思想:三篇论文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统"><span class="nav-number">1.4.1.</span> <span class="nav-text">(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-MapReduce：分布计算模型，问题来源PageRank（网页排名）"><span class="nav-number">1.4.2.</span> <span class="nav-text">(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-BigTable：大表-—-NoSQL数据库：HBase"><span class="nav-number">1.4.3.</span> <span class="nav-text">(三)BigTable：大表 —- NoSQL数据库：HBase</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hadoop的环境"><span class="nav-number">2.</span> <span class="nav-text">hadoop的环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Hadoop的目录结构"><span class="nav-number">2.1.</span> <span class="nav-text">一、Hadoop的目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Hadoop的三种安装模式"><span class="nav-number">2.2.</span> <span class="nav-text">二、Hadoop的三种安装模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-本地模式"><span class="nav-number">2.2.1.</span> <span class="nav-text">(一)本地模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-伪分布模式"><span class="nav-number">2.2.2.</span> <span class="nav-text">(二)伪分布模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-全分布模式"><span class="nav-number">2.2.3.</span> <span class="nav-text">(三)全分布模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、主从结构的单点故障"><span class="nav-number">2.3.</span> <span class="nav-text">三、主从结构的单点故障</span></a></li></ol></li></ol></div>
             
 
           </div>
