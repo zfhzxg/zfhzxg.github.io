@@ -197,12 +197,42 @@
         </li>
       
         
-        <li class="menu-item menu-item-something">
-          <a href="/something" rel="section">
+        <li class="menu-item menu-item-ssm">
+          <a href="/SSM" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            something
+            SSM
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ssh">
+          <a href="/SSH" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            SSH
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-hadoop">
+          <a href="/Hadoop" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Hadoop
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-other">
+          <a href="/other" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            other
           </a>
         </li>
       
@@ -225,6 +255,248 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/项目笔记(ssh)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zfhzxg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zfhzxg的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/项目笔记(ssh)/" itemprop="url">项目笔记(ssh)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T19:01:27+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-Dao层抽取"><a href="#1-Dao层抽取" class="headerlink" title="1.Dao层抽取"></a>1.Dao层抽取</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)BaseDaoImpl&lt;T&gt;--&gt;BaseDao&lt;T&gt;</span><br><span class="line">   UserDaoImpl&lt;User&gt;--&gt;UserDao&lt;User&gt;</span><br><span class="line">(2)UserDao&lt;User&gt; extends BaseDao&lt;T&gt;</span><br><span class="line">   UserDaoImpl&lt;User&gt; extends BaseDaoImpl&lt;T&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-Action层抽取"><a href="#2-Action层抽取" class="headerlink" title="2.Action层抽取"></a>2.Action层抽取</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)BaseAction&lt;T&gt; extends ActionSupport implements ModelDriven&lt;T&gt;</span><br><span class="line">(2)UserAction&lt;User&gt; extends BaseAction&lt;T&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-通过反射创建对象"><a href="#3-通过反射创建对象" class="headerlink" title="3.通过反射创建对象"></a>3.通过反射创建对象</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//在构造方法中动态获取实体类，通过反射创建model对象</span><br><span class="line">//泛型指定user时，this为user，通过反射创建user对象赋值给model</span><br><span class="line">	public BaseAction() throws InstantiationException, IllegalAccessException &#123;</span><br><span class="line">		//获取父类class属性</span><br><span class="line">		ParameterizedType genericsSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();</span><br><span class="line">		//获取泛型数组</span><br><span class="line">		Type[] actualTypeArguments = genericsSuperclass.getActualTypeArguments();</span><br><span class="line">		Class&lt;T&gt; entityClass = (Class&lt;T&gt;)actualTypeArguments[0];</span><br><span class="line">		//通过反射创建对象</span><br><span class="line">		model = entityClass.newInstance();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/hibernate项目笔记(ssh)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zfhzxg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zfhzxg的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/22/hibernate项目笔记(ssh)/" itemprop="url">hibernate项目笔记(ssh)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T22:45:00+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）"><a href="#1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）" class="headerlink" title="1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）"></a>1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方式1：</span><br><span class="line">&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span><br><span class="line">	&lt;property name=<span class="string">"driverClass"</span> value=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"jdbcUrl"</span> value=<span class="string">"jdbc:mysql////bos"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"user"</span> value=<span class="string">"root"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"password"</span> value=<span class="string">"tiger"</span>/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">方式2：</span><br><span class="line">&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"driverClassName"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.driverClass&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"url"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.jdbcUrl&#125;</span>?characterEncoding=UTF-8&amp;amp;useSSL=<span class="literal">false</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"username"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.user&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"password"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.password&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  	</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-getHibernateTemplate-的使用方法"><a href="#2-getHibernateTemplate-的使用方法" class="headerlink" title="2.getHibernateTemplate()的使用方法"></a>2.getHibernateTemplate()的使用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)导入org.springframework.orm.hibernate5.support.HibernateDaoSupport包</span><br><span class="line">(2)继承HibernateDaoSupport类</span><br><span class="line">	* this.getHibernateTemplate().get(entityClass,id);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -740,7 +1012,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
