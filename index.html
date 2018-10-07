@@ -331,15 +331,19 @@
 
       
         
-          
-            <h1 id="一、HDFS的体系架构"><a href="#一、HDFS的体系架构" class="headerlink" title="一、HDFS的体系架构"></a><strong>一、HDFS的体系架构</strong></h1><ul>
+          <h1 id="一、HDFS的体系架构"><a href="#一、HDFS的体系架构" class="headerlink" title="一、HDFS的体系架构"></a><strong>一、HDFS的体系架构</strong></h1><ul>
 <li>HDFS的所有数据默认保存在hadoop/tmp/dfs/目录下<h2 id="（一）NameNode：名称节点"><a href="#（一）NameNode：名称节点" class="headerlink" title="（一）NameNode：名称节点"></a>（一）NameNode：名称节点</h2><blockquote>
 <p>是HDFS的主节点，管理员<br>接受客户端（命令行，java程序）的请求：创建目录，上传数据，下载数据，删除数据<br>管理和维护HDFS的日志（edits，二进制文件，记录的是客户端的所有操作）和元信息</p>
 </blockquote>
 <h2 id="（二）DataNode：数据节点"><a href="#（二）DataNode：数据节点" class="headerlink" title="（二）DataNode：数据节点"></a>（二）DataNode：数据节点</h2><h2 id="（三）SecondaryNameNode：第二名称节点"><a href="#（三）SecondaryNameNode：第二名称节点" class="headerlink" title="（三）SecondaryNameNode：第二名称节点"></a>（三）SecondaryNameNode：第二名称节点</h2></li>
 </ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/29/HDFS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -478,8 +482,7 @@
 
       
         
-          
-            <h1 id="主从结构的主出现故障时视为单点故障"><a href="#主从结构的主出现故障时视为单点故障" class="headerlink" title="主从结构的主出现故障时视为单点故障"></a><strong>主从结构的主出现故障时视为单点故障</strong></h1><h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><blockquote>
+          <h1 id="主从结构的主出现故障时视为单点故障"><a href="#主从结构的主出现故障时视为单点故障" class="headerlink" title="主从结构的主出现故障时视为单点故障"></a><strong>主从结构的主出现故障时视为单点故障</strong></h1><h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><blockquote>
 <p>NameNode（主）+DataNode（从）</p>
 </blockquote>
 <h2 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h2><blockquote>
@@ -498,8 +501,13 @@
 <blockquote>
 <p>使用zookeeper实现HA功能，当主节点（active）出现故障时，通过主节点（standby）操作HDFS</p>
 </blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/28/主从结构的单点故障/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -638,8 +646,7 @@
 
       
         
-          
-            <hr>
+          <hr>
 <h1 id="数据分析引擎"><a href="#数据分析引擎" class="headerlink" title="数据分析引擎"></a><strong>数据分析引擎</strong></h1><h2 id="一、Hadoop中"><a href="#一、Hadoop中" class="headerlink" title="一、Hadoop中"></a>一、Hadoop中</h2><blockquote>
 <p>（1）Hive：支持SQL<br>（2）Pig：支持PigLation</p>
 </blockquote>
@@ -690,8 +697,13 @@
 <hr>
 <h3 id="使用JDBC查询Hive"><a href="#使用JDBC查询Hive" class="headerlink" title="使用JDBC查询Hive"></a><strong>使用JDBC查询Hive</strong></h3><hr>
 <h3 id="Hive的自定义函数"><a href="#Hive的自定义函数" class="headerlink" title="Hive的自定义函数"></a><strong>Hive的自定义函数</strong></h3><hr>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/26/hive/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -830,8 +842,7 @@
 
       
         
-          
-            <hr>
+          <hr>
 <p>###<strong>NoSQL简介</strong></p>
 <ul>
 <li>一、什么是NoSQL数据库？（not only sql）</li>
@@ -876,8 +887,13 @@
 <li>一、</li>
 </ul>
 <hr>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/21/HBase开发/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1016,8 +1032,7 @@
 
       
         
-          
-            <p>###<strong>hadoop免密码登陆原理</strong></p>
+          <p>###<strong>hadoop免密码登陆原理</strong></p>
 <ul>
 <li>*不对称密码<blockquote>
 <p>密匙对（两个文件）：</p>
@@ -1049,8 +1064,13 @@
 <li><p>九、B对从A收到的字符串（hello）与自己生成的字符串（hello）进行对比</p>
 </li>
 </ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/14/Hadoop免密码登陆原理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1189,8 +1209,7 @@
 
       
         
-          
-            <hr>
+          <hr>
 <p>###<strong>MapReduce高级特性</strong></p>
 <ul>
 <li>一、序列化<blockquote>
@@ -1248,8 +1267,13 @@
 <li>五、单元测试（MRUnit）</li>
 </ul>
 <hr>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/10/MapReduce笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1388,8 +1412,7 @@
 
       
         
-          
-            <h1 id="hadoop的起源与背景知识"><a href="#hadoop的起源与背景知识" class="headerlink" title="hadoop的起源与背景知识"></a><strong>hadoop的起源与背景知识</strong></h1><h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><blockquote>
+          <h1 id="hadoop的起源与背景知识"><a href="#hadoop的起源与背景知识" class="headerlink" title="hadoop的起源与背景知识"></a><strong>hadoop的起源与背景知识</strong></h1><h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><blockquote>
 <p>举例:</p>
 <blockquote>
 <p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报</p>
@@ -1455,7 +1478,13 @@
 </blockquote>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line"></span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//core-site.xml:</span><br><span class="line"></span><br><span class="line">//配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">//9000是RPC的通信端口</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">//默认值是Linux的tmp目录</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//mapred-site.xml:（默认没有这个文件）</span><br><span class="line">//MR程序运行的程序或框架</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//yarn-site.xml:</span><br><span class="line">//配置yarn主节点的位置</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="三-全分布模式"><a href="#三-全分布模式" class="headerlink" title="(三)全分布模式"></a>(三)全分布模式</h3><h2 id="三、主从结构的单点故障"><a href="#三、主从结构的单点故障" class="headerlink" title="三、主从结构的单点故障"></a>三、主从结构的单点故障</h2>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/05/Hadoop-2-X管理与开发/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1936,8 +1965,7 @@
 
       
         
-          
-            <h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><strong>Redis</strong></h3><hr>
+          <h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><strong>Redis</strong></h3><hr>
 <blockquote>
 <p><strong>高性能Key-Value服务器</strong></p>
 </blockquote>
@@ -2054,8 +2082,13 @@
 </blockquote>
 <hr>
 </blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/29/redis初识/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
