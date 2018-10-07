@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方-A）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方（B）   1ssh-copy-id -i .ssh/i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-20T16:20:29.300Z">
+<meta property="og:updated_time" content="2018-10-07T15:07:17.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop免密码登陆原理">
 <meta name="twitter:description" content="###hadoop免密码登陆原理  *不对称密码 密匙对（两个文件）：  公钥–锁（.ssh/id_rsa）：给别人加密私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密    *对称加密（加密和解密使用同一文件）  一、生成密钥对（请求登陆方-A）   1ssh-keygen -t rsa  二、把请求登陆方生成的公钥拷贝给被请求方（B）   1ssh-copy-id -i .ssh/i">
@@ -180,32 +180,22 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
           </a>
         </li>
       
@@ -291,6 +281,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -470,7 +482,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -480,10 +492,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
+                
                   <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
-                </a>
+                
               </div>
             
 
