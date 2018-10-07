@@ -1624,15 +1624,50 @@
       
         
           
-          文件目录操作命令ls
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/05/基础命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="文件目录操作命令"><a href="#文件目录操作命令" class="headerlink" title="文件目录操作命令"></a><strong>文件目录操作命令</strong></h1><h2 id="ls-显示文件和目录列表"><a href="#ls-显示文件和目录列表" class="headerlink" title="ls 显示文件和目录列表"></a>ls 显示文件和目录列表</h2><blockquote>
+<p>-l 列出文件的详细信息<br>-a 列出当前目录所有文件，包含隐藏文件<br>*设置环境变量：/root/.bash_profile</p>
+</blockquote>
+<h2 id="pwd-显示当前目录位置"><a href="#pwd-显示当前目录位置" class="headerlink" title="pwd 显示当前目录位置"></a>pwd 显示当前目录位置</h2><h2 id="mkdir-创建目录"><a href="#mkdir-创建目录" class="headerlink" title="mkdir 创建目录"></a>mkdir 创建目录</h2><blockquote>
+<p>-p 父目录不存在的情况下先生成父目录<br>约定：</p>
+<blockquote>
+<p>mkdir /root/tools —-&gt;安装包<br>mkdir /root/training —-&gt;安装目录</p>
+</blockquote>
+</blockquote>
+<h2 id="cd-切换目录"><a href="#cd-切换目录" class="headerlink" title="cd 切换目录"></a>cd 切换目录</h2><h2 id="touch-生成一个空文件"><a href="#touch-生成一个空文件" class="headerlink" title="touch 生成一个空文件"></a>touch 生成一个空文件</h2><h2 id="echo-生成一个带内容文件"><a href="#echo-生成一个带内容文件" class="headerlink" title="echo 生成一个带内容文件"></a>echo 生成一个带内容文件</h2><blockquote>
+<p>使用echo查看环境变量值：echo $JAVA_HOME</p>
+</blockquote>
+<h2 id="cat、tac-显示文本文件内容"><a href="#cat、tac-显示文本文件内容" class="headerlink" title="cat、tac 显示文本文件内容"></a>cat、tac 显示文本文件内容</h2><blockquote>
+<p>cat是从第一行开始写，tac是从最后一行开始写</p>
+</blockquote>
+<h2 id="cp-复制文件或目录"><a href="#cp-复制文件或目录" class="headerlink" title="cp 复制文件或目录"></a>cp 复制文件或目录</h2><h2 id="rm-删除文件"><a href="#rm-删除文件" class="headerlink" title="rm 删除文件"></a>rm 删除文件</h2><blockquote>
+<p>-r 同时删除该目录下的所有文件<br>-f 强制删除文件或目录<br>*HDFS有回收站，默认情况下关闭</p>
+</blockquote>
+<h1 id="系统操作命令"><a href="#系统操作命令" class="headerlink" title="系统操作命令"></a><strong>系统操作命令</strong></h1><h2 id="ps-显示瞬间的进程状态"><a href="#ps-显示瞬间的进程状态" class="headerlink" title="ps 显示瞬间的进程状态"></a>ps 显示瞬间的进程状态</h2><blockquote>
+<p>ps -ef：使用标准格式显示每个进程信息</p>
+</blockquote>
+<h2 id="hostname-显示主机名"><a href="#hostname-显示主机名" class="headerlink" title="hostname 显示主机名"></a>hostname 显示主机名</h2><h2 id="kill-杀死一个进程"><a href="#kill-杀死一个进程" class="headerlink" title="kill 杀死一个进程"></a>kill 杀死一个进程</h2><blockquote>
+<p>-9 强制杀死一个进程<br>-3 如果针对java进程，打印java进程的线程信息Thread Dump</p>
+</blockquote>
+<h1 id="打包命令"><a href="#打包命令" class="headerlink" title="打包命令"></a><strong>打包命令</strong></h1><h2 id="gzip-压缩（解压）文件或目录，压缩文件后缀为gz"><a href="#gzip-压缩（解压）文件或目录，压缩文件后缀为gz" class="headerlink" title="gzip 压缩（解压）文件或目录，压缩文件后缀为gz"></a>gzip 压缩（解压）文件或目录，压缩文件后缀为gz</h2><h2 id="bzip2-压缩（解压）文件或目录，压缩文件后缀为bz2"><a href="#bzip2-压缩（解压）文件或目录，压缩文件后缀为bz2" class="headerlink" title="bzip2 压缩（解压）文件或目录，压缩文件后缀为bz2"></a>bzip2 压缩（解压）文件或目录，压缩文件后缀为bz2</h2><h2 id="tar-文件、目录打（解）包"><a href="#tar-文件、目录打（解）包" class="headerlink" title="tar 文件、目录打（解）包"></a>tar 文件、目录打（解）包</h2><blockquote>
+<p>-zxvf 解压缩<br>-C 解压到指定目录下</p>
+</blockquote>
+<h1 id="权限管理（非常类似HDFS权限管理）"><a href="#权限管理（非常类似HDFS权限管理）" class="headerlink" title="权限管理（非常类似HDFS权限管理）"></a><strong>权限管理（非常类似HDFS权限管理）</strong></h1><h2 id="权限的类型"><a href="#权限的类型" class="headerlink" title="权限的类型"></a>权限的类型</h2><blockquote>
+<p>r 读<br>w 写<br>x 执行</p>
+</blockquote>
+<h2 id="ls-l、ll-查看权限"><a href="#ls-l、ll-查看权限" class="headerlink" title="ls -l、ll 查看权限"></a>ls -l、ll 查看权限</h2><blockquote>
+<p>十位字符，第一位如果为d，则代表该文件为目录<br>后九位分为三组，每一组都按读写执行的顺序排列</p>
+<blockquote>
+<p>第一组：当前用户<br>第二组：同组用户<br>第三组：其他用户<br>权限用二进制表示，有为1，没有为0（rwx -&gt; 111，rw- -&gt; 110）<br>chmod：改变权限<br>chmod (u/g/o/a)+(r/w/x) 文件名（括号内可选）<br>chmod 777 文件名（每一位十进制数代表一组权限，此处为所有用户可读可写可执行）</p>
+</blockquote>
+</blockquote>
+<h2 id="案例分析-java的死锁或者性能瓶颈分析"><a href="#案例分析-java的死锁或者性能瓶颈分析" class="headerlink" title="案例分析:java的死锁或者性能瓶颈分析"></a>案例分析:java的死锁或者性能瓶颈分析</h2><blockquote>
+<p>JDK heap dump:分析OOM的问题<br>JDK Thread dumo:分析性能瓶颈(线程信息)<br>得到Thread dump:</p>
+<blockquote>
+<p>在linux:kill -3 PID<br>在windows下:Fn + B 或Ctrl + Break</p>
+</blockquote>
+</blockquote>
+<h1 id="配置IP"><a href="#配置IP" class="headerlink" title="配置IP"></a><strong>配置IP</strong></h1><h2 id="ip-config：查看IP状态"><a href="#ip-config：查看IP状态" class="headerlink" title="ip config：查看IP状态"></a>ip config：查看IP状态</h2><h2 id="更改ip配置：修改-etc-sysconfig-network-scripts下的ifcfg-eth"><a href="#更改ip配置：修改-etc-sysconfig-network-scripts下的ifcfg-eth" class="headerlink" title="更改ip配置：修改/etc/sysconfig/network-scripts下的ifcfg-eth*"></a>更改ip配置：修改/etc/sysconfig/network-scripts下的ifcfg-eth*</h2>
+          
         
       
     </div>
@@ -1772,16 +1807,26 @@
       
         
           
-          离线计算
-Hadoo
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/04/大数据模块/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h3 id="离线计算"><a href="#离线计算" class="headerlink" title="离线计算"></a><strong>离线计算</strong></h3><blockquote>
+<p><strong>Hadoop模块</strong></p>
+<blockquote>
+<p>1.数据存储：HDFS（Hadoop Distributed File System）<br>2.数据计算：MapReduce（java程序、实现离线计算）：在Hadoop 2.X后，Yarn容器中<br>3.Hive：基于HDFS之上的数据仓库，支持SQL语句<br>4.HBase：基于HDFS之上的NoSQL数据库<br>5.ZooKeeper：实现HA（High Availability高可用性、秒杀系统）的功能<br>6.其他：Sqoop、Flume、Pig</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>实时计算</strong></p>
+<blockquote>
+<p>1.Redis内存NoSQL数据库<br> Redis Cluster：分布式解决方案<br>2.Apache Storm：进行试试计算（流式计算）</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>Spark：只有数据计算，没有数据的存储（依赖HDFS）</strong></p>
+<blockquote>
+<p>1.Scala变成语言：多范式的编程语言（支持多方式编程：1、面向对象 2、函数式编程）<br>2.Spark Core：内核，相当于MapReduce；<br>        最重要的概念：RDD（弹性分布式数据集）<br>3.Spark SQL：类似Hive、支持SQL<br>4.Spark Streaming：处理流式计算的模块，类似Storm</p>
+</blockquote>
+</blockquote>
+
+          
         
       
     </div>
