@@ -331,9 +331,9 @@
 
       
         
-          <h3 id="1-Dao层抽取"><a href="#1-Dao层抽取" class="headerlink" title="1.Dao层抽取"></a>1.Dao层抽取</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)BaseDaoImpl&lt;T&gt;--&gt;BaseDao&lt;T&gt;</span><br><span class="line">   UserDaoImpl&lt;User&gt;--&gt;UserDao&lt;User&gt;</span><br><span class="line">(2)UserDao&lt;User&gt; extends BaseDao&lt;T&gt;</span><br><span class="line">   UserDaoImpl&lt;User&gt; extends BaseDaoImpl&lt;T&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-Action层抽取"><a href="#2-Action层抽取" class="headerlink" title="2.Action层抽取"></a>2.Action层抽取</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)BaseAction&lt;T&gt; extends ActionSupport implements ModelDriven&lt;T&gt;</span><br><span class="line">(2)UserAction&lt;User&gt; extends BaseAction&lt;T&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="3-通过反射创建对象"><a href="#3-通过反射创建对象" class="headerlink" title="3.通过反射创建对象"></a>3.通过反射创建对象</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//在构造方法中动态获取实体类，通过反射创建model对象</span><br><span class="line">//泛型指定user时，this为user，通过反射创建user对象赋值给model</span><br><span class="line">	public BaseAction() throws InstantiationException, IllegalAccessException &#123;</span><br><span class="line">		//获取父类class属性</span><br><span class="line">		ParameterizedType genericsSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();</span><br><span class="line">		//获取泛型数组</span><br><span class="line">		Type[] actualTypeArguments = genericsSuperclass.getActualTypeArguments();</span><br><span class="line">		Class&lt;T&gt; entityClass = (Class&lt;T&gt;)actualTypeArguments[0];</span><br><span class="line">		//通过反射创建对象</span><br><span class="line">		model = entityClass.newInstance();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+          1.Dao层抽取1234(1)BaseDaoImpl&lt;T&gt;--&gt;BaseDao&l
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/23/项目笔记(ssh)/#more" rel="contents">
@@ -479,9 +479,9 @@
 
       
         
-          <h3 id="1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）"><a href="#1-与spring整合中hibernate连接池的两种方式（web-applicationContext-xml）" class="headerlink" title="1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）"></a>1.与spring整合中hibernate连接池的两种方式（web/applicationContext.xml）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方式1：</span><br><span class="line">&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span><br><span class="line">	&lt;property name=<span class="string">"driverClass"</span> value=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"jdbcUrl"</span> value=<span class="string">"jdbc:mysql////bos"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"user"</span> value=<span class="string">"root"</span>/&gt;</span><br><span class="line">	&lt;property name=<span class="string">"password"</span> value=<span class="string">"tiger"</span>/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">方式2：</span><br><span class="line">&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"driverClassName"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.driverClass&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"url"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.jdbcUrl&#125;</span>?characterEncoding=UTF-8&amp;amp;useSSL=<span class="literal">false</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"username"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.user&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  </span><br><span class="line">	&lt;property name=<span class="string">"password"</span>&gt;  </span><br><span class="line">	    &lt;value&gt;<span class="variable">$&#123;database.password&#125;</span>&lt;/value&gt;  </span><br><span class="line">	&lt;/property&gt;  	</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-getHibernateTemplate-的使用方法"><a href="#2-getHibernateTemplate-的使用方法" class="headerlink" title="2.getHibernateTemplate()的使用方法"></a>2.getHibernateTemplate()的使用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)导入org.springframework.orm.hibernate5.support.HibernateDaoSupport包</span><br><span class="line">(2)继承HibernateDaoSupport类</span><br><span class="line">	* this.getHibernateTemplate().get(entityClass,id);</span><br></pre></td></tr></table></figure>
+          
+          1.与spring整合中hibernate连接池的两种方式（web/applicationConte
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/22/hibernate项目笔记(ssh)/#more" rel="contents">
@@ -627,8 +627,9 @@
 
       
         
-          <h3 id="1-配置阿里远程仓库（parent-pom）"><a href="#1-配置阿里远程仓库（parent-pom）" class="headerlink" title="1.配置阿里远程仓库（parent/pom）"></a>1.配置阿里远程仓库（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;</span><br><span class="line">    &lt;repository&gt;</span><br><span class="line">        &lt;id&gt;maven - ali&lt;/id&gt;</span><br><span class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">        &lt;releases&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">        &lt;/releases&gt;</span><br><span class="line">        &lt;snapshots&gt;</span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;</span><br><span class="line">            &lt;updatePolicy&gt;always&lt;/updatePolicy&gt;</span><br><span class="line">            &lt;checksumPolicy&gt;fail&lt;/checksumPolicy&gt;</span><br><span class="line">        &lt;/snapshots&gt;</span><br><span class="line">    &lt;/repository&gt;</span><br><span class="line">&lt;/repositories&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-maven中spring与jdk-1-8的兼容问题（parent-pom）"><a href="#2-maven中spring与jdk-1-8的兼容问题（parent-pom）" class="headerlink" title="2.maven中spring与jdk 1.8的兼容问题（parent/pom）"></a>2.maven中spring与jdk 1.8的兼容问题（parent/pom）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 属性定义指定jar版本 --&gt;</span><br><span class="line">&lt;properties&gt;</span><br><span class="line">	&lt;spring.version&gt;5.0.5.RELEASE&lt;/spring.version&gt;</span><br><span class="line">	&lt;hibernate.version&gt;5.2.17.Final&lt;/hibernate.version&gt;</span><br><span class="line">	&lt;struts2.version&gt;2.3.24&lt;/struts2.version&gt;</span><br><span class="line">	&lt;slf4j.version&gt;1.6.6&lt;/slf4j.version&gt;</span><br><span class="line">	&lt;log4j.version&gt;1.2.12&lt;/log4j.version&gt;</span><br><span class="line">	&lt;shiro.version&gt;1.2.3&lt;/shiro.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+          
+          1.配置阿里远程仓库（parent/pom）1234567891011121314&lt;repos
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/22/maven整合框架笔记(ssh)/#more" rel="contents">
@@ -774,90 +775,12 @@
 
       
         
-          <ul>
-<li>1.安装Node.js和配置好Node.js环境</li>
-<li>2.安装Git和配置好Git环境</li>
-<li>3.Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io<blockquote>
-<p>在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它</p>
-</blockquote>
-</li>
-<li><p>4.安装Hexo</p>
-<blockquote>
-<p>创建文件夹<br>通过命令行进入到该文件夹<br>安装Hexo</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>5.初始化该文件夹</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.安装所需要的组件</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>7.联系hexo与github page</p>
-<blockquote>
-<p>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.name <span class="string">"XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --global user.email <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>添加密匙到ssh-agent<br>终端输入：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>添加生成的ssh key到ssh-agent<br>终端输入</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>github–&gt;setting–&gt;ssh and gpg keys添加id_rsa.pub文件中的ssh key</p>
-</blockquote>
-</li>
-<li><p>8.配置Deployment(_config.yml)</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repository: git@github.com:zfhzxg/zfhzxg.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>基础命令</p>
-<blockquote>
-<p>终端：<br>检测ssh是否配置成功</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成ssh密匙：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.XXX"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成.get：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ get init</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>cmd：<br>检测node.js是否安装成功：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">nmp -v</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>检查hexo是否安装成功：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>开启本地服务器：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>改变端口号：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p XXXX</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>新建博客：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"博客名"</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>安装拓展：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>生成部署：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-</blockquote>
+          
+          
+1.安装Node.js和配置好Node.js环境
+2.安装Git和配置好Git环境
+3.Githu
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/22/git安装与简单操作/#more" rel="contents">
@@ -1003,23 +926,13 @@
 
       
         
-          <ul>
-<li>安装主题报错<blockquote>
-<p>报错内容： </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 18 transfer closed with outstanding <span class="built_in">read</span> data remaining</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>解决方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<ul>
-<li>curl 18 transfer closed with outstanding read data remaining<blockquote>
-<p>解决方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
+          
+          
+安装主题报错
+
+报错内容： 
+  1curl 18 transfer closed with ou
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/22/git报错/#more" rel="contents">

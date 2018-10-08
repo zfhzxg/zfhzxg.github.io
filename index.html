@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/HDFS/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/HDFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/29/HDFS/" itemprop="url">HDFS</a></h1>
+                <a class="post-title-link" href="/2018/10/01/HDFS/" itemprop="url">HDFS</a></h1>
         
 
         <div class="post-meta">
@@ -270,8 +270,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T00:10:36+08:00">
-                2018-09-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T12:12:33+08:00">
+                2018-10-01
               </time>
             
 
@@ -331,15 +331,12 @@
 
       
         
-          <h1 id="一、HDFS的体系架构"><a href="#一、HDFS的体系架构" class="headerlink" title="一、HDFS的体系架构"></a><strong>一、HDFS的体系架构</strong></h1><ul>
-<li>HDFS的所有数据默认保存在hadoop/tmp/dfs/目录下<h2 id="（一）NameNode：名称节点"><a href="#（一）NameNode：名称节点" class="headerlink" title="（一）NameNode：名称节点"></a>（一）NameNode：名称节点</h2><blockquote>
-<p>是HDFS的主节点，管理员<br>接受客户端（命令行，java程序）的请求：创建目录，上传数据，下载数据，删除数据<br>管理和维护HDFS的日志（edits，二进制文件，记录的是客户端的所有操作）和元信息</p>
-</blockquote>
-<h2 id="（二）DataNode：数据节点"><a href="#（二）DataNode：数据节点" class="headerlink" title="（二）DataNode：数据节点"></a>（二）DataNode：数据节点</h2><h2 id="（三）SecondaryNameNode：第二名称节点"><a href="#（三）SecondaryNameNode：第二名称节点" class="headerlink" title="（三）SecondaryNameNode：第二名称节点"></a>（三）SecondaryNameNode：第二名称节点</h2></li>
-</ul>
+          
+          HDFS 的全分布配置123456789101112131415161718192021222324
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/09/29/HDFS/#more" rel="contents">
+            <a class="btn" href="/2018/10/01/HDFS/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -482,25 +479,12 @@
 
       
         
-          <h1 id="主从结构的主出现故障时视为单点故障"><a href="#主从结构的主出现故障时视为单点故障" class="headerlink" title="主从结构的主出现故障时视为单点故障"></a><strong>主从结构的主出现故障时视为单点故障</strong></h1><h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><blockquote>
-<p>NameNode（主）+DataNode（从）</p>
-</blockquote>
-<h2 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h2><blockquote>
-<p>ResourceManager（主）+NodeManager（从）</p>
-</blockquote>
-<h2 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h2><blockquote>
-<p>HMaster（主）+RefionServer（从）</p>
-</blockquote>
-<h2 id="Storm"><a href="#Storm" class="headerlink" title="Storm"></a>Storm</h2><blockquote>
-<p>nimbus（主）+supervisor</p>
-</blockquote>
-<h2 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h2><blockquote>
-<p>Master（主）+Worker（从）</p>
-</blockquote>
-<p>#<strong>单点故障的解决方法（HA）</strong></p>
-<blockquote>
-<p>使用zookeeper实现HA功能，当主节点（active）出现故障时，通过主节点（standby）操作HDFS</p>
-</blockquote>
+          
+          主从结构的主出现故障时视为单点故障HDFS
+NameNode（主）+DataNode（从）
+
+Yar
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/28/主从结构的单点故障/#more" rel="contents">
@@ -646,57 +630,13 @@
 
       
         
-          <hr>
-<h1 id="数据分析引擎"><a href="#数据分析引擎" class="headerlink" title="数据分析引擎"></a><strong>数据分析引擎</strong></h1><h2 id="一、Hadoop中"><a href="#一、Hadoop中" class="headerlink" title="一、Hadoop中"></a>一、Hadoop中</h2><blockquote>
-<p>（1）Hive：支持SQL<br>（2）Pig：支持PigLation</p>
-</blockquote>
-<h2 id="二、Spark中"><a href="#二、Spark中" class="headerlink" title="二、Spark中__"></a>二、Spark中__</h2><blockquote>
-<p>（*）Spark SQL：类似Hive，支持SQL、DSL</p>
-</blockquote>
-<h2 id="三、另一个：Impala"><a href="#三、另一个：Impala" class="headerlink" title="三、另一个：Impala"></a>三、另一个：Impala</h2><hr>
-<h1 id="什么是Hive"><a href="#什么是Hive" class="headerlink" title="什么是Hive"></a><strong>什么是Hive</strong></h1><h2 id="一、Hive是基于HDFS之上的一个数据仓库"><a href="#一、Hive是基于HDFS之上的一个数据仓库" class="headerlink" title="一、Hive是基于HDFS之上的一个数据仓库"></a>一、Hive是基于HDFS之上的一个数据仓库</h2><blockquote>
-<p>Hive —-&gt; HDFS<br>表 ——&gt; 目录<br>数据 —-&gt; 文件<br>分区 —-&gt; 目录<br>桶 ——&gt; 文件</p>
-</blockquote>
-<h2 id="二、Hive是基于Hadoop之上的一个数据分析引擎"><a href="#二、Hive是基于Hadoop之上的一个数据分析引擎" class="headerlink" title="二、Hive是基于Hadoop之上的一个数据分析引擎"></a>二、Hive是基于Hadoop之上的一个数据分析引擎</h2><blockquote>
-<p>Hive 2.X 以前：SQL —-&gt; Hive —-&gt; MapReduce<br>Hive 2.X 以后：推荐使用Spark作为SQL的执行引擎（只针对Hadoop 3.X以前）（《Hive on Spark文档》）</p>
-</blockquote>
-<hr>
-<h1 id="Hive的体系架构"><a href="#Hive的体系架构" class="headerlink" title="Hive的体系架构"></a><strong>Hive的体系架构</strong></h1><blockquote>
-<p>一、CLI（命令行）：直接由Hive Dirver翻译<br>二、JDBC（标准接口）：1.X由Thrift Server，2.X由Hive Server翻译为SQL语句交由Hive Dirver，端口号都为10000<br>三、HWI（Hive Web Interface）：只在Hive 2.2前提供HWI网页工具，推荐使用HUE，由Hive Dirver翻译<br>*、在Hive的体系架构中还需要有关系型数据库用来存储Hive元信息（推荐使用MySQL）</p>
-</blockquote>
-<hr>
-<h1 id="安装和配置Hive"><a href="#安装和配置Hive" class="headerlink" title="安装和配置Hive"></a><strong>安装和配置Hive</strong></h1><blockquote>
-<p>安装模式：</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>准备工作：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1、解压  tar -zxvf apache-hive-2.3.0-bin.tar.gz -C ~/training/</span><br><span class="line">2、设置环境变量 vi  ~/.bash_profile</span><br><span class="line">  HIVE_HOME=/root/training/apache-hive-2.3.0-bin</span><br><span class="line">  export HIVE_HOME</span><br><span class="line"> </span><br><span class="line">  PATH=$HIVE_HOME/bin:$PATH</span><br><span class="line">  export PATH</span><br><span class="line">3.安装配置MySQL数据库</span><br><span class="line">  在虚拟机上安装MySQL：</span><br><span class="line">    yum remove mysql-libs </span><br><span class="line">    rpm -ivh mysql-community-common-5.7.19-1.el7.x86_64.rpm</span><br><span class="line">    rpm -ivh mysql-community-libs-5.7.19-1.el7.x86_64.rpm</span><br><span class="line">    rpm -ivh mysql-community-client-5.7.19-1.el7.x86_64.rpm</span><br><span class="line">    rpm -ivh mysql-community-server-5.7.19-1.el7.x86_64.rpm</span><br><span class="line">    rpm -ivh mysql-community-devel-5.7.19-1.el7.x86_64.rpm  （可选，但还是装上，后面装HUE的时候会用到。）</span><br><span class="line">                   </span><br><span class="line">  启动MySQL：service mysqld start</span><br><span class="line">  或者：systemctl start mysqld.service</span><br><span class="line"> </span><br><span class="line">  查看root用户的密码：cat /var/log/mysqld.log | grep password</span><br><span class="line">  登录后修改密码：alter user &apos;root&apos;@&apos;localhost&apos; identified by &apos;Welcome_1&apos;;</span><br><span class="line"> </span><br><span class="line">  MySQL数据库的配置：</span><br><span class="line">    创建一个新的数据库：create database hive;</span><br><span class="line">    创建一个新的用户：</span><br><span class="line">      create user &apos;hiveowner&apos;@&apos;%&apos; identified by &apos;Welcome_1&apos;;</span><br><span class="line"></span><br><span class="line">      给该用户授权</span><br><span class="line">        grant all on hive.* TO &apos;hiveowner&apos;@&apos;%&apos;; </span><br><span class="line">        grant all on hive.* TO &apos;hiveowner&apos;@&apos;localhost&apos; identified by &apos;Welcome_1&apos;;          </span><br><span class="line">         </span><br><span class="line">        免费工具：http://www.mysqlfront.de/</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>嵌入模式：不需要MySQL，使用Hive自带的Derby数据库存储Hive的元信息<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">  （1）使用自带的Derby</span><br><span class="line">  （2）只支持一个连接</span><br><span class="line">  （3）用于开发和测试</span><br><span class="line">创建hive-site.xml：</span><br><span class="line">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">  &lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">  &lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;jdbc:derby:;databaseName=metastore_db;create=true&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">              </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;org.apache.derby.jdbc.EmbeddedDriver&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">             </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.metastore.local&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line"> </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;file:///root/training/apache-hive-2.3.0-bin/warehouse&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;           </span><br><span class="line">  &lt;/configuration&gt;</span><br><span class="line"> </span><br><span class="line">初始化MetaStore：</span><br><span class="line">    schematool -dbType derby -initSchema</span><br><span class="line">           </span><br><span class="line">日志：</span><br><span class="line">    Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>本地模式、远程模式：都需要MySQL<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">创建hive-site.xml：</span><br><span class="line">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">  &lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">  &lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;jdbc:mysql://localhost:3306/hive?useSSL=false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;               </span><br><span class="line"> </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line"> </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;hiveowner&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line"> </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;tiger&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;                   </span><br><span class="line">           </span><br><span class="line">  &lt;/configuration&gt;</span><br><span class="line"></span><br><span class="line">初始化MetaStore：</span><br><span class="line">    schematool -dbType mysql -initSchema</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-</blockquote>
-<hr>
-<h1 id="Hive的数据类型"><a href="#Hive的数据类型" class="headerlink" title="*Hive的数据类型"></a><strong>*Hive的数据类型</strong></h1><blockquote>
-<p>一、内部表：类似MySQL、Oracle中的表<br>二、外部表<br>三、分区表：提高性能</p>
-<blockquote>
-<p>（*）补充：如何提高性能？（SQL执行计划）<br>四、桶表：类似Hash分区<br>五、视图：View</p>
-</blockquote>
-</blockquote>
-<hr>
-<h3 id="执行Hive的查询：执行SQL（HQL）"><a href="#执行Hive的查询：执行SQL（HQL）" class="headerlink" title="执行Hive的查询：执行SQL（HQL）"></a><strong>执行Hive的查询：执行SQL（HQL）</strong></h3><blockquote>
-<p>*、HQL是SQL的一个子集</p>
-</blockquote>
-<hr>
-<h3 id="使用JDBC查询Hive"><a href="#使用JDBC查询Hive" class="headerlink" title="使用JDBC查询Hive"></a><strong>使用JDBC查询Hive</strong></h3><hr>
-<h3 id="Hive的自定义函数"><a href="#Hive的自定义函数" class="headerlink" title="Hive的自定义函数"></a><strong>Hive的自定义函数</strong></h3><hr>
+          
+          
+数据分析引擎一、Hadoop中
+（1）Hive：支持SQL（2）Pig：支持PigLation
+
+
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/26/hive/#more" rel="contents">
@@ -842,51 +782,13 @@
 
       
         
-          <hr>
-<p>###<strong>NoSQL简介</strong></p>
-<ul>
-<li>一、什么是NoSQL数据库？（not only sql）</li>
-<li>二、常见NoSQL数据库<blockquote>
-<p>HBase<br>Redis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）<br>MongoDB：基于文档型（BSON）的NoSQL数据库<br>Cassandra：跟HBase类似</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<hr>
-<p>###<strong>HBsae的体系架构（主从结构）和表结构</strong></p>
-<ul>
-<li>一、Hadoop的生态体系圈</li>
-<li><p>二、HBase</p>
-<blockquote>
-<p>基于HDFS之上的NoSQL数据库</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HBase      HDFS</span><br><span class="line">表    ---&gt; 目录</span><br><span class="line">数据  ---&gt; 文件（HFile，默认大小：128MB）</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>三、HBase的体系架构（主节点：HMaster + 从节点：RegionServer）</p>
-<blockquote>
-<p>单点故障</p>
-<blockquote>
-<p>通过Zookeeper</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<hr>
-<hr>
-<p>###<strong>HBase的搭建模式</strong></p>
-<ul>
-<li>一、本地模式</li>
-<li>二、伪分布模式</li>
-<li>三、全分布模式</li>
-<li>四、实现HBsae的HA</li>
-</ul>
-<hr>
-<hr>
-<p>###<strong>操作HBsae</strong></p>
-<ul>
-<li>一、</li>
-</ul>
-<hr>
+          
+          
+###NoSQL简介
+
+一、什么是NoSQL数据库？（not only sql）
+二、常见NoSQ
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/21/HBase开发/#more" rel="contents">
@@ -1032,38 +934,14 @@
 
       
         
-          <p>###<strong>hadoop免密码登陆原理</strong></p>
-<ul>
-<li>*不对称密码<blockquote>
-<p>密匙对（两个文件）：</p>
-<blockquote>
-<p>公钥–锁（.ssh/id_rsa）：给别人加密<br>私钥–钥匙（.ssh/id_rsa.pub）：给自己，解密</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>*对称加密（加密和解密使用同一文件）</p>
-</li>
-<li><p>一、生成密钥对（请求登陆方-A）</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>二、把请求登陆方生成的公钥拷贝给被请求方（B）</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub root@RedHat111</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>三、B收到请求方发来的公钥，并自动保存在.ssh/authorized_keys文件</p>
-</li>
-<li><p>四、B随机产生一个字符串：hello（前三部是配置，第四步开始，是认证的过程）</p>
-</li>
-<li><p>五、B使用请求登陆方的公钥进行加密（<strong>*</strong>），并发回给A</p>
-</li>
-<li><p>六、A收到B发来的加密字符串，使用自己的私钥进行解密（hello）</p>
-</li>
-<li><p>七、A把解密后的字符串（hello）发回给B进行认证</p>
-</li>
-<li><p>八、B收到A解密的字符串（hello）</p>
-</li>
-<li><p>九、B对从A收到的字符串（hello）与自己生成的字符串（hello）进行对比</p>
-</li>
-</ul>
+          
+          ###hadoop免密码登陆原理
+
+*不对称密码
+密匙对（两个文件）：
+
+公钥–锁（.ssh/id_
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/14/Hadoop免密码登陆原理/#more" rel="contents">
@@ -1209,64 +1087,13 @@
 
       
         
-          <hr>
-<p>###<strong>MapReduce高级特性</strong></p>
-<ul>
-<li>一、序列化<blockquote>
-<p>核心接口：Writable<br>如果一个类实现了Writable该类的对象可以作为Key和Value</p>
-</blockquote>
-</li>
-<li>二、排序<blockquote>
-<p>规则：按照Key2排序（可以是基本数据类型，也可以是对象）</p>
-<blockquote>
-<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）<br>对象<br>SQL排序：order by 列名、表达式、别名、序号 desc/asc（desc/asc只作用于最近的一列）<br>MapReduce排序：1.该对象必须是Key2；2.必须实现序列化接口Writable；3.对象必须是可排序的（自定义排序使用java.long 接口 Comparable）</p>
-</blockquote>
-</blockquote>
-</li>
-<li>三、分区<blockquote>
-<p>什么是分区：partition<br>查询：</p>
-<blockquote>
-<p>1.没有分区：执行全表扫描<br>2.有分区，只扫描分区<br>分区的类型：<br>Orcale：</p>
-<blockquote>
-<p>1.范围分区；<br>2.列表分区；<br>3.Hash分区；<br>4.Hash范围分区；<br>5.Hash列表分区<br>MR的分区：<br>默认情况下，MR的输出只有一个分区（一个分区就是一个文件）<br>自定义分区：按照字段进行分区（根据Map的输出&lt;Key2,Value2&gt;分区）<br>*通过SQL的执行计划，判断效率是否提高</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</li>
-<li>四、合并<blockquote>
-<p>合并是一种特殊的Reduce<br>合并是在Map端执行一次合并，用于减少Mapper输出到Reduce的数据量，可以提高效率<br>平均值不能使用combiner<br>无论有没有combiner，都没不能改变Map和Reduce对应的数据类型</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<hr>
-<p>###<strong>MapReduce核心：Shuffle（洗牌）</strong></p>
-<ul>
-<li>Hadoop3.X之前会有数据落地（产生I/O操作）</li>
-</ul>
-<hr>
-<hr>
-<p>###<strong>MapReduce常用案例</strong></p>
-<ul>
-<li>一、数据去重<blockquote>
-<p>相同Key名交给同一地址进行处理，处理后输出给Reduce，Key值唯一，Value形成数组</p>
-</blockquote>
-</li>
-<li>二、多表查询（笛卡尔集：列数相加，行数相乘）<blockquote>
-<p>等值链接的处理过程（以表作为Value1）</p>
-<blockquote>
-<p>Mapper阶段，通过分词后的列数或其他方法区分表<br>Mapper阶段，在字段前添加标识输出给Reduce<br>Reduce进行处理</p>
-</blockquote>
-</blockquote>
-</li>
-<li>三、自连接<blockquote>
-<p>同一个表经Mapper输出两次<br>非法数据要先经过处理（数据清理）<br>Reduce进行处理</p>
-</blockquote>
-</li>
-<li>四、倒排索引</li>
-<li>五、单元测试（MRUnit）</li>
-</ul>
-<hr>
+          
+          
+###MapReduce高级特性
+
+一、序列化
+核心接口：Writable如果一个类实现了Writ
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/10/MapReduce笔记/#more" rel="contents">
@@ -1412,72 +1239,12 @@
 
       
         
-          <h1 id="hadoop的起源与背景知识"><a href="#hadoop的起源与背景知识" class="headerlink" title="hadoop的起源与背景知识"></a><strong>hadoop的起源与背景知识</strong></h1><h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><blockquote>
-<p>举例:</p>
-<blockquote>
-<p>1.电商的推荐系统(可能会用到推荐算法:协同过滤,ALS,逻辑回归…)<br>2.天气预报</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>核心的问题:数据的存储,数据的计算(不是算法)</p>
-</blockquote>
-<blockquote>
-<p>数据的存储:采用分布式的文件系统HDFS(hadoop Distributed file system)</p>
-</blockquote>
-<blockquote>
-<p>数据的计算:采用分布式的计算MapReduce,Spark(RDD:弹性分布式数据集)</p>
-</blockquote>
-<h2 id="二、数据仓库和大数据"><a href="#二、数据仓库和大数据" class="headerlink" title="二、数据仓库和大数据"></a>二、数据仓库和大数据</h2><h3 id="传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题"><a href="#传统方式-搭建数据仓库-Data-Werehouse-来解决大数据的问题" class="headerlink" title="传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题"></a>传统方式:搭建数据仓库(Data Werehouse)来解决大数据的问题</h3><blockquote>
-<p>1.数据仓库就是一个数据库(Orcale,MySQL,MS)<br>2.数据仓库和大数据一般只做查询(分析)<br>3.搭建数据仓库的过程</p>
-<blockquote>
-<p>(1)数据源RDBMS:关系型数据库(结构化数据)/文本数据/其他数据<br>(2)利用ETL抽取/转化/加载数据后搭建数据仓库(保存为原始数据)<br>(3)分析处理数据(SQL,PL/SQL,JDBC)<br>(4)经过分析后搭建数据集市(hr,sales)<br>(5)提供给hr系统或销售系统</p>
-</blockquote>
-</blockquote>
-<h3 id="Hadoop和Spark都可以看成是数据仓库的一种实现"><a href="#Hadoop和Spark都可以看成是数据仓库的一种实现" class="headerlink" title="Hadoop和Spark都可以看成是数据仓库的一种实现"></a>Hadoop和Spark都可以看成是数据仓库的一种实现</h3><blockquote>
-<p>1.从ETL到搭建数据集都可以用Hadoop和Spark所提供的方式解决,也可以用传统方式解决<br>2.hadoop中使用sqoop和Flume组件完成ETL<br>3.hadoop中使用HDFS存储数据(或存入基于HDFS之上的HBase或Hive数据仓库)<br>4.hadoop中使用MapReduce(java程序)或Spark(Scala程序,只有数据计算,没有数据存储)或SQL处理数据<br>5.处理数据后使用HDFS或NoSQL:Redis存储到数据集市<br>*.大数据的终极目标是使用SQL处理数据</p>
-</blockquote>
-<h2 id="三、OLTP和OLAP"><a href="#三、OLTP和OLAP" class="headerlink" title="三、OLTP和OLAP"></a>三、OLTP和OLAP</h2><blockquote>
-<p>LTP:Online Transaction processing 联机事务处理，指：insert、update、delete —&gt; 事务</p>
-</blockquote>
-<blockquote>
-<p>OLAP:Online Analytic Processing 联机分析处理，一般只做查询 —&gt; 数据仓库就是一种OLAP的应用系统</p>
-</blockquote>
-<blockquote>
-<p>Hadoop、Spark看成是一种数据仓库的解决方案</p>
-</blockquote>
-<blockquote>
-<p>数据仓库（查询）不支持事务</p>
-</blockquote>
-<h2 id="四、Google的基本思想-三篇论文"><a href="#四、Google的基本思想-三篇论文" class="headerlink" title="四、Google的基本思想:三篇论文"></a>四、<strong>Google的基本思想:三篇论文</strong></h2><h3 id="一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统"><a href="#一-GFS（Google-File-System）-—-HDFS（Hadoop-Distributed-File-System）：分布式文件系统" class="headerlink" title="(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统"></a>(一)GFS（Google File System）  —- HDFS（Hadoop Distributed File System）：分布式文件系统</h3><blockquote>
-<p>(*) HDFS = NameNode + SecondaryNameNode + DataNode<br>1.分布式文件系统<br>2.大数据的存储问题<br>3.HDFS中，记录数据的位置信息（元信息） —- 采用倒排索引（Reverted Index）</p>
-<blockquote>
-<p>(1)什么是索引？Index<br>    * CREATE INDEX创建索引<br>    * 索引就是一个记录（Oracle中索引表保存的是有规律的行地址）<br>    * 通过索引可以找到对应的数据<br>(2)什么是倒排索引？<br>    * 最简单的倒排索引：单词表（wordID，word，index）<br>(3)NameNode（主节点，名称节点）是整个HDFS的管理员，和SecondaryNameNode（第二名称节点）同处一台主机，负责管理DateNode（从节点，数据节点），并不负责存储，与DateNode（从节点，数据节点）构成HDFS环境</p>
-</blockquote>
-</blockquote>
-<h3 id="二-MapReduce：分布计算模型，问题来源PageRank（网页排名）"><a href="#二-MapReduce：分布计算模型，问题来源PageRank（网页排名）" class="headerlink" title="(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）"></a>(二)MapReduce：分布计算模型，问题来源PageRank（网页排名）</h3><blockquote>
-<p>1.PageRank（网页排名）<br>2.MapReduce的标程模型：</p>
-<blockquote>
-<p>*. 核心：先拆分（拆分计算，Map阶段），再合并（Reduce阶段）<br>*. MR任务：job=map+reduce<br>*. Map的输出同时也是Reduce的输入<br>*. 一个MR任务一共存在四对输入和输出（<key value="">），Map的输入和输出，Reduce的输入和输出<br>*. k2=k3，v2和v3数据类型一致，v3是一个集合，该集合中的每个值就是v2<br>*. 所有的<key value="">数据类型必须是Hadoop自己的数据类型（为了实现Hadoop的序列化机制）<br>*. MR任务处理的是HDFS上的数据<br>*. Hadoop2.X开始，通过Yarn容器编程部署MR任务（ResourceManager&lt;主节点&gt; + NodeManager&lt;从节点&gt;）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example:/root/training/Hadoop-2.7.3/Share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar</span><br><span class="line">Yarn的web console:http://192.168.226.11:8088</span><br><span class="line">命令://hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount /input/data.txt /out/wcl</span><br></pre></td></tr></table></figure></key></key></p>
-</blockquote>
-</blockquote>
-<h3 id="三-BigTable：大表-—-NoSQL数据库：HBase"><a href="#三-BigTable：大表-—-NoSQL数据库：HBase" class="headerlink" title="(三)BigTable：大表 —- NoSQL数据库：HBase"></a>(三)BigTable：大表 —- NoSQL数据库：HBase</h3><blockquote>
-<p>1.关系型数据库：以二维表的形式保存数据<br>2.大表的基本思想：所有的数据存入一张表（通过牺牲空间，换取时间）<br>3.常见的NoSQL数据库（一般为行式数据库，适合）</p>
-<blockquote>
-<p>* Redis：内存数据库（一般为行式数据库，适合DML操作，insert，update，delect）<br>* MongoDB：面向文档（BSON文档：是JSON的二进制）<br>* HBase：面向列（列式数据库，查询，select，在HBase中，rowKey不能为null，但是可以重复，相同的ey是一条记录）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase = ZooKeeper + HMaster（主节点） + RegionServer（从节点）</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-</blockquote>
-<hr>
-<h1 id="hadoop的环境"><a href="#hadoop的环境" class="headerlink" title="hadoop的环境"></a><strong>hadoop的环境</strong></h1><h2 id="一、Hadoop的目录结构"><a href="#一、Hadoop的目录结构" class="headerlink" title="一、Hadoop的目录结构"></a>一、Hadoop的目录结构</h2><blockquote>
-<p>hadoop-2.7.3/  —&gt;  Hadoop的HOME目录<br>bin/  —&gt;  Hadoop的操作命令<br>etc/hadoop/  —&gt;  所有的配置文件<br>sbin/  —&gt;  Hadoop集群的命令：启动，停止等<br>share/  —&gt;  所有共享文件<br>share/hadoop  –&gt;  所有依赖jar包</p>
-</blockquote>
-<h2 id="二、Hadoop的三种安装模式"><a href="#二、Hadoop的三种安装模式" class="headerlink" title="二、Hadoop的三种安装模式"></a>二、Hadoop的三种安装模式</h2><h3 id="一-本地模式"><a href="#一-本地模式" class="headerlink" title="(一)本地模式"></a>(一)本地模式</h3><blockquote>
-<p>* 没有HDFS，只能测试MapReduce程序（不是运行在Yarn中，作为一个独立的Java程序来运行）<br>* 配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>* 本地模式中用到的路径都是本地路径，因为没有HDFS</p>
-</blockquote>
-<h3 id="二-伪分布模式"><a href="#二-伪分布模式" class="headerlink" title="(二)伪分布模式"></a>(二)伪分布模式</h3><blockquote>
-<p>* 特点：再单击上模拟一个分布式的环境，具备Hadoop的所有功能<br>* 具备HDFS：NameNode + DataNode + SecondaryNameNode（端口50070）<br>* 具备Yarn：ResourceManager + NodeManager（端口8088）<br>* 对HDFS的NameNode进行格式化（/root/training/hadoop-2.7.3/tmp）<br>* 启动HDFS：start-dfs.sh<br>* 启动Yarn：start-yarn.sh<br>* 统一启动：start-all.sh<br>* 配置文件：etc/Hadoop/hadoop-env.sh export JAVA_HOME={JAVA_HOME} 自己的JAVA_HOME路径<br>* 配置文件： </p>
-</blockquote>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//hdfs-site.xml:</span><br><span class="line"></span><br><span class="line">//配置数据块的冗余度</span><br><span class="line">//原则冗余度跟数据节点的个数保持一致，最大不要超过3</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//是否开启HDFS权限检查，默认值为true（使用默认值，需要再改）</span><br><span class="line">&lt;!--</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//core-site.xml:</span><br><span class="line"></span><br><span class="line">//配置HDFS主节点的地址，就是NameNode的地址</span><br><span class="line">//9000是RPC的通信端口</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://RedHat111:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">//HDFS数据块和元信息保存在操作系统的目录位置</span><br><span class="line">//默认值是Linux的tmp目录</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/training/hadoop-2.7.3/tmp&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//mapred-site.xml:（默认没有这个文件）</span><br><span class="line">//MR程序运行的程序或框架</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//yarn-site.xml:</span><br><span class="line">//配置yarn主节点的位置</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;RedHat111&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="三-全分布模式"><a href="#三-全分布模式" class="headerlink" title="(三)全分布模式"></a>(三)全分布模式</h3><h2 id="三、主从结构的单点故障"><a href="#三、主从结构的单点故障" class="headerlink" title="三、主从结构的单点故障"></a>三、主从结构的单点故障</h2>
+          
+          hadoop的起源与背景知识一、什么是大数据
+举例:
+
+1.电商的推荐系统(可能会用到推荐算法:协同
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/05/Hadoop-2-X管理与开发/#more" rel="contents">
@@ -1624,50 +1391,16 @@
       
         
           
-            <h1 id="文件目录操作命令"><a href="#文件目录操作命令" class="headerlink" title="文件目录操作命令"></a><strong>文件目录操作命令</strong></h1><h2 id="ls-显示文件和目录列表"><a href="#ls-显示文件和目录列表" class="headerlink" title="ls 显示文件和目录列表"></a>ls 显示文件和目录列表</h2><blockquote>
-<p>-l 列出文件的详细信息<br>-a 列出当前目录所有文件，包含隐藏文件<br>*设置环境变量：/root/.bash_profile</p>
-</blockquote>
-<h2 id="pwd-显示当前目录位置"><a href="#pwd-显示当前目录位置" class="headerlink" title="pwd 显示当前目录位置"></a>pwd 显示当前目录位置</h2><h2 id="mkdir-创建目录"><a href="#mkdir-创建目录" class="headerlink" title="mkdir 创建目录"></a>mkdir 创建目录</h2><blockquote>
-<p>-p 父目录不存在的情况下先生成父目录<br>约定：</p>
-<blockquote>
-<p>mkdir /root/tools —-&gt;安装包<br>mkdir /root/training —-&gt;安装目录</p>
-</blockquote>
-</blockquote>
-<h2 id="cd-切换目录"><a href="#cd-切换目录" class="headerlink" title="cd 切换目录"></a>cd 切换目录</h2><h2 id="touch-生成一个空文件"><a href="#touch-生成一个空文件" class="headerlink" title="touch 生成一个空文件"></a>touch 生成一个空文件</h2><h2 id="echo-生成一个带内容文件"><a href="#echo-生成一个带内容文件" class="headerlink" title="echo 生成一个带内容文件"></a>echo 生成一个带内容文件</h2><blockquote>
-<p>使用echo查看环境变量值：echo $JAVA_HOME</p>
-</blockquote>
-<h2 id="cat、tac-显示文本文件内容"><a href="#cat、tac-显示文本文件内容" class="headerlink" title="cat、tac 显示文本文件内容"></a>cat、tac 显示文本文件内容</h2><blockquote>
-<p>cat是从第一行开始写，tac是从最后一行开始写</p>
-</blockquote>
-<h2 id="cp-复制文件或目录"><a href="#cp-复制文件或目录" class="headerlink" title="cp 复制文件或目录"></a>cp 复制文件或目录</h2><h2 id="rm-删除文件"><a href="#rm-删除文件" class="headerlink" title="rm 删除文件"></a>rm 删除文件</h2><blockquote>
-<p>-r 同时删除该目录下的所有文件<br>-f 强制删除文件或目录<br>*HDFS有回收站，默认情况下关闭</p>
-</blockquote>
-<h1 id="系统操作命令"><a href="#系统操作命令" class="headerlink" title="系统操作命令"></a><strong>系统操作命令</strong></h1><h2 id="ps-显示瞬间的进程状态"><a href="#ps-显示瞬间的进程状态" class="headerlink" title="ps 显示瞬间的进程状态"></a>ps 显示瞬间的进程状态</h2><blockquote>
-<p>ps -ef：使用标准格式显示每个进程信息</p>
-</blockquote>
-<h2 id="hostname-显示主机名"><a href="#hostname-显示主机名" class="headerlink" title="hostname 显示主机名"></a>hostname 显示主机名</h2><h2 id="kill-杀死一个进程"><a href="#kill-杀死一个进程" class="headerlink" title="kill 杀死一个进程"></a>kill 杀死一个进程</h2><blockquote>
-<p>-9 强制杀死一个进程<br>-3 如果针对java进程，打印java进程的线程信息Thread Dump</p>
-</blockquote>
-<h1 id="打包命令"><a href="#打包命令" class="headerlink" title="打包命令"></a><strong>打包命令</strong></h1><h2 id="gzip-压缩（解压）文件或目录，压缩文件后缀为gz"><a href="#gzip-压缩（解压）文件或目录，压缩文件后缀为gz" class="headerlink" title="gzip 压缩（解压）文件或目录，压缩文件后缀为gz"></a>gzip 压缩（解压）文件或目录，压缩文件后缀为gz</h2><h2 id="bzip2-压缩（解压）文件或目录，压缩文件后缀为bz2"><a href="#bzip2-压缩（解压）文件或目录，压缩文件后缀为bz2" class="headerlink" title="bzip2 压缩（解压）文件或目录，压缩文件后缀为bz2"></a>bzip2 压缩（解压）文件或目录，压缩文件后缀为bz2</h2><h2 id="tar-文件、目录打（解）包"><a href="#tar-文件、目录打（解）包" class="headerlink" title="tar 文件、目录打（解）包"></a>tar 文件、目录打（解）包</h2><blockquote>
-<p>-zxvf 解压缩<br>-C 解压到指定目录下</p>
-</blockquote>
-<h1 id="权限管理（非常类似HDFS权限管理）"><a href="#权限管理（非常类似HDFS权限管理）" class="headerlink" title="权限管理（非常类似HDFS权限管理）"></a><strong>权限管理（非常类似HDFS权限管理）</strong></h1><h2 id="权限的类型"><a href="#权限的类型" class="headerlink" title="权限的类型"></a>权限的类型</h2><blockquote>
-<p>r 读<br>w 写<br>x 执行</p>
-</blockquote>
-<h2 id="ls-l、ll-查看权限"><a href="#ls-l、ll-查看权限" class="headerlink" title="ls -l、ll 查看权限"></a>ls -l、ll 查看权限</h2><blockquote>
-<p>十位字符，第一位如果为d，则代表该文件为目录<br>后九位分为三组，每一组都按读写执行的顺序排列</p>
-<blockquote>
-<p>第一组：当前用户<br>第二组：同组用户<br>第三组：其他用户<br>权限用二进制表示，有为1，没有为0（rwx -&gt; 111，rw- -&gt; 110）<br>chmod：改变权限<br>chmod (u/g/o/a)+(r/w/x) 文件名（括号内可选）<br>chmod 777 文件名（每一位十进制数代表一组权限，此处为所有用户可读可写可执行）</p>
-</blockquote>
-</blockquote>
-<h2 id="案例分析-java的死锁或者性能瓶颈分析"><a href="#案例分析-java的死锁或者性能瓶颈分析" class="headerlink" title="案例分析:java的死锁或者性能瓶颈分析"></a>案例分析:java的死锁或者性能瓶颈分析</h2><blockquote>
-<p>JDK heap dump:分析OOM的问题<br>JDK Thread dumo:分析性能瓶颈(线程信息)<br>得到Thread dump:</p>
-<blockquote>
-<p>在linux:kill -3 PID<br>在windows下:Fn + B 或Ctrl + Break</p>
-</blockquote>
-</blockquote>
-<h1 id="配置IP"><a href="#配置IP" class="headerlink" title="配置IP"></a><strong>配置IP</strong></h1><h2 id="ip-config：查看IP状态"><a href="#ip-config：查看IP状态" class="headerlink" title="ip config：查看IP状态"></a>ip config：查看IP状态</h2><h2 id="更改ip配置：修改-etc-sysconfig-network-scripts下的ifcfg-eth"><a href="#更改ip配置：修改-etc-sysconfig-network-scripts下的ifcfg-eth" class="headerlink" title="更改ip配置：修改/etc/sysconfig/network-scripts下的ifcfg-eth*"></a>更改ip配置：修改/etc/sysconfig/network-scripts下的ifcfg-eth*</h2>
-          
+          文件目录操作命令ls 显示文件和目录列表
+-l 列出文件的详细信息-a 列出当前目录所有文件，包含隐
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/05/基础命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1807,26 +1540,18 @@
       
         
           
-            <h3 id="离线计算"><a href="#离线计算" class="headerlink" title="离线计算"></a><strong>离线计算</strong></h3><blockquote>
-<p><strong>Hadoop模块</strong></p>
-<blockquote>
-<p>1.数据存储：HDFS（Hadoop Distributed File System）<br>2.数据计算：MapReduce（java程序、实现离线计算）：在Hadoop 2.X后，Yarn容器中<br>3.Hive：基于HDFS之上的数据仓库，支持SQL语句<br>4.HBase：基于HDFS之上的NoSQL数据库<br>5.ZooKeeper：实现HA（High Availability高可用性、秒杀系统）的功能<br>6.其他：Sqoop、Flume、Pig</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p><strong>实时计算</strong></p>
-<blockquote>
-<p>1.Redis内存NoSQL数据库<br> Redis Cluster：分布式解决方案<br>2.Apache Storm：进行试试计算（流式计算）</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p><strong>Spark：只有数据计算，没有数据的存储（依赖HDFS）</strong></p>
-<blockquote>
-<p>1.Scala变成语言：多范式的编程语言（支持多方式编程：1、面向对象 2、函数式编程）<br>2.Spark Core：内核，相当于MapReduce；<br>        最重要的概念：RDD（弹性分布式数据集）<br>3.Spark SQL：类似Hive、支持SQL<br>4.Spark Streaming：处理流式计算的模块，类似Storm</p>
-</blockquote>
-</blockquote>
+          离线计算
+Hadoop模块
 
-          
+1.数据存储：HDFS（Hadoop Distributed File
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/04/大数据模块/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1965,123 +1690,20 @@
 
       
         
-          <h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><strong>Redis</strong></h3><hr>
-<blockquote>
-<p><strong>高性能Key-Value服务器</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>多种数据结构</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>丰富的功能</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>高可用分布式支持</strong></p>
-</blockquote>
-<hr>
-<h3 id="Redis初识"><a href="#Redis初识" class="headerlink" title="Redis初识"></a><strong>Redis初识</strong></h3><ul>
-<li>由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术，如今Redis已经成为必备技能。<blockquote>
-<ul>
-<li>典型使用场景<blockquote>
-<ol>
-<li>缓存系统：用户访问App server，App Server从cache（Redis）请求数据，如果有，直接返回给App Server，如果没有，cache将从Storage（持久化存储空间）中查找，查找后将从Storage中查找到的数据存入cache中以方便下次查找，而后直接由Storage返回给App Server。</li>
-<li>计数器：微博、视频网站的转发、评论数。</li>
-<li>消息队列系统</li>
-<li>排行榜</li>
-<li>社交网络</li>
-<li>实时系统</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<hr>
-<blockquote>
-<p><strong>开源</strong><br><strong>基于键值的存储服务系统</strong><br><strong>支持多种数据结构</strong><br><strong>性能高，功能丰富</strong></p>
-</blockquote>
-<hr>
-<h3 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a><strong>Redis特性</strong></h3><hr>
-<blockquote>
-<p><strong>速度快</strong>（10W OPS(读写)）</p>
-<blockquote>
-<ol>
-<li><em>将数据存在内存</em></li>
-<li>用c语言编写</li>
-<li>线性模型使用单线程</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>持久化</strong>（断电不丢数据）</p>
-<blockquote>
-<p>Redis所有数据保持在内存中，对数据的更新将异步地保存到硬盘上</p>
-</blockquote>
-<hr>
-<p><strong>多种数据结构</strong></p>
-<blockquote>
-<ul>
-<li>常规</li>
-</ul>
-<ol>
-<li>字符串（Strings/Blobs/Bitmaps）</li>
-<li>哈希（Hash Tables(objects!)）</li>
-<li>列表（Linked Lists）</li>
-<li>集合（Sets）</li>
-<li>有序集合（Sorted Sets）</li>
-</ol>
-<ul>
-<li>衍生</li>
-</ul>
-<ol>
-<li>位图（BitMaps）</li>
-<li>超小内存唯一值技术（HyperLogLog——有一定误差）</li>
-<li>地理信息定位（GEO）</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>支持多种编辑语言</strong></p>
-<blockquote>
-<ol>
-<li>Java</li>
-<li>php</li>
-<li>Python</li>
-<li>Ruby</li>
-<li>Lua</li>
-<li>NodeJs</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>功能丰富</strong></p>
-<blockquote>
-<ol>
-<li>发布订阅</li>
-<li>Lua脚本</li>
-<li>事务</li>
-<li>pipeline</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>简单</strong></p>
-<blockquote>
-<ol>
-<li>23000行代码</li>
-<li>不依赖外部库（like libevent）</li>
-<li>单线程模型（开发相对容易）</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>主从复制</strong></p>
-<blockquote>
-<p>在Redis中主服务器的数据可以同步到从服务器上，为高可用以及分布式提供一个很好的基础</p>
-</blockquote>
-<hr>
-<p><strong>高可用、分布式</strong></p>
-<blockquote>
-<p>高可用 ——&gt; Redis-Sentinel(v2.8)支持高可用<br>分布式 ——&gt; Redis-Cluster(V3.0)支持分布式</p>
-</blockquote>
-<hr>
-</blockquote>
+          
+          Redis
+
+高性能Key-Value服务器
+
+
+多种数据结构
+
+
+丰富的功能
+
+
+高可用分布式支持
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/29/redis初识/#more" rel="contents">
