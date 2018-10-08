@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T12:43:35.065Z">
+<meta property="og:updated_time" content="2018-10-08T12:48:43.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS">
 <meta name="twitter:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
@@ -335,7 +335,8 @@
 <h1 id="HDFS的体系架构"><a href="#HDFS的体系架构" class="headerlink" title="HDFS的体系架构"></a>HDFS的体系架构</h1><h2 id="NameNode：名称节点"><a href="#NameNode：名称节点" class="headerlink" title="NameNode：名称节点"></a>NameNode：名称节点</h2><ul>
 <li>是HDFS的主节点、管理员</li>
 <li>接收客户端（命令行、java程序）的请求：创建目录、上传数据、下载数据、删除数据等</li>
-<li>管理和维护HDFS的日志和元信息    <blockquote>
+<li><p>管理和维护HDFS的日志和元信息    </p>
+<blockquote>
 <p>日志文件（edits文件）：记录的是客户端的所有操作，是一个二进制文件（JSON）</p>
 <ol>
 <li>位置：/root/training/hadoop/tmp/dfs/name/current</li>
@@ -343,14 +344,16 @@
 <li>hdfs oev -i edits_inprogress_00000000000000XXXXX -o ~/a.xml：通过日志查看器（edits viewer），把edits文件转换成文本（xml）格式</li>
 </ol>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p>元信息（fsimage文件）：记录的是数据块的位置信息，数据块的冗余信息，是一个二进制文件</p>
-<pre><code>1. 位置：/root/training/hadoop/tmp/dfs/name/current
-2. fsimage_0000000000000XXXXX：元信息记录文件
-3. hdfs oiv -i fsimage_000000000000XXXXX -o ~/b.xml：将元信息记录文件转换成文本（xml或txt）格式
-</code></pre></blockquote>
+<ol>
+<li>位置：/root/training/hadoop/tmp/dfs/name/current</li>
+<li>fsimage_0000000000000XXXXX：元信息记录文件</li>
+<li>hdfs oiv -i fsimage_000000000000XXXXX -o ~/b.xml：将元信息记录文件转换成文本（xml或txt）格式</li>
+</ol>
+</blockquote>
+</li>
+</ul>
 <h2 id="DataNode：数据节点"><a href="#DataNode：数据节点" class="headerlink" title="DataNode：数据节点"></a>DataNode：数据节点</h2><ul>
 <li>按照数据块保存数据<blockquote>
 <p>1.X : 64M<br>2.X : 128M</p>
