@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T12:32:42.366Z">
+<meta property="og:updated_time" content="2018-10-08T12:43:35.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS">
 <meta name="twitter:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
@@ -337,22 +337,43 @@
 <li>接收客户端（命令行、java程序）的请求：创建目录、上传数据、下载数据、删除数据等</li>
 <li>管理和维护HDFS的日志和元信息    <blockquote>
 <p>日志文件（edits文件）：记录的是客户端的所有操作，是一个二进制文件（JSON）</p>
+<ol>
+<li>位置：/root/training/hadoop/tmp/dfs/name/current</li>
+<li>edit_inprogress_00000000000000XXXXX：正在操作的日志文件</li>
+<li>hdfs oev -i edits_inprogress_00000000000000XXXXX -o ~/a.xml：通过日志查看器（edits viewer），把edits文件转换成文本（xml）格式</li>
+</ol>
+</blockquote>
+</li>
+</ul>
 <blockquote>
-<p>位置：/root/training/hadoop/tmp/dfs/name/current<br>edit_inprogress_00000000000000XXXXX：正在操作的日志文件<br>hdfs oev -i edits_inprogress_00000000000000XXXXX -o ~/a.xml：通过日志查看器（edits viewer），把edits文件转换成文本（xml）格式<br>元信息（fsimage文件）：记录的是数据块的位置信息，数据块的冗余信息，是一个二进制文件<br>位置：/root/training/hadoop/tmp/dfs/name/current<br>fsimage_0000000000000XXXXX：元信息记录文件<br>hdfs oiv -i fsimage_000000000000XXXXX -o ~/b.xml：将元信息记录文件转换成文本（xml或txt）格式</p>
-</blockquote>
-</blockquote>
-<h2 id="DataNode：数据节点"><a href="#DataNode：数据节点" class="headerlink" title="DataNode：数据节点"></a>DataNode：数据节点</h2></li>
+<p>元信息（fsimage文件）：记录的是数据块的位置信息，数据块的冗余信息，是一个二进制文件</p>
+<pre><code>1. 位置：/root/training/hadoop/tmp/dfs/name/current
+2. fsimage_0000000000000XXXXX：元信息记录文件
+3. hdfs oiv -i fsimage_000000000000XXXXX -o ~/b.xml：将元信息记录文件转换成文本（xml或txt）格式
+</code></pre></blockquote>
+<h2 id="DataNode：数据节点"><a href="#DataNode：数据节点" class="headerlink" title="DataNode：数据节点"></a>DataNode：数据节点</h2><ul>
 <li>按照数据块保存数据<blockquote>
 <p>1.X : 64M<br>2.X : 128M</p>
 </blockquote>
 </li>
-<li>数据块：表现形式就是一个文件（blk打头）<blockquote>
-<p>位置：/root/training/hadoop-2.7.3/tmp/dfs/data/current/BP-XXX-数据节点-XXX/current/finalized/subdir0/subdir0/<br>一个数据块对应的是一对文件，‘.meta’记录的是数据块的元信息<br>设置数据块冗余度规则：一般跟数据节点个数相同，但最大不要超过3<br>Hadoop 3.X之前，会造成存储空间极大的浪费<br>Hadoop 3.X之后，采用HDFS纠删码技术，使得存储空间节约一半</p>
-</blockquote>
-<h2 id="SecondaryNameNode：第二名称节点"><a href="#SecondaryNameNode：第二名称节点" class="headerlink" title="SecondaryNameNode：第二名称节点"></a>SecondaryNameNode：第二名称节点</h2></li>
-<li>职责：进行日志信息的合并<blockquote>
-<p>SecondaryNameNode向NameNode下载edits日志文件和fsimage元信息文件<br>将edits中最新的信息写入fsimage文件<br>将合并后的文件上传给NameNode<br>当上次合并发生以后，用户进行新的操作，NameNode将产生新的edits_inprogress<br>当HDFS发出检查点（checkpoint）的时候，会进行日志信息合并<br>默认情况下，HDFS每隔60分钟或edits文件达到了64M产生一个检查点</p>
-</blockquote>
+<li>数据块：表现形式就是一个文件（blk打头）<ol>
+<li>位置：/root/training/hadoop-2.7.3/tmp/dfs/data/current/BP-XXX-数据节点-XXX/current/finalized/subdir0/subdir0/</li>
+<li>一个数据块对应的是一对文件，‘.meta’记录的是数据块的元信息</li>
+<li>设置数据块冗余度规则：一般跟数据节点个数相同，但最大不要超过3</li>
+<li>Hadoop 3.X之前，会造成存储空间极大的浪费</li>
+<li>Hadoop 3.X之后，采用HDFS纠删码技术，使得存储空间节约一半</li>
+</ol>
+</li>
+</ul>
+<h2 id="SecondaryNameNode：第二名称节点"><a href="#SecondaryNameNode：第二名称节点" class="headerlink" title="SecondaryNameNode：第二名称节点"></a>SecondaryNameNode：第二名称节点</h2><ul>
+<li>职责：进行日志信息的合并<ol>
+<li>SecondaryNameNode向NameNode下载edits日志文件和fsimage元信息文件</li>
+<li>将edits中最新的信息写入fsimage文件</li>
+<li>将合并后的文件上传给NameNode</li>
+<li>当上次合并发生以后，用户进行新的操作，NameNode将产生新的edits_inprogress</li>
+<li>当HDFS发出检查点（checkpoint）的时候，会进行日志信息合并</li>
+<li>默认情况下，HDFS每隔60分钟或edits文件达到了64M产生一个检查点</li>
+</ol>
 </li>
 <li>由于edits文件记录了最新的状态信息，并且随着操作越多，edits就会越大</li>
 <li>把edits中的最新信息写到fsimage中</li>
