@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T12:48:43.503Z">
+<meta property="og:updated_time" content="2018-10-12T15:08:23.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS">
 <meta name="twitter:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
@@ -282,28 +282,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -335,23 +313,14 @@
 <h1 id="HDFS的体系架构"><a href="#HDFS的体系架构" class="headerlink" title="HDFS的体系架构"></a>HDFS的体系架构</h1><h2 id="NameNode：名称节点"><a href="#NameNode：名称节点" class="headerlink" title="NameNode：名称节点"></a>NameNode：名称节点</h2><ul>
 <li>是HDFS的主节点、管理员</li>
 <li>接收客户端（命令行、java程序）的请求：创建目录、上传数据、下载数据、删除数据等</li>
-<li><p>管理和维护HDFS的日志和元信息    </p>
-<blockquote>
+<li>管理和维护HDFS的日志和元信息    <blockquote>
 <p>日志文件（edits文件）：记录的是客户端的所有操作，是一个二进制文件（JSON）</p>
-<ol>
-<li>位置：/root/training/hadoop/tmp/dfs/name/current</li>
-<li>edit_inprogress_00000000000000XXXXX：正在操作的日志文件</li>
-<li>hdfs oev -i edits_inprogress_00000000000000XXXXX -o ~/a.xml：通过日志查看器（edits viewer），把edits文件转换成文本（xml）格式</li>
-</ol>
-</blockquote>
 <blockquote>
-<p>元信息（fsimage文件）：记录的是数据块的位置信息，数据块的冗余信息，是一个二进制文件</p>
-<ol>
-<li>位置：/root/training/hadoop/tmp/dfs/name/current</li>
-<li>fsimage_0000000000000XXXXX：元信息记录文件</li>
-<li>hdfs oiv -i fsimage_000000000000XXXXX -o ~/b.xml：将元信息记录文件转换成文本（xml或txt）格式</li>
-</ol>
+<p>位置：/root/training/hadoop/tmp/dfs/name/current<br>edit_inprogress_00000000000000XXXXX：正在操作的日志文件<br>hdfs oev -i edits_inprogress_00000000000000XXXXX -o ~/a.xml：通过日志查看器（edits viewer），把edits文件转换成文本（xml）格式<br>元信息（fsimage文件）：记录的是数据块的位置信息，数据块的冗余信息，是一个二进制文件<br>位置：/root/training/hadoop/tmp/dfs/name/current<br>fsimage_0000000000000XXXXX：元信息记录文件<br>hdfs oiv -i fsimage_000000000000XXXXX -o ~/b.xml：将元信息记录文件转换成文本（xml或txt）格式</p>
 </blockquote>
+</blockquote>
+</li>
+<li>HDFS元信息保存位置配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hdfs-site.xml:</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.name.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;储存位置&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="DataNode：数据节点"><a href="#DataNode：数据节点" class="headerlink" title="DataNode：数据节点"></a>DataNode：数据节点</h2><ul>
@@ -359,30 +328,44 @@
 <p>1.X : 64M<br>2.X : 128M</p>
 </blockquote>
 </li>
-<li>数据块：表现形式就是一个文件（blk打头）<ol>
-<li>位置：/root/training/hadoop-2.7.3/tmp/dfs/data/current/BP-XXX-数据节点-XXX/current/finalized/subdir0/subdir0/</li>
-<li>一个数据块对应的是一对文件，‘.meta’记录的是数据块的元信息</li>
-<li>设置数据块冗余度规则：一般跟数据节点个数相同，但最大不要超过3</li>
-<li>Hadoop 3.X之前，会造成存储空间极大的浪费</li>
-<li>Hadoop 3.X之后，采用HDFS纠删码技术，使得存储空间节约一半</li>
-</ol>
+<li>数据块：表现形式就是一个文件（blk打头）<blockquote>
+<p>位置：/root/training/hadoop-2.7.3/tmp/dfs/data/current/BP-XXX-数据节点-XXX/current/finalized/subdir0/subdir0/<br>一个数据块对应的是一对文件，‘.meta’记录的是数据块的元信息<br>设置数据块冗余度规则：一般跟数据节点个数相同，但最大不要超过3<br>Hadoop 3.X之前，会造成存储空间极大的浪费<br>Hadoop 3.X之后，采用HDFS纠删码技术，使得存储空间节约一半</p>
+</blockquote>
+</li>
+<li>HDFS文件系统的保存位置配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hdfs-site.xml:</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.data.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;储存位置&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="SecondaryNameNode：第二名称节点"><a href="#SecondaryNameNode：第二名称节点" class="headerlink" title="SecondaryNameNode：第二名称节点"></a>SecondaryNameNode：第二名称节点</h2><ul>
-<li>职责：进行日志信息的合并<ol>
-<li>SecondaryNameNode向NameNode下载edits日志文件和fsimage元信息文件</li>
-<li>将edits中最新的信息写入fsimage文件</li>
-<li>将合并后的文件上传给NameNode</li>
-<li>当上次合并发生以后，用户进行新的操作，NameNode将产生新的edits_inprogress</li>
-<li>当HDFS发出检查点（checkpoint）的时候，会进行日志信息合并</li>
-<li>默认情况下，HDFS每隔60分钟或edits文件达到了64M产生一个检查点</li>
-</ol>
+<li>职责：进行日志信息的合并<blockquote>
+<p>SecondaryNameNode向NameNode下载edits日志文件和fsimage元信息文件<br>将edits中最新的信息写入fsimage文件<br>将合并后的文件上传给NameNode<br>当上次合并发生以后，用户进行新的操作，NameNode将产生新的edits_inprogress<br>当HDFS发出检查点（checkpoint）的时候，会进行日志信息合并<br>默认情况下，HDFS每隔60分钟或edits文件达到了64M产生一个检查点</p>
+</blockquote>
 </li>
 <li>由于edits文件记录了最新的状态信息，并且随着操作越多，edits就会越大</li>
 <li>把edits中的最新信息写到fsimage中</li>
 <li>edits文件就可以清空</li>
+<li>配置SecondaryNameNode节点位置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hdfs-site.xml:</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dis.namenode.secondary.http-address&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;RedHat112:50090&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<h1 id="HDFS基础命令"><a href="#HDFS基础命令" class="headerlink" title="HDFS基础命令"></a>HDFS基础命令</h1><ul>
+<li>hdfs dfs -help        ：查看帮助</li>
+<li>hdfs dfs -ls /        ：列出/目录下的文件和目录</li>
+<li>hdfs dfs -put /本地路径 /上传路径        ：上传文件</li>
+<li>hdfs dfs -moveFromLocal /本地路径 /上传路径        ：剪切上传文件</li>
+<li>hdfs dfs -get /hdfs路径 /本地路径        ：下载文件</li>
+<li>hdfs dfs -getmerge /hdfs目录（是一个文件夹） /合并后的文件        ：合并下载</li>
+<li>hdfs dfs -mkdir /目录名        ：创建目录</li>
+<li>hdfs dfs -mkdir -p /目录名/目录名        ：创建多级目录</li>
+<li>hdfs dfs -mv /需要移动的目录（文件） /需要移动到的位置        ：移动文件/文件夹</li>
+<li>hdfs dfs -copy /需要复制的目录（文件） /需要复制到的位置        ：复制文件/文件夹</li>
+<li>hdfs dfs -rm /文件路径       ：删除文件</li>
+<li>hdfs dfs -rm -r /目录路径        ：删除目录</li>
+<li>hdfs dfs -cat /文件路径        ：查看文件</li>
+<li>hdfs dfs -tail -f /文件路径        ：查看文件的最后指定行</li>
+<li>hdfs dfs -count /目录路径（文件路径）        ：查看目录（文件）文件夹数，文件数、大小</li>
+<li>hdfs dfs -df -h /        ：查看hdfs的总空间</li>
+<li>hdfs dfs -setrep 冗余度 /文件路径        ：设置单个文件冗余度</li>
+</ul>
+<h1 id="简单的HDFS上传文件代码"><a href="#简单的HDFS上传文件代码" class="headerlink" title="简单的HDFS上传文件代码"></a>简单的HDFS上传文件代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package hdfs.demo1;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.net.URI;</span><br><span class="line">import java.net.URISyntaxException;</span><br><span class="line">import org.apache.hadoop.conf.Configuration;</span><br><span class="line">import org.apache.hadoop.fs.FileSystem;</span><br><span class="line">import org.apache.hadoop.fs.Path;</span><br><span class="line"></span><br><span class="line">public class HDFSClient &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException &#123;</span><br><span class="line">		</span><br><span class="line">		//客户端加载配置文件</span><br><span class="line">		Configuration conf = new Configuration();</span><br><span class="line">		</span><br><span class="line">		//指定配置（设置冗余度）</span><br><span class="line">		conf.set(&quot;dfs.replication&quot;,&quot;2&quot;);</span><br><span class="line">		</span><br><span class="line">		//指定块大小</span><br><span class="line">		conf.set(&quot;dfs.blocksize&quot;, &quot;64m&quot;);</span><br><span class="line">		</span><br><span class="line">		//构造客户端</span><br><span class="line">		FileSystem fS = FileSystem.get(new URI(&quot;hdfs://192.168.0.102:9000/&quot;),conf,&quot;root&quot;);</span><br><span class="line">		</span><br><span class="line">		//上传文件</span><br><span class="line">		fS.copyFromLocalFile(new Path(&quot;D:/123.txt&quot;), new Path(&quot;/work.txt&quot;));</span><br><span class="line">		</span><br><span class="line">		//关闭资源</span><br><span class="line">		fS.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -415,6 +398,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/12/eclipse的Hadoop环境配置-2/" rel="prev" title="eclipse的Hadoop环境配置">
+                eclipse的Hadoop环境配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -495,7 +482,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS-的全分布配置"><span class="nav-number">1.</span> <span class="nav-text">HDFS 的全分布配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS的体系架构"><span class="nav-number">2.</span> <span class="nav-text">HDFS的体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NameNode：名称节点"><span class="nav-number">2.1.</span> <span class="nav-text">NameNode：名称节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataNode：数据节点"><span class="nav-number">2.2.</span> <span class="nav-text">DataNode：数据节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecondaryNameNode：第二名称节点"><span class="nav-number">2.3.</span> <span class="nav-text">SecondaryNameNode：第二名称节点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS-的全分布配置"><span class="nav-number">1.</span> <span class="nav-text">HDFS 的全分布配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS的体系架构"><span class="nav-number">2.</span> <span class="nav-text">HDFS的体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NameNode：名称节点"><span class="nav-number">2.1.</span> <span class="nav-text">NameNode：名称节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataNode：数据节点"><span class="nav-number">2.2.</span> <span class="nav-text">DataNode：数据节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecondaryNameNode：第二名称节点"><span class="nav-number">2.3.</span> <span class="nav-text">SecondaryNameNode：第二名称节点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS基础命令"><span class="nav-number">3.</span> <span class="nav-text">HDFS基础命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单的HDFS上传文件代码"><span class="nav-number">4.</span> <span class="nav-text">简单的HDFS上传文件代码</span></a></li></ol></div>
             
 
           </div>
