@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T15:12:28.894Z">
+<meta property="og:updated_time" content="2018-10-15T15:05:58.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS">
 <meta name="twitter:description" content="HDFS 的全分布配置12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061(1)hdfs-site.xml:    &amp;lt;!—配置数据块的冗余度，默认是3—&amp;gt;    &amp;lt;!—原则冗余度跟数据节点保持一致，最大不要超">
@@ -388,6 +388,35 @@
 <li>hdfs dfs -setrep 冗余度 /文件路径        ：设置单个文件冗余度</li>
 </ul>
 <h1 id="简单的HDFS上传文件代码"><a href="#简单的HDFS上传文件代码" class="headerlink" title="简单的HDFS上传文件代码"></a>简单的HDFS上传文件代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package hdfs.demo1;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.net.URI;</span><br><span class="line">import java.net.URISyntaxException;</span><br><span class="line">import org.apache.hadoop.conf.Configuration;</span><br><span class="line">import org.apache.hadoop.fs.FileSystem;</span><br><span class="line">import org.apache.hadoop.fs.Path;</span><br><span class="line"></span><br><span class="line">public class HDFSClient &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException &#123;</span><br><span class="line">		</span><br><span class="line">		//客户端加载配置文件</span><br><span class="line">		Configuration conf = new Configuration();</span><br><span class="line">		</span><br><span class="line">		//指定配置（设置冗余度）</span><br><span class="line">		conf.set(&quot;dfs.replication&quot;,&quot;2&quot;);</span><br><span class="line">		</span><br><span class="line">		//指定块大小</span><br><span class="line">		conf.set(&quot;dfs.blocksize&quot;, &quot;64m&quot;);</span><br><span class="line">		</span><br><span class="line">		//构造客户端</span><br><span class="line">		FileSystem fS = FileSystem.get(new URI(&quot;hdfs://192.168.0.102:9000/&quot;),conf,&quot;root&quot;);</span><br><span class="line">		</span><br><span class="line">		//上传文件</span><br><span class="line">		fS.copyFromLocalFile(new Path(&quot;D:/123.txt&quot;), new Path(&quot;/work.txt&quot;));</span><br><span class="line">		</span><br><span class="line">		//关闭资源</span><br><span class="line">		fS.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="HDFS写数据流程"><a href="#HDFS写数据流程" class="headerlink" title="HDFS写数据流程"></a>HDFS写数据流程</h1><ul>
+<li>请求N阿么N哦的上传文件123.txt（客户端——》NameNode）</li>
+<li>响应可以上传的文件（NameNode——》客户端）</li>
+<li>请求上传第一个Block（块文件）（0～120m），请求分会DataNode（客户端——》NameNode）</li>
+<li>返回DataNode1，DataNode2，DataNode3，表示采用这两个酒店储存具体的数据（NameNode——》客户端）</li>
+<li>请求建立一个Block传输通道（客户端——》DataNode1——》dataNode2——》dataNode3）</li>
+<li>DataNode1，DataNode2，DataNode3应答成功（DataNode——》客户端）</li>
+<li>传输数据（客户端——》DataNode1——》dataNode2——》dataNode3）</li>
+</ul>
+<h1 id="HDFS读数据流程"><a href="#HDFS读数据流程" class="headerlink" title="HDFS读数据流程"></a>HDFS读数据流程</h1><ul>
+<li>请求下载文件（客户端——》NameNode）</li>
+<li>返回目标文件的元数据（NameNode——》客户端）</li>
+<li>通过元信息请求第一块数据（客户端——》DataNode）</li>
+<li>传输数据给客户端（DtatNode——》客户端）</li>
+<li>继续通过元信息请求第二块数据。。。</li>
+</ul>
+<h1 id="NameNode与SecondaryNameNode工作机制"><a href="#NameNode与SecondaryNameNode工作机制" class="headerlink" title="NameNode与SecondaryNameNode工作机制"></a>NameNode与SecondaryNameNode工作机制</h1><ul>
+<li>启动集群，加载edits（编辑日志）与fsimage（镜像文件）</li>
+<li>元数据增删查改（客户端——》NameNode）</li>
+<li>SecondaryNameNode请求是否需要CheckPoint（SecondaryNameNode——》NameNode）</li>
+<li>SecondaryNameNode请求执行CheckPoint（SercondaryNameNode——》NameNode）</li>
+<li>CheckPoint触发条件：1.通过定时；2.通过edits操作记录数量</li>
+<li>CheckPoint触发时，SecondaryNameNode向NameNode拷贝edits文件并加载到内存（SercondaryNameNode——》NameNode）</li>
+<li>生成新的镜像文件fsimage.chkpoint</li>
+<li>将fsimage.chkpoint拷贝到NameNode（SercondaryNameNode——》NameNode）</li>
+<li>NameNode将fsimage.chkpoint重命名为fsimage，再次发送到SecondaryNameNode当中（SercondaryNameNode——》NameNode）</li>
+<li>NodeName与SencondaryNameNode将新的fsimage加载到内存中</li>
+</ul>
+
       
     </div>
     
@@ -559,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS-的全分布配置"><span class="nav-number">1.</span> <span class="nav-text">HDFS 的全分布配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS的体系架构"><span class="nav-number">2.</span> <span class="nav-text">HDFS的体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NameNode：名称节点"><span class="nav-number">2.1.</span> <span class="nav-text">NameNode：名称节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataNode：数据节点"><span class="nav-number">2.2.</span> <span class="nav-text">DataNode：数据节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecondaryNameNode：第二名称节点"><span class="nav-number">2.3.</span> <span class="nav-text">SecondaryNameNode：第二名称节点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS基础命令"><span class="nav-number">3.</span> <span class="nav-text">HDFS基础命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单的HDFS上传文件代码"><span class="nav-number">4.</span> <span class="nav-text">简单的HDFS上传文件代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS-的全分布配置"><span class="nav-number">1.</span> <span class="nav-text">HDFS 的全分布配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS的体系架构"><span class="nav-number">2.</span> <span class="nav-text">HDFS的体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NameNode：名称节点"><span class="nav-number">2.1.</span> <span class="nav-text">NameNode：名称节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataNode：数据节点"><span class="nav-number">2.2.</span> <span class="nav-text">DataNode：数据节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecondaryNameNode：第二名称节点"><span class="nav-number">2.3.</span> <span class="nav-text">SecondaryNameNode：第二名称节点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS基础命令"><span class="nav-number">3.</span> <span class="nav-text">HDFS基础命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单的HDFS上传文件代码"><span class="nav-number">4.</span> <span class="nav-text">简单的HDFS上传文件代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS写数据流程"><span class="nav-number">5.</span> <span class="nav-text">HDFS写数据流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS读数据流程"><span class="nav-number">6.</span> <span class="nav-text">HDFS读数据流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NameNode与SecondaryNameNode工作机制"><span class="nav-number">7.</span> <span class="nav-text">NameNode与SecondaryNameNode工作机制</span></a></li></ol></div>
             
 
           </div>
