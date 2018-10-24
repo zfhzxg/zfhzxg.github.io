@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="###MapReduce高级特性  一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.">
+<meta name="description" content="#MapReduce高级特性 一、序列化 核心接口：Writable 如果一个类实现了Writable该类的对象可以作为Key和Value二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象） 基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Compar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MapReduce笔记">
 <meta property="og:url" content="http://yoursite.com/2018/09/10/MapReduce笔记/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="###MapReduce高级特性  一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.">
+<meta property="og:description" content="#MapReduce高级特性 一、序列化 核心接口：Writable 如果一个类实现了Writable该类的对象可以作为Key和Value二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象） 基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Compar">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T12:21:45.668Z">
+<meta property="og:updated_time" content="2018-10-22T13:34:05.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MapReduce笔记">
-<meta name="twitter:description" content="###MapReduce高级特性  一、序列化 核心接口：Writable如果一个类实现了Writable该类的对象可以作为Key和Value   二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象）  基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.">
+<meta name="twitter:description" content="#MapReduce高级特性 一、序列化 核心接口：Writable 如果一个类实现了Writable该类的对象可以作为Key和Value二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象） 基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Compar">
 
 
 
@@ -332,43 +332,90 @@
 
       
         <hr>
-<p>###<strong>MapReduce高级特性</strong></p>
-<ul>
-<li>一、序列化<blockquote>
-<p>核心接口：Writable<br>如果一个类实现了Writable该类的对象可以作为Key和Value</p>
+<p>#<strong>MapReduce高级特性</strong></p>
+<h2 id="一、序列化"><a href="#一、序列化" class="headerlink" title="一、序列化"></a>一、序列化</h2><ul>
+<li>核心接口：Writable</li>
+<li>如果一个类实现了Writable该类的对象可以作为Key和Value<h2 id="二、排序"><a href="#二、排序" class="headerlink" title="二、排序"></a>二、排序</h2></li>
+<li>规则：按照Key2排序（可以是基本数据类型，也可以是对象）<blockquote>
+<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）</p>
 </blockquote>
 </li>
-<li>二、排序<blockquote>
-<p>规则：按照Key2排序（可以是基本数据类型，也可以是对象）</p>
+<li>对象<blockquote>
+<p>SQL排序：order by 列名、表达式、别名、序号 desc/asc（desc/asc只作用于最近的一列）<br>MapReduce排序：1.该对象必须是Key2；2.必须实现序列化接口Writable；3.对象必须是可排序的（自定义排序使用java.long 接口 Comparable）</p>
+</blockquote>
+<h2 id="三、分区"><a href="#三、分区" class="headerlink" title="三、分区"></a>三、分区</h2></li>
+<li>什么是分区：partition</li>
+<li>查询：<blockquote>
+<p>1.没有分区：执行全表扫描<br>2.有分区，只扫描分区</p>
+</blockquote>
+</li>
+<li>分区的类型：<blockquote>
+<p>Orcale：</p>
 <blockquote>
-<p>基本数据类型：数字（默认升序），字符串（默认字典顺序）<br>可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Comparator）<br>对象<br>SQL排序：order by 列名、表达式、别名、序号 desc/asc（desc/asc只作用于最近的一列）<br>MapReduce排序：1.该对象必须是Key2；2.必须实现序列化接口Writable；3.对象必须是可排序的（自定义排序使用java.long 接口 Comparable）</p>
+<p>1.范围分区；<br>2.列表分区；<br>3.Hash分区；<br>4.Hash范围分区；<br>5.Hash列表分区<br>MR的分区：<br>默认情况下，MR的输出只有一个分区（一个分区就是一个文件）<br>自定义分区：按照字段进行分区（根据Map的输出&lt;Key2,Value2&gt;分区）</p>
 </blockquote>
 </blockquote>
 </li>
-<li>三、分区<blockquote>
-<p>什么是分区：partition<br>查询：</p>
-<blockquote>
-<p>1.没有分区：执行全表扫描<br>2.有分区，只扫描分区<br>分区的类型：<br>Orcale：</p>
-<blockquote>
-<p>1.范围分区；<br>2.列表分区；<br>3.Hash分区；<br>4.Hash范围分区；<br>5.Hash列表分区<br>MR的分区：<br>默认情况下，MR的输出只有一个分区（一个分区就是一个文件）<br>自定义分区：按照字段进行分区（根据Map的输出&lt;Key2,Value2&gt;分区）<br>*通过SQL的执行计划，判断效率是否提高</p>
-</blockquote>
-</blockquote>
+<li>*通过SQL的执行计划，判断效率是否提高<h2 id="四、合并"><a href="#四、合并" class="headerlink" title="四、合并"></a>四、合并</h2></li>
+<li>合并是一种特殊的Reduce</li>
+<li>合并是在Map端执行一次合并，用于减少Mapper输出到Reduce的数据量，可以提高效率</li>
+<li>平均值不能使用combiner</li>
+<li>无论有没有combiner，都没不能改变Map和Reduce对应的数据类型<h2 id="MapReduce核心：Shuffle（洗牌）"><a href="#MapReduce核心：Shuffle（洗牌）" class="headerlink" title="*MapReduce核心：Shuffle（洗牌）"></a>*MapReduce核心：Shuffle（洗牌）</h2></li>
+<li>Hadoop3.X之前会有数据落地（产生I/O操作）<h2 id="MapReduce优缺点"><a href="#MapReduce优缺点" class="headerlink" title="*MapReduce优缺点"></a>*MapReduce优缺点</h2></li>
+<li>优点<blockquote>
+<p>1.易于编程<br>2.良好的拓展性<br>3.高容错性<br>4.适合处理PB级别以上的离线处理</p>
 </blockquote>
 </li>
-<li>四、合并<blockquote>
-<p>合并是一种特殊的Reduce<br>合并是在Map端执行一次合并，用于减少Mapper输出到Reduce的数据量，可以提高效率<br>平均值不能使用combiner<br>无论有没有combiner，都没不能改变Map和Reduce对应的数据类型</p>
+<li>缺点<blockquote>
+<p>1.不擅长做实时计算<br>2.不擅长做流式计算（MR的数据源事静态的）<br>3.不支持DAG（有向图）计算（Spark）</p>
 </blockquote>
 </li>
 </ul>
 <hr>
 <hr>
-<p>###<strong>MapReduce核心：Shuffle（洗牌）</strong></p>
+<p>#<strong>Mapper，Reduce和Driver</strong></p>
 <ul>
-<li>Hadoop3.X之前会有数据落地（产生I/O操作）</li>
+<li><p>Mapper阶段：</p>
+<blockquote>
+<p>用户自定义Mapper类，要继承父类Mapper<br>Mapper的输入数据的kv对形式（kv类型可以自定义）<br>Mapper的map方法的重写（加入业务逻辑）<br>Mapper的数据输出kv对的形式（kv类型可以自定义）<br>map（）方法（maptext进程）对每个&lt;k,v&gt;只调用一次</p>
+</blockquote>
+</li>
+<li><p>Reducer阶段；</p>
+<blockquote>
+<p>用户自定义Reduce类，要继承父类Reducer<br>Reducer的数据输入类型对应的是Mapper九段的输出数据类型<br>Reducer的reduce方法重写（加入业务逻辑）<br>ReduceText进程对每组的k的&lt;k,v&gt;组只调用一次</p>
+</blockquote>
+</li>
+<li><p>Driver阶段</p>
+<blockquote>
+<p>mr程序需要一个Driver来进行任务的提交，提交的任务是一个描述了各种重要信息的job</p>
+</blockquote>
+</li>
+<li><p>提交job流程</p>
+<blockquote>
+<p>并行度：<br>一个job任务map阶段并行度由客户端所提交的任务决定<br>每一个split分配一个maptask并行处理<br>默认情况下，split大小=blocksize<br>切片是针对每一个文件单独切片<br>流程：<br>准备数据wordcount<br>创建客户端，提交任务程序driver<br>逻辑运算<br>向环形缓冲区写数据&lt;k,v&gt;（默认大小100M）<br>当环形缓冲区内存占用达到80%，进行溢写（HashPratitioner分区，key.compareTo排序（索引））<br>溢写到文件（保证分区且区内是有序的）<br>merge归并排序</p>
+</blockquote>
+</li>
 </ul>
 <hr>
 <hr>
-<p>###<strong>MapReduce常用案例</strong></p>
+<p>#<strong>Hadoop中所提供的数据序列化类型</strong></p>
+<ul>
+<li>int         &gt; IntWritable</li>
+<li>float       &gt; FloatWritable</li>
+<li>long        &gt; LongWritable</li>
+<li>double      &gt; DoubleWritable</li>
+<li>String      &gt; Text</li>
+<li>boolean     &gt; BooleanWritable</li>
+<li>byte        &gt; ByteWritable</li>
+<li>Map         &gt; MapWritable</li>
+<li>Arry        &gt; ArryWritable</li>
+</ul>
+<blockquote>
+<p>为什么要序列化？<br>存储“活的对象”<br>什么是序列化？<br>就是把内存中的对象，转换成字节序列以便于存储和网络传输<br>反序列化<br>就是将收到的字节序列或者硬盘的持久化数据，转换成内存中的对象<br>Java中的序列化<br>Serializable<br>为什么不用Java提供的序列化接口？<br>Java的序列化是一个重量级的序列化，一个对象被序列化后会附带很多额外的信息（校验信息，Header，继承体系等），不便于在网络中的高效传输，所以Hadoop开发了一套序列化鸡之（Writable），精简/高效<br>为什么序列化在Hadoop中很重要？<br>Hadoop通信是通过远程调用（rpc）实现的，需要进行序列化<br>特点：<br>1）紧凑<br>2）快速<br>3）可拓展<br>4）互操作</p>
+</blockquote>
+<hr>
+<hr>
+<p>#<strong>MapReduce常用案例</strong></p>
 <ul>
 <li>一、数据去重<blockquote>
 <p>相同Key名交给同一地址进行处理，处理后输出给Reduce，Key值唯一，Value形成数组</p>
@@ -477,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -497,7 +553,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -514,15 +570,6 @@
               </div>
             
 
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">标签</span>
-                
-              </div>
             
 
           </nav>
@@ -542,6 +589,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、序列化"><span class="nav-number">1.</span> <span class="nav-text">一、序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、排序"><span class="nav-number">2.</span> <span class="nav-text">二、排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、分区"><span class="nav-number">3.</span> <span class="nav-text">三、分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、合并"><span class="nav-number">4.</span> <span class="nav-text">四、合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce核心：Shuffle（洗牌）"><span class="nav-number">5.</span> <span class="nav-text">*MapReduce核心：Shuffle（洗牌）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce优缺点"><span class="nav-number">6.</span> <span class="nav-text">*MapReduce优缺点</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
