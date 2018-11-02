@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="设置系统环境变量12HADOOP_HOME：hadoop-2.7.3/PATH：%HADOOP_HOME%/bin eclipse进行导包 包路径：hadoop-2.7.3/share/">
+<meta name="description" content="#Hadoop数据压缩 数据压缩 1）MR操作过程中进行大量数据传输，就需要对数据进行压缩 2）压缩技术能够有效减少底层存储（HDFS）读写字节数，提高的网络带宽和磁盘空间的效率 3）数据压缩能够有效节省资源 4）压缩事MR程序的优化策略 5）通过压缩编码对Mapper或者reduce数据传输进行的压缩，以减少磁盘IO  压缩的基本原则 1）运算密集型任务少用压缩 2）IO密集型的任务，多用压缩">
 <meta property="og:type" content="article">
-<meta property="og:title" content="eclipse的Hadoop环境配置">
-<meta property="og:url" content="http://yoursite.com/2018/10/12/eclipse的Hadoop环境配置-2/index.html">
+<meta property="og:title" content="Hadoop 2.X管理与开发（二）">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发（二）/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="设置系统环境变量12HADOOP_HOME：hadoop-2.7.3/PATH：%HADOOP_HOME%/bin eclipse进行导包 包路径：hadoop-2.7.3/share/">
+<meta property="og:description" content="#Hadoop数据压缩 数据压缩 1）MR操作过程中进行大量数据传输，就需要对数据进行压缩 2）压缩技术能够有效减少底层存储（HDFS）读写字节数，提高的网络带宽和磁盘空间的效率 3）数据压缩能够有效节省资源 4）压缩事MR程序的优化策略 5）通过压缩编码对Mapper或者reduce数据传输进行的压缩，以减少磁盘IO  压缩的基本原则 1）运算密集型任务少用压缩 2）IO密集型的任务，多用压缩">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T15:15:07.202Z">
+<meta property="og:updated_time" content="2018-10-31T14:04:10.523Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eclipse的Hadoop环境配置">
-<meta name="twitter:description" content="设置系统环境变量12HADOOP_HOME：hadoop-2.7.3/PATH：%HADOOP_HOME%/bin eclipse进行导包 包路径：hadoop-2.7.3/share/">
+<meta name="twitter:title" content="Hadoop 2.X管理与开发（二）">
+<meta name="twitter:description" content="#Hadoop数据压缩 数据压缩 1）MR操作过程中进行大量数据传输，就需要对数据进行压缩 2）压缩技术能够有效减少底层存储（HDFS）读写字节数，提高的网络带宽和磁盘空间的效率 3）数据压缩能够有效节省资源 4）压缩事MR程序的优化策略 5）通过压缩编码对Mapper或者reduce数据传输进行的压缩，以减少磁盘IO  压缩的基本原则 1）运算密集型任务少用压缩 2）IO密集型的任务，多用压缩">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/12/eclipse的Hadoop环境配置-2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发（二）/"/>
 
 
 
 
 
-  <title>eclipse的Hadoop环境配置 | zfhzxg的个人博客</title>
+  <title>Hadoop 2.X管理与开发（二） | zfhzxg的个人博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/eclipse的Hadoop环境配置-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/Hadoop-2-X管理与开发（二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">eclipse的Hadoop环境配置</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop 2.X管理与开发（二）</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T22:59:33+08:00">
-                2018-10-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-05T21:47:53+08:00">
+                2018-09-05
               </time>
             
 
@@ -331,11 +331,28 @@
       
 
       
-        <h1 id="设置系统环境变量"><a href="#设置系统环境变量" class="headerlink" title="设置系统环境变量"></a>设置系统环境变量</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HADOOP_HOME：hadoop-2.7.3/</span><br><span class="line">PATH：%HADOOP_HOME%/bin</span><br></pre></td></tr></table></figure>
-<h1 id="eclipse进行导包"><a href="#eclipse进行导包" class="headerlink" title="eclipse进行导包"></a>eclipse进行导包</h1><ul>
-<li>包路径：hadoop-2.7.3/share/</li>
+        <p>#Hadoop数据压缩</p>
+<h2 id="数据压缩"><a href="#数据压缩" class="headerlink" title="数据压缩"></a>数据压缩</h2><ul>
+<li>1）MR操作过程中进行大量数据传输，就需要对数据进行压缩</li>
+<li>2）压缩技术能够有效减少底层存储（HDFS）读写字节数，提高的网络带宽和磁盘空间的效率</li>
+<li>3）数据压缩能够有效节省资源</li>
+<li>4）压缩事MR程序的优化策略</li>
+<li>5）通过压缩编码对Mapper或者reduce数据传输进行的压缩，以减少磁盘IO</li>
 </ul>
-
+<h2 id="压缩的基本原则"><a href="#压缩的基本原则" class="headerlink" title="压缩的基本原则"></a>压缩的基本原则</h2><ul>
+<li>1）运算密集型任务少用压缩</li>
+<li>2）IO密集型的任务，多用压缩</li>
+</ul>
+<h2 id="MR支持的压缩编码"><a href="#MR支持的压缩编码" class="headerlink" title="MR支持的压缩编码"></a>MR支持的压缩编码</h2><ul>
+<li>DEFAULT    是自带编码    .default    不可切分</li>
+<li>Gzip       是自带编码    .gz         不可切分</li>
+<li>bzip2      是自带编码    .bz2        可以切分</li>
+<li>LZO        非自带编码    .lzo        可以切分</li>
+<li>Snappy     非自带编码    .Snappy     不可切分</li>
+</ul>
+<h2 id="编码-解码器"><a href="#编码-解码器" class="headerlink" title="编码/解码器"></a>编码/解码器</h2><p>DEFAULT       org.apache.hadoop.io.compress.DefaultCodeC<br>Gzip          org.apache.hadoop.io.compress.GzipCodeC<br>bzip2         org.apache.hadoop.io.compress.BZip2CodeC<br>LZO           com.hadoop.compression.lzo.lzoCodeC<br>Snappy        org.apache.hadoop.io.compress.SnappyCodeC</p>
+<h2 id="压缩性能"><a href="#压缩性能" class="headerlink" title="压缩性能"></a>压缩性能</h2><p>Gzip      原大小：8.3GB      压缩后：1.8GB      压缩速度：17.5MB/s      解压速度：58MB/s<br>bzip2     原大小：8.3GB      压缩后：1.1GB      压缩速度：2.4MB/s       解压速度：9.5MB/s<br>LZO       原大小：8.3GB      压缩后：2.9GB      压缩速度：49.3MB/s      解压速度：74.6MB/s</p>
+<h2 id="设置压缩方式"><a href="#设置压缩方式" class="headerlink" title="设置压缩方式"></a>设置压缩方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mapper端：</span><br><span class="line">    //开启map端的输出压缩</span><br><span class="line">		conf.setBoolean(&quot;mapreduce.map.outpot.compress&quot;, true);</span><br><span class="line">		//设置压缩方式</span><br><span class="line">		//conf.setClass(&quot;mapreduce.map.outpot.compress.codec&quot;, DefaultCodec.class, CompressionCodec.class);</span><br><span class="line">		conf.setClass(&quot;mapreduce.map.outpot.</span><br><span class="line">        compress.codec&quot;, BZip2Codec.class, CompressionCodec.class);</span><br><span class="line"></span><br><span class="line">reduce端：</span><br><span class="line">    //开启reduce端的输出压缩</span><br><span class="line">		FileOutputFormat.setCompressOutput(job, true);</span><br><span class="line">		//设置压缩方式</span><br><span class="line">		//FileOutputFormat.setOutputCompressorClass(job, DefaultCodec.class);</span><br><span class="line">		FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -359,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/01/HDFS/" rel="next" title="HDFS">
-                <i class="fa fa-chevron-left"></i> HDFS
+              <a href="/2018/09/05/基础命令/" rel="next" title="基础命令">
+                <i class="fa fa-chevron-left"></i> 基础命令
               </a>
             
           </div>
@@ -369,8 +386,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/19/yarn/" rel="prev" title="yarn">
-                yarn <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/05/Hadoop-2-X管理与开发（一）/" rel="prev" title="Hadoop 2.X管理与开发（一）">
+                Hadoop 2.X管理与开发（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -498,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设置系统环境变量"><span class="nav-number">1.</span> <span class="nav-text">设置系统环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eclipse进行导包"><span class="nav-number">2.</span> <span class="nav-text">eclipse进行导包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据压缩"><span class="nav-number">1.</span> <span class="nav-text">数据压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩的基本原则"><span class="nav-number">2.</span> <span class="nav-text">压缩的基本原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MR支持的压缩编码"><span class="nav-number">3.</span> <span class="nav-text">MR支持的压缩编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码-解码器"><span class="nav-number">4.</span> <span class="nav-text">编码/解码器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩性能"><span class="nav-number">5.</span> <span class="nav-text">压缩性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置压缩方式"><span class="nav-number">6.</span> <span class="nav-text">设置压缩方式</span></a></li></ol></div>
             
 
           </div>

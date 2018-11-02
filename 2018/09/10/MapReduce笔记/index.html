@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="#MapReduce高级特性 一、序列化 核心接口：Writable 如果一个类实现了Writable该类的对象可以作为Key和Value二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象） 基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Compar">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-22T13:34:05.774Z">
+<meta property="og:updated_time" content="2018-10-27T12:42:52.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MapReduce笔记">
 <meta name="twitter:description" content="#MapReduce高级特性 一、序列化 核心接口：Writable 如果一个类实现了Writable该类的对象可以作为Key和Value二、排序 规则：按照Key2排序（可以是基本数据类型，也可以是对象） 基本数据类型：数字（默认升序），字符串（默认字典顺序）可以通过创建自己的比较规则改变排序（extends IntWritable.Comparator/extends Text.Compar">
@@ -343,6 +343,10 @@
 <li>对象<blockquote>
 <p>SQL排序：order by 列名、表达式、别名、序号 desc/asc（desc/asc只作用于最近的一列）<br>MapReduce排序：1.该对象必须是Key2；2.必须实现序列化接口Writable；3.对象必须是可排序的（自定义排序使用java.long 接口 Comparable）</p>
 </blockquote>
+</li>
+<li>MR排序分类<blockquote>
+<p>部分排序<br>全排序<br>辅助排序<br>二次排序</p>
+</blockquote>
 <h2 id="三、分区"><a href="#三、分区" class="headerlink" title="三、分区"></a>三、分区</h2></li>
 <li>什么是分区：partition</li>
 <li>查询：<blockquote>
@@ -361,7 +365,14 @@
 <li>合并是在Map端执行一次合并，用于减少Mapper输出到Reduce的数据量，可以提高效率</li>
 <li>平均值不能使用combiner</li>
 <li>无论有没有combiner，都没不能改变Map和Reduce对应的数据类型<h2 id="MapReduce核心：Shuffle（洗牌）"><a href="#MapReduce核心：Shuffle（洗牌）" class="headerlink" title="*MapReduce核心：Shuffle（洗牌）"></a>*MapReduce核心：Shuffle（洗牌）</h2></li>
-<li>Hadoop3.X之前会有数据落地（产生I/O操作）<h2 id="MapReduce优缺点"><a href="#MapReduce优缺点" class="headerlink" title="*MapReduce优缺点"></a>*MapReduce优缺点</h2></li>
+<li>Hadoop3.X之前会有数据落地（产生I/O操作）</li>
+<li>map()方法写入数据到环形缓冲区</li>
+<li>环形缓冲区达到80%后，发生溢写，进行分区、排序、合并（combiner可选）、归并</li>
+<li>归并后，拷贝到内存缓冲</li>
+<li>当内存不够时，溢出到磁盘</li>
+<li>进行归并排序</li>
+<li>相同key分组</li>
+<li>传入Reduce()<h2 id="MapReduce优缺点"><a href="#MapReduce优缺点" class="headerlink" title="*MapReduce优缺点"></a>*MapReduce优缺点</h2></li>
 <li>优点<blockquote>
 <p>1.易于编程<br>2.良好的拓展性<br>3.高容错性<br>4.适合处理PB级别以上的离线处理</p>
 </blockquote>
@@ -390,9 +401,14 @@
 <p>mr程序需要一个Driver来进行任务的提交，提交的任务是一个描述了各种重要信息的job</p>
 </blockquote>
 </li>
-<li><p>提交job流程</p>
+<li><p>maptask流程</p>
 <blockquote>
 <p>并行度：<br>一个job任务map阶段并行度由客户端所提交的任务决定<br>每一个split分配一个maptask并行处理<br>默认情况下，split大小=blocksize<br>切片是针对每一个文件单独切片<br>流程：<br>准备数据wordcount<br>创建客户端，提交任务程序driver<br>逻辑运算<br>向环形缓冲区写数据&lt;k,v&gt;（默认大小100M）<br>当环形缓冲区内存占用达到80%，进行溢写（HashPratitioner分区，key.compareTo排序（索引））<br>溢写到文件（保证分区且区内是有序的）<br>merge归并排序</p>
+</blockquote>
+</li>
+<li><p>reducetask流程</p>
+<blockquote>
+<p>reduceTask将相同分区的数据下载到reduceTask本地磁盘<br>再次合并文件，归并排序<br>合并过程中进行辅助排序<br>一次读一组，进行写出，生成结果文件</p>
 </blockquote>
 </li>
 </ul>
@@ -460,8 +476,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/05/Hadoop-2-X管理与开发/" rel="next" title="Hadoop 2.X管理与开发">
-                <i class="fa fa-chevron-left"></i> Hadoop 2.X管理与开发
+              <a href="/2018/09/05/Hadoop-2-X管理与开发（一）/" rel="next" title="Hadoop 2.X管理与开发（一）">
+                <i class="fa fa-chevron-left"></i> Hadoop 2.X管理与开发（一）
               </a>
             
           </div>
@@ -553,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
