@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="zookeeper简介 zookeeper 动物管理员 apache zookeeper致力于开发和维护开源服务器，实现高度可靠的分布式协调   什么是zookeeper zookeeper是一种集中式服务，用于维护配置信息，命名，提供分布式同步和提供组服务。所有这些类型的服务都以分布式应用程序的某种形式使用，每次实施他们都需要做很多工作来修复不可避免的错误和竞争条件。由于难以实现这些类型的服务，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-05T13:36:00.872Z">
+<meta property="og:updated_time" content="2018-11-05T15:02:15.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zookeeper">
 <meta name="twitter:description" content="zookeeper简介 zookeeper 动物管理员 apache zookeeper致力于开发和维护开源服务器，实现高度可靠的分布式协调   什么是zookeeper zookeeper是一种集中式服务，用于维护配置信息，命名，提供分布式同步和提供组服务。所有这些类型的服务都以分布式应用程序的某种形式使用，每次实施他们都需要做很多工作来修复不可避免的错误和竞争条件。由于难以实现这些类型的服务，">
@@ -387,6 +387,14 @@
 <li>delete path：删除节点（不能删除带有子节点的节点）</li>
 <li>rmr path：递归删除</li>
 </ul>
+<h1 id="zookeeper选举机制"><a href="#zookeeper选举机制" class="headerlink" title="zookeeper选举机制"></a>zookeeper选举机制</h1><ul>
+<li>当ZK1服务器启动时，先给自己投一票，ZK1作为follower</li>
+<li>当ZK2服务器启动时，给自己投一票的同时，ZK1也会给ZK2投一票，票数占半数以上，ZK2作为leader</li>
+<li>当ZK3服务器启动时，给自己投一票，此时发现已经存在leader，ZK3作为follower</li>
+</ul>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul>
+<li>只要有半数以上的节点存活，就能够正常工作（zk集群要求配置奇数台）</li>
+</ul>
 
       
     </div>
@@ -550,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper简介"><span class="nav-number">1.</span> <span class="nav-text">zookeeper简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper功能"><span class="nav-number">2.</span> <span class="nav-text">zookeeper功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper工作机制"><span class="nav-number">3.</span> <span class="nav-text">zookeeper工作机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper的存储结构（目录树存储结构）"><span class="nav-number">4.</span> <span class="nav-text">zookeeper的存储结构（目录树存储结构）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用场景"><span class="nav-number">5.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper集群安装"><span class="nav-number">6.</span> <span class="nav-text">zookeeper集群安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper操作"><span class="nav-number">7.</span> <span class="nav-text">zookeeper操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper简介"><span class="nav-number">1.</span> <span class="nav-text">zookeeper简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper功能"><span class="nav-number">2.</span> <span class="nav-text">zookeeper功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper工作机制"><span class="nav-number">3.</span> <span class="nav-text">zookeeper工作机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper的存储结构（目录树存储结构）"><span class="nav-number">4.</span> <span class="nav-text">zookeeper的存储结构（目录树存储结构）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用场景"><span class="nav-number">5.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper集群安装"><span class="nav-number">6.</span> <span class="nav-text">zookeeper集群安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper操作"><span class="nav-number">7.</span> <span class="nav-text">zookeeper操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper选举机制"><span class="nav-number">8.</span> <span class="nav-text">zookeeper选举机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">9.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
             
 
           </div>
