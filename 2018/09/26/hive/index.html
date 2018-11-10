@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL（2）Pig：支持PigLation  二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL  三、另一个：Impala 什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS表 ——&amp;gt; 目录数据 —-&amp;gt; 文件分区 —-&amp;gt; 目录桶 ——&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-10T12:42:50.987Z">
+<meta property="og:updated_time" content="2018-11-10T13:17:04.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hive">
 <meta name="twitter:description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL（2）Pig：支持PigLation  二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL  三、另一个：Impala 什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS表 ——&amp;gt; 目录数据 —-&amp;gt; 文件分区 —-&amp;gt; 目录桶 ——&amp;">
@@ -385,18 +385,25 @@
 <hr>
 <h1 id="Hive的表类型和数据类型"><a href="#Hive的表类型和数据类型" class="headerlink" title="*Hive的表类型和数据类型"></a><strong>*Hive的表类型和数据类型</strong></h1><ul>
 <li>表类型<blockquote>
-<p>一、内部表：类似MySQL、Oracle中的表<br>二、外部表<br>三、分区表：提高性能</p>
+<p>一、内部表（管理表）：类似MySQL、Oracle中的表</p>
 <blockquote>
-<p>（*）补充：如何提高性能？（SQL执行计划）<br>四、桶表：类似Hash分区<br>五、视图：View</p>
+<p>当我们删除管理表时，hive会自动删除管理表中的数据，不擅长做数据共享<br>二、外部表<br>三、分区表：提高性能<br>（*）补充：如何提高性能？（SQL执行计划）<br>四、桶表：类似Hash分区<br>五、视图：View</p>
 </blockquote>
 </blockquote>
 </li>
-<li>数据类型<br>| Java数据类型 | hive数据类型 | 数据长度 |<br>|:——:|:——:|:——:|<br>| byte        | TINYINT     | 1byte    |<br>| short       | SMALINT     | 2byte    |<br>| int         | INT         | 4byte    |<br>| long        | BIGINT      | 8byte    |<br>| float       | FLOAT       | 单精度浮点数 |<br>| double      | DOUBLE      | 双精度浮点数 |<br>| String      | STRING      | 字符      |<br>| | TIMESTAMP | 时间类型     |<br>| | BINARY    | 字节数组     |</li>
+<li>数据类型<br>| Java数据类型 | hive数据类型 | 数据长度 |<br>| byte        | TINYINT     | 1byte    |<br>| short       | SMALINT     | 2byte    |<br>| int         | INT         | 4byte    |<br>| long        | BIGINT      | 8byte    |<br>| float       | FLOAT       | 单精度浮点数 |<br>| double      | DOUBLE      | 双精度浮点数 |<br>| String      | STRING      | 字符      |<br>| | TIMESTAMP | 时间类型     |<br>| | BINARY    | 字节数组     |</li>
 </ul>
 <hr>
-<h3 id="执行Hive的查询：执行SQL（HQL）"><a href="#执行Hive的查询：执行SQL（HQL）" class="headerlink" title="执行Hive的查询：执行SQL（HQL）"></a><strong>执行Hive的查询：执行SQL（HQL）</strong></h3><blockquote>
-<p>*、HQL是SQL的一个子集</p>
-</blockquote>
+<h1 id="HQL"><a href="#HQL" class="headerlink" title="HQL"></a><strong>HQL</strong></h1><ul>
+<li>show databases [link ‘db*’];：显示数据库，可选通配符筛选</li>
+<li>create database hive_db location ‘path’;：在指定路径下创建数据库</li>
+<li>create database is not exist hive_db;：检测该表不存在时，创建该表</li>
+<li>alter database hive_db set dbproperties(‘dataname’=’zfhzxg的数据库’);：添加数据库描述信息</li>
+<li>desc database hive_db;：查看数据库结构</li>
+<li>desc database extended hive_db;：查看数据库拓展性</li>
+<li>drop database if exists hive_db;：检测该表存在时，删除该表</li>
+<li>create table db_h(id int,name string) row format[按行格式化] delimited fields[根据字段] terminated by “\t”[按空格切分];：创建表（默认创建管理表）</li>
+</ul>
 <hr>
 
       
@@ -561,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析引擎"><span class="nav-number">1.</span> <span class="nav-text">数据分析引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Hadoop中"><span class="nav-number">1.1.</span> <span class="nav-text">一、Hadoop中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Spark中"><span class="nav-number">1.2.</span> <span class="nav-text">二、Spark中__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、另一个：Impala"><span class="nav-number">1.3.</span> <span class="nav-text">三、另一个：Impala</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Hive"><span class="nav-number">2.</span> <span class="nav-text">什么是Hive</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL"><span class="nav-number">2.1.</span> <span class="nav-text">一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Hive是基于Hadoop之上的一个数据分析引擎"><span class="nav-number">2.2.</span> <span class="nav-text">二、Hive是基于Hadoop之上的一个数据分析引擎</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive的体系架构"><span class="nav-number">3.</span> <span class="nav-text">Hive的体系架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive优缺点"><span class="nav-number">4.</span> <span class="nav-text">Hive优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和配置Hive"><span class="nav-number">5.</span> <span class="nav-text">安装和配置Hive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive的架构"><span class="nav-number">6.</span> <span class="nav-text">Hive的架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive的表类型和数据类型"><span class="nav-number">7.</span> <span class="nav-text">*Hive的表类型和数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行Hive的查询：执行SQL（HQL）"><span class="nav-number">7.0.1.</span> <span class="nav-text">执行Hive的查询：执行SQL（HQL）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析引擎"><span class="nav-number">1.</span> <span class="nav-text">数据分析引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Hadoop中"><span class="nav-number">1.1.</span> <span class="nav-text">一、Hadoop中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Spark中"><span class="nav-number">1.2.</span> <span class="nav-text">二、Spark中__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、另一个：Impala"><span class="nav-number">1.3.</span> <span class="nav-text">三、另一个：Impala</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Hive"><span class="nav-number">2.</span> <span class="nav-text">什么是Hive</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL"><span class="nav-number">2.1.</span> <span class="nav-text">一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Hive是基于Hadoop之上的一个数据分析引擎"><span class="nav-number">2.2.</span> <span class="nav-text">二、Hive是基于Hadoop之上的一个数据分析引擎</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive的体系架构"><span class="nav-number">3.</span> <span class="nav-text">Hive的体系架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive优缺点"><span class="nav-number">4.</span> <span class="nav-text">Hive优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和配置Hive"><span class="nav-number">5.</span> <span class="nav-text">安装和配置Hive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive的架构"><span class="nav-number">6.</span> <span class="nav-text">Hive的架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hive的表类型和数据类型"><span class="nav-number">7.</span> <span class="nav-text">*Hive的表类型和数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HQL"><span class="nav-number">8.</span> <span class="nav-text">HQL</span></a></li></ol></div>
             
 
           </div>
