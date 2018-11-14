@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
+<meta name="description" content="title: Spring（）date: 2018-10-14 20:34:00 categories: SSM#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis初识">
-<meta property="og:url" content="http://yoursite.com/2018/08/29/redis初识/index.html">
+<meta property="og:title" content="zfhzxg的个人博客">
+<meta property="og:url" content="http://yoursite.com/2018/11/14/Spring（二）/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
+<meta property="og:description" content="title: Spring（）date: 2018-10-14 20:34:00 categories: SSM#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T12:21:59.690Z">
+<meta property="og:updated_time" content="2018-11-14T13:27:17.279Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis初识">
-<meta name="twitter:description" content="Redis  高性能Key-Value服务器   多种数据结构   丰富的功能   高可用分布式支持   Redis初识 由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术">
+<meta name="twitter:title" content="zfhzxg的个人博客">
+<meta name="twitter:description" content="title: Spring（）date: 2018-10-14 20:34:00 categories: SSM#">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/29/redis初识/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/14/Spring（二）/"/>
 
 
 
 
 
-  <title>Redis初识 | zfhzxg的个人博客</title>
+  <title> | zfhzxg的个人博客</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/redis初识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/Spring（二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zfhzxg">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis初识</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T22:40:25+08:00">
-                2018-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T13:43:22+08:00">
+                2018-11-14
               </time>
             
 
@@ -281,28 +281,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -331,123 +309,9 @@
       
 
       
-        <h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><strong>Redis</strong></h3><hr>
-<blockquote>
-<p><strong>高性能Key-Value服务器</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>多种数据结构</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>丰富的功能</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>高可用分布式支持</strong></p>
-</blockquote>
-<hr>
-<h3 id="Redis初识"><a href="#Redis初识" class="headerlink" title="Redis初识"></a><strong>Redis初识</strong></h3><ul>
-<li>由Salvatore Sanfilippo（antirez）制作，目前服务于以色列RedisLabs，早期代码23000行，采用key-value的字典结构，GitHub、twitter、StackOverflow、阿里巴巴、百度、微博、美团、搜狐等都在使用Redis这样的技术，如今Redis已经成为必备技能。<blockquote>
-<ul>
-<li>典型使用场景<blockquote>
-<ol>
-<li>缓存系统：用户访问App server，App Server从cache（Redis）请求数据，如果有，直接返回给App Server，如果没有，cache将从Storage（持久化存储空间）中查找，查找后将从Storage中查找到的数据存入cache中以方便下次查找，而后直接由Storage返回给App Server。</li>
-<li>计数器：微博、视频网站的转发、评论数。</li>
-<li>消息队列系统</li>
-<li>排行榜</li>
-<li>社交网络</li>
-<li>实时系统</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<hr>
-<blockquote>
-<p><strong>开源</strong><br><strong>基于键值的存储服务系统</strong><br><strong>支持多种数据结构</strong><br><strong>性能高，功能丰富</strong></p>
-</blockquote>
-<hr>
-<h3 id="Redis特性"><a href="#Redis特性" class="headerlink" title="Redis特性"></a><strong>Redis特性</strong></h3><hr>
-<blockquote>
-<p><strong>速度快</strong>（10W OPS(读写)）</p>
-<blockquote>
-<ol>
-<li><em>将数据存在内存</em></li>
-<li>用c语言编写</li>
-<li>线性模型使用单线程</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>持久化</strong>（断电不丢数据）</p>
-<blockquote>
-<p>Redis所有数据保持在内存中，对数据的更新将异步地保存到硬盘上</p>
-</blockquote>
-<hr>
-<p><strong>多种数据结构</strong></p>
-<blockquote>
-<ul>
-<li>常规</li>
-</ul>
-<ol>
-<li>字符串（Strings/Blobs/Bitmaps）</li>
-<li>哈希（Hash Tables(objects!)）</li>
-<li>列表（Linked Lists）</li>
-<li>集合（Sets）</li>
-<li>有序集合（Sorted Sets）</li>
-</ol>
-<ul>
-<li>衍生</li>
-</ul>
-<ol>
-<li>位图（BitMaps）</li>
-<li>超小内存唯一值技术（HyperLogLog——有一定误差）</li>
-<li>地理信息定位（GEO）</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>支持多种编辑语言</strong></p>
-<blockquote>
-<ol>
-<li>Java</li>
-<li>php</li>
-<li>Python</li>
-<li>Ruby</li>
-<li>Lua</li>
-<li>NodeJs</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>功能丰富</strong></p>
-<blockquote>
-<ol>
-<li>发布订阅</li>
-<li>Lua脚本</li>
-<li>事务</li>
-<li>pipeline</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>简单</strong></p>
-<blockquote>
-<ol>
-<li>23000行代码</li>
-<li>不依赖外部库（like libevent）</li>
-<li>单线程模型（开发相对容易）</li>
-</ol>
-</blockquote>
-<hr>
-<p><strong>主从复制</strong></p>
-<blockquote>
-<p>在Redis中主服务器的数据可以同步到从服务器上，为高可用以及分布式提供一个很好的基础</p>
-</blockquote>
-<hr>
-<p><strong>高可用、分布式</strong></p>
-<blockquote>
-<p>高可用 ——&gt; Redis-Sentinel(v2.8)支持高可用<br>分布式 ——&gt; Redis-Cluster(V3.0)支持分布式</p>
-</blockquote>
-<hr>
-</blockquote>
+        <hr>
+<p>title: Spring（）<br>date: 2018-10-14 20:34:00</p>
+<h2 id="categories-SSM"><a href="#categories-SSM" class="headerlink" title="categories: SSM"></a>categories: SSM</h2><p># </p>
 
       
     </div>
@@ -472,8 +336,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/23/项目笔记(ssh)/" rel="next" title="项目笔记(ssh)">
-                <i class="fa fa-chevron-left"></i> 项目笔记(ssh)
+              <a href="/2018/10/19/yarn/" rel="next" title="yarn">
+                <i class="fa fa-chevron-left"></i> yarn
               </a>
             
           </div>
@@ -481,10 +345,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/04/大数据模块/" rel="prev" title="大数据模块">
-                大数据模块 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -611,7 +471,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis初识"><span class="nav-number">2.</span> <span class="nav-text">Redis初识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis特性"><span class="nav-number">3.</span> <span class="nav-text">Redis特性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-SSM"><span class="nav-number">1.</span> <span class="nav-text">categories: SSM</span></a></li></ol></div>
             
 
           </div>
