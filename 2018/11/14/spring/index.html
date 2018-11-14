@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="Spring概述 是一个开源框架，于2003年兴起的一个java轻量级开发框架，是一个分层的java se/ee开发的一站式开源框架 优点：轻量，控制反转（IOC），面向切面，容器，框架，MVC Spring三层： WEB层：SpringMVCService层：Spring的Bean管理，Spring声明式事务Dao层：Spring的JDBC模板，Spring的ORM模块     Spring优点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-14T15:33:03.736Z">
+<meta property="og:updated_time" content="2018-11-14T15:37:29.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring">
 <meta name="twitter:description" content="Spring概述 是一个开源框架，于2003年兴起的一个java轻量级开发框架，是一个分层的java se/ee开发的一站式开源框架 优点：轻量，控制反转（IOC），面向切面，容器，框架，MVC Spring三层： WEB层：SpringMVCService层：Spring的Bean管理，Spring声明式事务Dao层：Spring的JDBC模板，Spring的ORM模块     Spring优点">
@@ -383,7 +383,9 @@
 <li>ApplicationContext有两个实现类<blockquote>
 <p>ClassPathXmlApplicationContext：加载类路径下的配置文件（src路径下）<br>FileSystemXmlApplicationContext：加载文件系统下的配置文件（磁盘路径下）</p>
 </blockquote>
-<h2 id="Spring-Bean管理"><a href="#Spring-Bean管理" class="headerlink" title="Spring Bean管理"></a>Spring Bean管理</h2><h3 id="id、name"><a href="#id、name" class="headerlink" title="id、name"></a>id、name</h3></li>
+</li>
+</ul>
+<h2 id="Spring-Bean管理"><a href="#Spring-Bean管理" class="headerlink" title="Spring Bean管理"></a>Spring Bean管理</h2><h3 id="id、name"><a href="#id、name" class="headerlink" title="id、name"></a>id、name</h3><ul>
 <li>id ：使用了约束中的唯一约束，不能出现特殊字符</li>
 <li><p>name ：没有使用约束中的唯一约束，可以出现特殊字符（理论上可以出现重复，但实际开发不能出现）</p>
 <blockquote>
@@ -399,12 +401,11 @@
 <p>singleton ：默认的，Spring会采用单例模式创建这个对象<br>prototype ：多例模式（struts2与Spring整合时，action采用多例模式）<br>request ：应用在web项目中，Spring创建这个类以后，将这个类存入到request范围中<br>session ：用用在web项目中，Spring创建这个类以后，将这个类存入到session范围中<br>globalsession（全局session） ：应用到web项目中，必须在porlet环境下使用，如果没有这种环境，globalsession相当于session</p>
 </blockquote>
 <h3 id="Spring属性注入（DI）"><a href="#Spring属性注入（DI）" class="headerlink" title="Spring属性注入（DI）"></a>Spring属性注入（DI）</h3></li>
-<li>三种注入方式<blockquote>
-<p>构造方法方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class user&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    public user(String name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
+<li>三种注入方式</li>
 </ul>
+<blockquote>
+<p>构造方法方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class user&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    public user(String name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 <blockquote>
 <p>set方法方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class user&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    public void setName(String name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
@@ -412,12 +413,11 @@
 <p>接口注入方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface user&#123;</span><br><span class="line">    public void setName(String name);</span><br><span class="line">&#125;</span><br><span class="line">public class userImpl implements user&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    public void setName(String name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
-<li>Spring支持构造方法注入和set方法注入<blockquote>
-<p>构造方法属性注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 构造属性注入的方式 --&gt;</span><br><span class="line">	&lt;bean id=&quot;car&quot; class=&quot;com.zfhzxg.spring.demo3.Car&quot;&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;name&quot; value=&quot;zfhzxg&quot;/&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;p&quot; value=&quot;BMW&quot;/&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">&lt;!-- 构造对象属性注入的方式 --&gt;</span><br><span class="line">&lt;!-- value用来设置普通属性值，ref用来设置其他的类的id和name --&gt;</span><br><span class="line">	&lt;bean id=&quot;emp&quot; class=&quot;com.zfhzxg.spring.demo3.Emp&quot;&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;name&quot; value=&quot;zfhzxg&quot;/&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;car2&quot; ref=&quot;car2&quot;/&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
+<li>Spring支持构造方法注入和set方法注入</li>
 </ul>
+<blockquote>
+<p>构造方法属性注入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 构造属性注入的方式 --&gt;</span><br><span class="line">	&lt;bean id=&quot;car&quot; class=&quot;com.zfhzxg.spring.demo3.Car&quot;&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;name&quot; value=&quot;zfhzxg&quot;/&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;p&quot; value=&quot;BMW&quot;/&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">&lt;!-- 构造对象属性注入的方式 --&gt;</span><br><span class="line">&lt;!-- value用来设置普通属性值，ref用来设置其他的类的id和name --&gt;</span><br><span class="line">	&lt;bean id=&quot;emp&quot; class=&quot;com.zfhzxg.spring.demo3.Emp&quot;&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;name&quot; value=&quot;zfhzxg&quot;/&gt;</span><br><span class="line">		&lt;constructor-arg name=&quot;car2&quot; ref=&quot;car2&quot;/&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 <blockquote>
 <p>set方法属性注入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- set属性注入的方式 --&gt;</span><br><span class="line">	&lt;bean id=&quot;car2&quot; class=&quot;com.zfhzxg.spring.demo3.Car2&quot;&gt;</span><br><span class="line">		&lt;property name=&quot;name&quot; value=&quot;zhxzgd&quot;/&gt;</span><br><span class="line">		&lt;property name=&quot;p&quot; value=&quot;BMW&quot;/&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">&lt;!-- set对象属性注入的方式 --&gt;</span><br><span class="line">	&lt;!-- value用来设置普通属性值，ref用来设置其他的类的id和name --&gt;</span><br><span class="line">	&lt;bean id=&quot;emp&quot; class=&quot;com.zfhzxg.spring.demo3.Emp&quot;&gt;</span><br><span class="line">		&lt;property name=&quot;name&quot; value=&quot;zhxzgd&quot;/&gt;</span><br><span class="line">		&lt;property name=&quot;car2&quot; ref=&quot;car2&quot;/&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
