@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="zfhzxg的个人博客">
 <meta property="og:description" content="#Hadoop数据压缩 数据压缩 1）MR操作过程中进行大量数据传输，就需要对数据进行压缩 2）压缩技术能够有效减少底层存储（HDFS）读写字节数，提高的网络带宽和磁盘空间的效率 3）数据压缩能够有效节省资源 4）压缩事MR程序的优化策略 5）通过压缩编码对Mapper或者reduce数据传输进行的压缩，以减少磁盘IO  压缩的基本原则 1）运算密集型任务少用压缩 2）IO密集型的任务，多用压缩">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-02T13:36:08.341Z">
+<meta property="og:updated_time" content="2018-11-20T11:23:30.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.X管理与开发（二）">
 <meta name="twitter:description" content="#Hadoop数据压缩 数据压缩 1）MR操作过程中进行大量数据传输，就需要对数据进行压缩 2）压缩技术能够有效减少底层存储（HDFS）读写字节数，提高的网络带宽和磁盘空间的效率 3）数据压缩能够有效节省资源 4）压缩事MR程序的优化策略 5）通过压缩编码对Mapper或者reduce数据传输进行的压缩，以减少磁盘IO  压缩的基本原则 1）运算密集型任务少用压缩 2）IO密集型的任务，多用压缩">
@@ -350,9 +350,9 @@
 <li>LZO        非自带编码    .lzo        可以切分</li>
 <li>Snappy     非自带编码    .Snappy     不可切分</li>
 </ul>
-<h2 id="编码-解码器"><a href="#编码-解码器" class="headerlink" title="编码/解码器"></a>编码/解码器</h2><p>DEFAULT       org.apache.hadoop.io.compress.DefaultCodeC<br>Gzip          org.apache.hadoop.io.compress.GzipCodeC<br>bzip2         org.apache.hadoop.io.compress.BZip2CodeC<br>LZO           com.hadoop.compression.lzo.lzoCodeC<br>Snappy        org.apache.hadoop.io.compress.SnappyCodeC</p>
+<h2 id="编码-解码器"><a href="#编码-解码器" class="headerlink" title="编码/解码器"></a>编码/解码器</h2><p>DEFAULT       org.apache.hadoop.io.compress.DefaultCodec<br>Gzip          org.apache.hadoop.io.compress.GzipCodec<br>bzip2         org.apache.hadoop.io.compress.BZip2Codec<br>LZO           com.hadoop.compression.lzo.lzoCodec<br>Snappy        org.apache.hadoop.io.compress.SnappyCodec</p>
 <h2 id="压缩性能"><a href="#压缩性能" class="headerlink" title="压缩性能"></a>压缩性能</h2><p>Gzip      原大小：8.3GB      压缩后：1.8GB      压缩速度：17.5MB/s      解压速度：58MB/s<br>bzip2     原大小：8.3GB      压缩后：1.1GB      压缩速度：2.4MB/s       解压速度：9.5MB/s<br>LZO       原大小：8.3GB      压缩后：2.9GB      压缩速度：49.3MB/s      解压速度：74.6MB/s</p>
-<h2 id="设置压缩方式"><a href="#设置压缩方式" class="headerlink" title="设置压缩方式"></a>设置压缩方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mapper端：</span><br><span class="line">    //开启map端的输出压缩</span><br><span class="line">		conf.setBoolean(&quot;mapreduce.map.outpot.compress&quot;, true);</span><br><span class="line">		//设置压缩方式</span><br><span class="line">		//conf.setClass(&quot;mapreduce.map.outpot.compress.codec&quot;, DefaultCodec.class, CompressionCodec.class);</span><br><span class="line">		conf.setClass(&quot;mapreduce.map.outpot.</span><br><span class="line">        compress.codec&quot;, BZip2Codec.class, CompressionCodec.class);</span><br><span class="line"></span><br><span class="line">reduce端：</span><br><span class="line">    //开启reduce端的输出压缩</span><br><span class="line">		FileOutputFormat.setCompressOutput(job, true);</span><br><span class="line">		//设置压缩方式</span><br><span class="line">		//FileOutputFormat.setOutputCompressorClass(job, DefaultCodec.class);</span><br><span class="line">		FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);</span><br></pre></td></tr></table></figure>
+<h2 id="设置压缩方式"><a href="#设置压缩方式" class="headerlink" title="设置压缩方式"></a>设置压缩方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mapper端：</span><br><span class="line">    //开启map端的输出压缩</span><br><span class="line">		conf.setBoolean(&quot;mapreduce.map.outpot.compress&quot;, true);</span><br><span class="line">	//设置压缩方式</span><br><span class="line">	//conf.setClass(&quot;mapreduce.map.outpot.compress.codec&quot;, DefaultCodec.class, CompressionCodec.class);</span><br><span class="line">		conf.setClass(&quot;mapreduce.map.outpot.</span><br><span class="line">        compress.codec&quot;, BZip2Codec.class, CompressionCodec.class);</span><br><span class="line"></span><br><span class="line">reduce端：</span><br><span class="line">    //开启reduce端的输出压缩</span><br><span class="line">		FileOutputFormat.setCompressOutput(job, true);</span><br><span class="line">	//设置压缩方式</span><br><span class="line">	//FileOutputFormat.setOutputCompressorClass(job, DefaultCodec.class);</span><br><span class="line">		FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);</span><br></pre></td></tr></table></figure>
 <h1 id="Hadoop优化"><a href="#Hadoop优化" class="headerlink" title="Hadoop优化"></a>Hadoop优化</h1><h2 id="MapReduce程序的效率瓶颈"><a href="#MapReduce程序的效率瓶颈" class="headerlink" title="MapReduce程序的效率瓶颈"></a>MapReduce程序的效率瓶颈</h2><h3 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h3><ul>
 <li>MR功能：分布式离线计算</li>
 <li>计算机性能：CPU、内存、磁盘、网络</li>
@@ -535,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
