@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL （2）Pig：支持PigLation二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL三、另一个：Impala   什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS 表 ——&amp;gt; 目录 数据 —-&amp;gt; 文件 分区 —-&amp;gt; 目录 桶">
+<meta name="description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL（2）Pig：支持PigLation  二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL  三、另一个：Impala 什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS 表 ——&amp;gt; 目录 数据 —-&amp;gt; 文件 分区 —-&amp;gt; 目录 桶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hive">
 <meta property="og:url" content="http://yoursite.com/2018/09/26/hive/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL （2）Pig：支持PigLation二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL三、另一个：Impala   什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS 表 ——&amp;gt; 目录 数据 —-&amp;gt; 文件 分区 —-&amp;gt; 目录 桶">
+<meta property="og:description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL（2）Pig：支持PigLation  二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL  三、另一个：Impala 什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS 表 ——&amp;gt; 目录 数据 —-&amp;gt; 文件 分区 —-&amp;gt; 目录 桶">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-21T12:43:29.752Z">
+<meta property="og:updated_time" content="2018-11-21T13:05:15.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hive">
-<meta name="twitter:description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL （2）Pig：支持PigLation二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL三、另一个：Impala   什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS 表 ——&amp;gt; 目录 数据 —-&amp;gt; 文件 分区 —-&amp;gt; 目录 桶">
+<meta name="twitter:description" content="数据分析引擎一、Hadoop中 （1）Hive：支持SQL（2）Pig：支持PigLation  二、Spark中__ （*）Spark SQL：类似Hive，支持SQL、DSL  三、另一个：Impala 什么是Hive一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL Hive —-&amp;gt; HDFS 表 ——&amp;gt; 目录 数据 —-&amp;gt; 文件 分区 —-&amp;gt; 目录 桶">
 
 
 
@@ -332,12 +332,13 @@
 
       
         <hr>
-<h1 id="数据分析引擎"><a href="#数据分析引擎" class="headerlink" title="数据分析引擎"></a><strong>数据分析引擎</strong></h1><h2 id="一、Hadoop中"><a href="#一、Hadoop中" class="headerlink" title="一、Hadoop中"></a>一、Hadoop中</h2><ul>
-<li>（1）Hive：支持SQL</li>
-<li>（2）Pig：支持PigLation<h2 id="二、Spark中"><a href="#二、Spark中" class="headerlink" title="二、Spark中__"></a>二、Spark中__</h2></li>
-<li>（*）Spark SQL：类似Hive，支持SQL、DSL<h2 id="三、另一个：Impala"><a href="#三、另一个：Impala" class="headerlink" title="三、另一个：Impala"></a>三、另一个：Impala</h2></li>
-</ul>
-<hr>
+<h1 id="数据分析引擎"><a href="#数据分析引擎" class="headerlink" title="数据分析引擎"></a><strong>数据分析引擎</strong></h1><h2 id="一、Hadoop中"><a href="#一、Hadoop中" class="headerlink" title="一、Hadoop中"></a>一、Hadoop中</h2><blockquote>
+<p>（1）Hive：支持SQL<br>（2）Pig：支持PigLation</p>
+</blockquote>
+<h2 id="二、Spark中"><a href="#二、Spark中" class="headerlink" title="二、Spark中__"></a>二、Spark中__</h2><blockquote>
+<p>（*）Spark SQL：类似Hive，支持SQL、DSL</p>
+</blockquote>
+<h2 id="三、另一个：Impala"><a href="#三、另一个：Impala" class="headerlink" title="三、另一个：Impala"></a>三、另一个：Impala</h2><hr>
 <h1 id="什么是Hive"><a href="#什么是Hive" class="headerlink" title="什么是Hive"></a><strong>什么是Hive</strong></h1><h2 id="一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL"><a href="#一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL" class="headerlink" title="一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL"></a>一、Hive是基于HDFS之上的一个数据仓库，有助于使用SQL</h2><ul>
 <li>Hive —-&gt; HDFS</li>
 <li>表 ——&gt; 目录</li>
