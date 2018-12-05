@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="###NoSQL简介  一、什么是NoSQL数据库？（not only sql） 二、常见NoSQL数据库 HBaseRedis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）MongoDB：基于文档型（BSON）的NoSQL数据库Cassandra：跟HBase类似      ###HBsae的体系架构（主从结构）和表结构  一、Hadoop的生态体系圈 二、HBase">
+<meta name="description" content="NoSQL简介 一、Apache Hbase是Hadoop数据库，是一个分布式，可扩展的大数据存储。当您需要对大数据进行随机，实时读/写访问时，请使用Apache Hbase。该项目的目标是托管非常大的表————数十亿行X百万列在商品硬件集群上，Apache Hbase是一个开源的，分布式的版本化的非关系化数据库。2006年-google发表了bigdata白皮书2006年-同年开始开发Hbas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HBase开发">
 <meta property="og:url" content="http://yoursite.com/2018/09/21/HBase开发/index.html">
 <meta property="og:site_name" content="zfhzxg的个人博客">
-<meta property="og:description" content="###NoSQL简介  一、什么是NoSQL数据库？（not only sql） 二、常见NoSQL数据库 HBaseRedis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）MongoDB：基于文档型（BSON）的NoSQL数据库Cassandra：跟HBase类似      ###HBsae的体系架构（主从结构）和表结构  一、Hadoop的生态体系圈 二、HBase">
+<meta property="og:description" content="NoSQL简介 一、Apache Hbase是Hadoop数据库，是一个分布式，可扩展的大数据存储。当您需要对大数据进行随机，实时读/写访问时，请使用Apache Hbase。该项目的目标是托管非常大的表————数十亿行X百万列在商品硬件集群上，Apache Hbase是一个开源的，分布式的版本化的非关系化数据库。2006年-google发表了bigdata白皮书2006年-同年开始开发Hbas">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T12:21:14.774Z">
+<meta property="og:updated_time" content="2018-12-05T07:51:39.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HBase开发">
-<meta name="twitter:description" content="###NoSQL简介  一、什么是NoSQL数据库？（not only sql） 二、常见NoSQL数据库 HBaseRedis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）MongoDB：基于文档型（BSON）的NoSQL数据库Cassandra：跟HBase类似      ###HBsae的体系架构（主从结构）和表结构  一、Hadoop的生态体系圈 二、HBase">
+<meta name="twitter:description" content="NoSQL简介 一、Apache Hbase是Hadoop数据库，是一个分布式，可扩展的大数据存储。当您需要对大数据进行随机，实时读/写访问时，请使用Apache Hbase。该项目的目标是托管非常大的表————数十亿行X百万列在商品硬件集群上，Apache Hbase是一个开源的，分布式的版本化的非关系化数据库。2006年-google发表了bigdata白皮书2006年-同年开始开发Hbas">
 
 
 
@@ -332,50 +332,95 @@
 
       
         <hr>
-<p>###<strong>NoSQL简介</strong></p>
-<ul>
-<li>一、什么是NoSQL数据库？（not only sql）</li>
+<h1 id="NoSQL简介"><a href="#NoSQL简介" class="headerlink" title="NoSQL简介"></a>NoSQL简介</h1><ul>
+<li>一、Apache Hbase是Hadoop数据库，是一个分布式，可扩展的大数据存储。当您需要对大数据进行随机，实时读/写访问时，请使用Apache Hbase。该项目的目标是托管非常大的表————数十亿行X百万列在商品硬件集群上，Apache Hbase是一个开源的，分布式的版本化的非关系化数据库。<br>2006年-google发表了bigdata白皮书<br>2006年-同年开始开发Hbase<br>2008年-Hbase正式成为apache子项目<br>2010年-正式成为apache顶级项目</li>
 <li>二、常见NoSQL数据库<blockquote>
 <p>HBase<br>Redis：基于内存的NoSQL数据库，前身MemCached（不支持持久化）<br>MongoDB：基于文档型（BSON）的NoSQL数据库<br>Cassandra：跟HBase类似</p>
 </blockquote>
 </li>
 </ul>
 <hr>
-<hr>
-<p>###<strong>HBsae的体系架构（主从结构）和表结构</strong></p>
-<ul>
+<h1 id="HBsae的体系架构（主从结构）和表结构"><a href="#HBsae的体系架构（主从结构）和表结构" class="headerlink" title="HBsae的体系架构（主从结构）和表结构"></a>HBsae的体系架构（主从结构）和表结构</h1><ul>
 <li>一、Hadoop的生态体系圈</li>
-<li><p>二、HBase</p>
-<blockquote>
-<p>基于HDFS之上的NoSQL数据库</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HBase      HDFS</span><br><span class="line">表    ---&gt; 目录</span><br><span class="line">数据  ---&gt; 文件（HFile，默认大小：128MB）</span><br></pre></td></tr></table></figure>
-</blockquote>
+<li><p>二、HBase（基于HDFS之上的NoSQL数据库）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HBase      HDFS</span><br><span class="line">表    ---&gt; 目录</span><br><span class="line">数据  ---&gt; 文件（HFile，默认大小：128MB）</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>三、HBase的体系架构（主节点：HMaster + 从节点：RegionServer）</p>
-<blockquote>
-<p>单点故障</p>
-<blockquote>
-<p>通过Zookeeper</p>
-</blockquote>
-</blockquote>
+<li><p>三、HBase的体系架构：主节点HMaster + 从节点HregionServer（通过zookeeper解决单点故障）</p>
 </li>
 </ul>
 <hr>
-<hr>
-<p>###<strong>HBase的搭建模式</strong></p>
-<ul>
-<li>一、本地模式</li>
-<li>二、伪分布模式</li>
-<li>三、全分布模式</li>
-<li>四、实现HBsae的HA</li>
+<h1 id="HBase的搭建模式"><a href="#HBase的搭建模式" class="headerlink" title="HBase的搭建模式"></a>HBase的搭建模式</h1><ul>
+<li>一、需要准备Hadoop集群和Zookeeper集群</li>
+<li>二、上传并解压软件包</li>
+<li><p>三、修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">hbase-env.sh：</span><br><span class="line">export JAVA_HOME=/root/training/jdk1.8.0_144</span><br><span class="line">export HBASE_MANAGES_ZK=false</span><br><span class="line"></span><br><span class="line">hbase-site.xml：</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hbase.rootdir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;hdfs://bigdata211:9000/hbase&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hbase.master.port&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;16000&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;bigdata211:2181,bigdata212:2181,bigdata213:2181&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;/root/training/zookeeper/zkData&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line"></span><br><span class="line">regionserver：</span><br><span class="line">bigdata211</span><br><span class="line">bigdata212</span><br><span class="line">bigdata213</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>四、解决依赖问题，把相关版本的zookeeper和hadoop依赖包导入到hbase/lib下</p>
+</li>
+<li>五、软连接hadoop配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@bigdata211 flume]# ln -s /root/training/hadoop-2.7.3/etc/hadoop/hdfs-site.xml /root/training/hbase/conf</span><br><span class="line">[root@bigdata211 flume]# ln -s /root/training/hadoop-2.7.3/etc/hadoop/core-site.xml /root/training/hbase/conf</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <hr>
-<hr>
-<p>###<strong>操作HBsae</strong></p>
-<ul>
-<li>一、</li>
+<h1 id="操作HBsae"><a href="#操作HBsae" class="headerlink" title="操作HBsae"></a>操作HBsae</h1><ul>
+<li>一、启动：</li>
 </ul>
+<ol>
+<li>启动dfs</li>
+<li>启动yarn</li>
+<li>启动zookeeper</li>
+<li><p>启动hbase：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin/hbase-daemon.sh start master</span><br><span class="line">bin/hbase-daemon.sh start regionserver</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>webconlose：<a href="http://192.168.247.211:16010" target="_blank" rel="noopener">http://192.168.247.211:16010</a></p>
+</li>
+<li>启动客户端：bin/hbase shell</li>
+</ol>
+<ul>
+<li>二、Hbase shell</li>
+</ul>
+<ol>
+<li>帮助：help</li>
+<li>显示服务器当前状态：hbase(main):002:0&gt; status ‘bigdata211’</li>
+<li>查看表：list === timestamp时间戳，column列族</li>
+<li>查看表内容：scan ‘user’</li>
+<li>创建表：create ‘表名’,’columnFamily’ === columnFamily列族，创建时指定几个列族，插入式就可使用几个列族</li>
+<li>插入记录：put ‘表名’,’rowkey’,’info:name’,’zfhzxg’ === rowkey行键，唯一，不重复</li>
+<li>覆盖数据：put ‘表名’,’rowkey’,’info:name’,’zhxzgd’ === 保证表名，行键，列族，字段相同</li>
+<li>查看第几条记录之后的数据：scan ‘user’,{STARTROW =&gt; ‘102’}</li>
+<li>查看第几条记录到第几条记录的数据：scan ‘user’,{STARTROW =&gt; ‘102’，STOPROW =&gt; ‘103’}</li>
+<li>查看表结构：describe ‘user’</li>
+<li>变更表信息：alter ‘user’,{NAME =&gt; ‘info’,VERSIONS =&gt; ‘3’}</li>
+<li>删除数据：delete ‘user’,’101’,’info:name’</li>
+<li>删除rowkey为101的数据：deleteall ‘user’,’101’</li>
+<li>清空表数据：truncate ‘user’</li>
+<li>设置表为不可用状态：disable ‘user’</li>
+<li>删除表：drop ‘user’ === 必须设置表状态为不可用</li>
+<li>查看表记录数（以rowkey为基准）：count ‘emp’</li>
+<li>查询指定数据：get ‘emp’,’102’,’info:high’或get ‘emp’,’102’</li>
+</ol>
 <hr>
+<h1 id="Hbase数据读写流程"><a href="#Hbase数据读写流程" class="headerlink" title="Hbase数据读写流程"></a>Hbase数据读写流程</h1><ul>
+<li>整体流程</li>
+</ul>
+<ol>
+<li>client发出读写请求访问到zookeeper（元数据）</li>
+<li>zookeeper返回元数据信息给client（root表所在位置信息，root表中存储了.META.表的元数据信息，.META.表存储了region的元数据信息）</li>
+<li>根据元数据信息找到查询的数据所在的HregionServer，zookeeper-&gt;regionServer（每一个root表只对应一个region，不能切分，通过root表可以读取到.META.表的元数据信息）</li>
+<li>根据root表信息找到.META.表（.META.可以存储在多个region中，访问的是存储业务数据的元数据信息）</li>
+<li>根据.META.表元数据信息找到region</li>
+<li>数据返回到client</li>
+</ol>
+<ul>
+<li>HregionServer流程</li>
+</ul>
+<ol>
+<li>客户端会通过region直接去Memstore（内存）中读取数据</li>
+<li>如果数据存在，会直接返回数据</li>
+<li>当Memstore中找不到时blockcache（与Memstore同属于一块内存的逻辑区域，Memstore会实时把数据落到blockcache中，blockcache再把数据落到Hfile中）</li>
+<li>当blockcache中找不到是，将会再HDFS中查找Hfile</li>
+<li>缓存返回（通过blockcache，Memstore层层返回）</li>
+<li>Memstore将数据返回客户端（Memstore负责写入数据的缓存，blockcache负责读取数据的缓存，读写分离）</li>
+</ol>
 
       
     </div>
@@ -464,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -484,7 +538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -520,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL简介"><span class="nav-number">1.</span> <span class="nav-text">NoSQL简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBsae的体系架构（主从结构）和表结构"><span class="nav-number">2.</span> <span class="nav-text">HBsae的体系架构（主从结构）和表结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase的搭建模式"><span class="nav-number">3.</span> <span class="nav-text">HBase的搭建模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作HBsae"><span class="nav-number">4.</span> <span class="nav-text">操作HBsae</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hbase数据读写流程"><span class="nav-number">5.</span> <span class="nav-text">Hbase数据读写流程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
